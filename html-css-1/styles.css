@@ -56,9 +56,31 @@ body {
     text-decoration: underline;/* Fallback for browsers that don't support background-clip */
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+
+}
+
 .attraction {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
 }
+
+.attraction-text {
+    font-size: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: blue;
+}
+
