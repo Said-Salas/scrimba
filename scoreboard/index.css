@@ -1,0 +1,69 @@
+body {
+    background: #1B244A;
+    margin: 0;
+}
+
+h1 {
+    color: white;
+    font-size: 55px;
+}
+
+.score-btn {
+    background-color: transparent;
+    border: 1px solid #9AABD8;
+    border-radius: 4px;
+    width: 50px;
+    color: white;
+    font-family: "digital-7";
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: sans-serif;
+}
+
+.flex-container-two {
+    display: flex;
+    width: 200px;
+    align-items: center;
+    flex-direction: column;
+    /* border: 4px solid white; */
+}
+
+.scoreboard {
+    margin-top: -24px;
+    border-radius: 4px;
+    background-color: black;
+    width: 100%;
+    height: 135px;
+    color: #F94F6D;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    font-family: "digital-7";
+}
+
+.btn-container {
+    width: 100%;
+    height: 40px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.reset-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+@font-face {
+    font-family: 'digital-7';
+    src: url('/fonts/e12.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
