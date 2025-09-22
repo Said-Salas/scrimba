@@ -1,0 +1,83 @@
+body {
+    background: #1F2937;
+}
+
+#password-one {
+    background: #273549;
+    width: 30em;
+    height: 3em;
+    border: 2px solid white;
+    border-radius: 4px;
+    color: #55F991;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#password-two {
+    background: #273549;
+    width: 30em;
+    height: 3em;
+    border: 2px solid white;
+    border-radius: 4px;
+    color: #55F991;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container-two {
+    display: flex;
+    position: relative;
+    top: 5em;
+    justify-content: space-evenly;
+    font-family: monospace;
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+
+.container-one {
+    font-family: 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    margin: 8em 0 8em 0;
+}
+
+.title {
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.highlight-one {
+    color: #55F991;
+}
+
+.suggesting-message {
+    color: #D5D4D8;
+    font-size: 1.3em;
+}
+
+hr {
+    border-top: 2px solid #55F991
+}
+
+#btn-generate {
+    position: relative;
+    top: 3em;
+    border: none;
+    border-radius: 1.4em;
+    background-color: #10B981;
+    padding: 1.5em 4em;
+    font-size: 1.2em;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+#btn-generate:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background: orange;
+}
+
