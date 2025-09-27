@@ -1,2 +1,0 @@
-# scrimba
-scrimba projects

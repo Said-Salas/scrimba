@@ -1,0 +1,17 @@
+html, body { margin: 0; padding: 0; font-family: "Roboto"; }
+
+.cont-one { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid gray; background-color: white;}
+.sub-cont-one { display: flex; justify-content: start; align-items: center; padding: 6rem 2rem 2rem;}
+.sub-cont-two {display: flex; flex-direction: column; margin: 2rem 2rem;}
+.sub-sub-cont-one { display: flex; flex-direction: column; margin: 0 0 0 1.3rem;}
+.sub-sub-cont-two { display: flex;}
+
+.insta-logo { width: 35%;}
+.profile-photo { width: 10%; height: 5%; border-radius: 100%;}
+.account-name { font-size: 2.2rem; margin: 0 0 0.3rem;}
+.account-location { font-size: 1.9rem; font-weight: 400; margin: 0.3rem 0 0;}
+.img-post { display: block; width: 100%;}
+.img-btns { width: 7%; height: 7%; margin: 0 1.5rem 0 0;}
+.likes-el { font-size: 2.4rem; font-weight: 600; margin-bottom: 1.4rem;}
+.comment-el { font-size: 2.6rem; margin-top: 0;}
+.user-el { font-weight: 700;}
