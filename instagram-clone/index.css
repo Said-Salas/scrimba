@@ -1,4 +1,4 @@
-html, body { margin: 0; padding: 0; font-family: "Roboto"; }
+body { margin: 0; padding: 0; font-family: "Roboto";}
 
 .cont-one { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid gray; background-color: white;}
 .sub-cont-one { display: flex; justify-content: start; align-items: center; padding: 6rem 2rem 2rem;}
@@ -15,3 +15,4 @@ html, body { margin: 0; padding: 0; font-family: "Roboto"; }
 .likes-el { font-size: 2.4rem; font-weight: 600; margin-bottom: 1.4rem;}
 .comment-el { font-size: 2.6rem; margin-top: 0;}
 .user-el { font-weight: 700;}
+
