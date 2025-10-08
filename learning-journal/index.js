@@ -15,9 +15,6 @@ recentPost.innerHTML = `<div class="recent-post-wrapper">
                         </div>`
 mainEl.appendChild(recentPost)
 
-const containerPosts = document.createElement('section')
-containerPosts.classList.add('column')
-
 let feedPosts = ''
 posts.map(post => {
     return feedPosts += `<div class="post">
