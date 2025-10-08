@@ -16,7 +16,8 @@ body { margin: 0; padding: 0;}
     .post { display: flex; flex-direction: column;}
     .post-image { width: 100%; border-radius: 1rem;}
     .date-two { color: black; margin: 1rem 0 0; color: darkslategray;}
-    .intro-feed {color: darkgrey; margin: 0.2rem 0 2rem;}
+    .text {color: #696969; margin: 0.2rem 0 2rem;}
+    .text-content {color: #696969; margin: 2rem 0 2rem; line-height: 1.5rem; text-align: justify;}
     .recent-post-wrapper { position: relative;}
     .post-title { margin: 0.4rem 0 0;}
 }
