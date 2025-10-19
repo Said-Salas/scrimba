@@ -46,23 +46,67 @@ document.addEventListener('DOMContentLoaded', () => {
         btnReadMore.addEventListener('click', () => openModal(plot.dataset.full));
     })
 
+    const mainEl = document.getElementById('main-container')
     document.getElementById('search-btn').addEventListener('click', async () => {
         const searchValue = document.getElementById('search-query').value
-        const response  = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=[yourAPIKEY]=${searchValue}&plot=full`)
+        const response  = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${searchValue}&plot=full`)
         const data = await response.json()
-        console.log(data)
+        console.log(data.Plot)
         data.Search.map(movie => {
             const movieContainer = document.createElement('section')
+
             const moviePoster = document.createElement('img')
-            // moviePoster.src = movie.Poster
+            moviePoster.src = movie.Poster
             moviePoster.className = 'movie-poster'
+            movieContainer.appendChild(moviePoster)
+
             const movieDetails = document.createElement('div')
             movieDetails.className = 'movie-details'
             const titleRating = document.createElement('div')
             titleRating.className = 'title-rating'
-            const movieTitle = document.createElement('div')
+            const movieTitle = document.createElement('h3')
             movieTitle.className = 'movie-title'
-            movieTitle.textContent = movie.Title
+            movieTitle.textContent = movie.Title  
+            const ratingIcon = document.createElement('img')  
+            ratingIcon.src = '/movie-watchlist/images/star-icon.svg'
+            ratingIcon.className = 'rating-icon'
+            const ratingValue = document.createElement('p')
+            ratingValue.className = 'movie-rating'
+            ratingValue.textContent = (Number(parseInt(movie.Ratings[1].Value))/20).toFixed(1)
+            titleRating.appendChild(movieTitle)
+            titleRating.appendChild(ratingIcon)
+            titleRating.appendChild(ratingValue)
+            movieDetails.appendChild(titleRating)
+            
+            const durationGenreWatchlist = document.createElement('div')
+            durationGenreWatchlist.className = 'duration-genre-watchlist'
+            const movieDuration = document.createElement('p')
+            movieDuration.className = 'movie-parameters'
+            movieDuration.textContent = movie.Runtime 
+            const movieGenres = document.createElement('p')
+            movieGenres.className = 'movie-parameters'
+            movieGenres.textContent = movie.Genre
+            const addMovieToWatchlist = document.createElement('img')
+            addMovieToWatchlist.className = 'add-icon-one'
+            addMovieToWatchlist.src = '/movie-watchlist/images/add-icon.svg'
+            const watchlistText = document.createElement('p')
+            watchlistText.className = 'movie-parameters'
+            durationGenreWatchlist.appendChild(movieDuration)
+            durationGenreWatchlist.appendChild(movieGenres)
+            durationGenreWatchlist.appendChild(addMovieToWatchlist)
+            durationGenreWatchlist.appendChild(watchlistText)
+            movieDetails.appendChild(durationGenreWatchlist)
+
+            const moviePlotContainer = document.createElement('div')
+            const moviePlot = document.createElement('p')
+            moviePlot.className = 'movie-plot'
+            moviePlot.textContent = movie.Plot
+            moviePlotContainer.appendChild(moviePlot)
+            movieDetails.appendChild(moviePlotContainer)
+
+            movieContainer.appendChild(movieDetails)
+
+
         })
 
     })
@@ -80,16 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
 //             <p class="movie-parameters">180 min</p>
 //             <p class="movie-parameters">Physics, War, Love</p>
 //             <img src="/movie-watchlist/images/add-icon.svg" class="add-icon-one">
-//             <p class="movie-parameters">Watchlist</p>
+//             <p class="movie-parameters">Add to Watchlist</p>
 //           </div>
 //           <div>
 //             <p class="movie-plot">Physicist J. Robert Oppenheimer feels how the world transitions to a new chapter in its history,
 //               by leading the Manhattan Project along fellow physicsts like Richard Feynman and Hans Bethe. Featuring Robert Downey Jr, 
 //               Emily Blunt and Matt Damon.         
-//               Physicist J. Robert Oppenheimer feels how the world transitions to a new chapter in its history,
-//               by leading the Manhattan Project along fellow physicsts like Richard Feynman and Hans Bethe. Featuring Robert Downey Jr, 
-//               Emily Blunt and Matt Damon.      
-//             </p>
+//
 //             </p>
 //           </div>
 //         </div>
