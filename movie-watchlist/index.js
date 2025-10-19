@@ -49,12 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainEl = document.getElementById('main-container')
     document.getElementById('search-btn').addEventListener('click', async () => {
         const searchValue = document.getElementById('search-query').value
-        const response  = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${searchValue}&plot=full`)
+        const response  = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&s=${searchValue}&plot=full`)
         const data = await response.json()
-        console.log(data.Plot)
+        let idMovies = []
         data.Search.map(movie => {
-            const movieContainer = document.createElement('section')
+            return idMovies.push(movie.imdbID)
+        })
 
+        idMovies.forEach(async id => {
+            const response = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&i=${id}&plot=full`)
+            const movie = await response.json()
+            const movieContainer = document.createElement('section')
             const moviePoster = document.createElement('img')
             moviePoster.src = movie.Poster
             moviePoster.className = 'movie-poster'
@@ -105,10 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
             movieDetails.appendChild(moviePlotContainer)
 
             movieContainer.appendChild(movieDetails)
-
-
+            mainEl.appendChild(movieContainer)
         })
-
     })
 })
 
