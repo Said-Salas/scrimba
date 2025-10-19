@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnReadMore.addEventListener('click', () => openModal(plot.dataset.full));
     })
 
-    const mainEl = document.getElementById('main-container ')
+    const mainEl = document.getElementById('main-container')
     document.getElementById('search-btn').addEventListener('click', async () => {
         const searchValue = document.getElementById('search-query').value
         const response  = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${searchValue}&plot=full`)
