@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mainEl = document.getElementById('main-container')
     document.getElementById('search-btn').addEventListener('click', async () => {
+        mainEl.innerHTML = ''
         const searchValue = document.getElementById('search-query').value
         const response  = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&s=${searchValue}&plot=full`)
         const data = await response.json()
@@ -59,12 +60,44 @@ document.addEventListener('DOMContentLoaded', () => {
         idMovies.forEach(async id => {
             const response = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&i=${id}&plot=full`)
             const movie = await response.json()
-            const movieContainer = document.createElement('section')
-            const moviePoster = document.createElement('img')
-            moviePoster.src = movie.Poster
-            moviePoster.className = 'movie-poster'
-            movieContainer.appendChild(moviePoster)
+            
+            // switch (movie){
+            //     case movie.Runtime === 'N/A':
+            //         movie.Runtime = 'Not available'
+            //         break
+            //     case movie.Plot === 'N/A':
+            //         movie.Plot = 'Not available'
+            //         break
+            //     case movie.Genre === 'N/A':
+            //         movie.Genre = 'Not available'
+            //         break
+            //     case movie.Title === 'N/A':
+            //         movie.Genre = 'Not available'
+            //         break
+            //     case !Array.isArray(movie.Ratings):
+            //         movie.Ratings = 'Not available'
+            //         break
+            //     case movie.Ratings.length === 0:
+            //         movie.Ratings = 'Not available'
+            //         break
+            //     case movie.Ratings[0].Value === 'N/A':
+            //         movie.Ratings[0].Value === 'Not available'
+            //         break
+            //     default :
+            //         break
+            // }
 
+            const movieContainer = document.createElement('section')
+            movieContainer.className = 'card-component'
+
+            const moviePosterContainer = document.createElement('div')
+            moviePosterContainer.className = 'poster-container'
+            const moviePoster = document.createElement('img');
+            moviePoster.className = 'movie-poster';
+            moviePoster.src = movie.Poster
+            moviePosterContainer.appendChild(moviePoster)
+            movieContainer.appendChild(moviePosterContainer)
+    
             const movieDetails = document.createElement('div')
             movieDetails.className = 'movie-details'
             const titleRating = document.createElement('div')
@@ -77,7 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
             ratingIcon.className = 'rating-icon'
             const ratingValue = document.createElement('p')
             ratingValue.className = 'movie-rating'
-            ratingValue.textContent = (Number(parseInt(movie.Ratings[1].Value))/20).toFixed(1)
+            // console.log(movie.Ratings[0].Value)
+            const rawRatingValue = movie.Ratings[0].Value
+            const finalRatingValue = (rawRatingValue.split('/')[0])/2
+            // console.log(finalRatingValue)
+            ratingValue.textContent = finalRatingValue
             titleRating.appendChild(movieTitle)
             titleRating.appendChild(ratingIcon)
             titleRating.appendChild(ratingValue)
@@ -87,6 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
             durationGenreWatchlist.className = 'duration-genre-watchlist'
             const movieDuration = document.createElement('p')
             movieDuration.className = 'movie-parameters'
+            if (movie.Runtime === 'N/A'){
+                movie.Runtime = 'Not available'
+            }
             movieDuration.textContent = movie.Runtime 
             const movieGenres = document.createElement('p')
             movieGenres.className = 'movie-parameters'
@@ -96,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addMovieToWatchlist.src = '/movie-watchlist/images/add-icon.svg'
             const watchlistText = document.createElement('p')
             watchlistText.className = 'movie-parameters'
+            watchlistText.textContent = 'Add to watchlist'
             durationGenreWatchlist.appendChild(movieDuration)
             durationGenreWatchlist.appendChild(movieGenres)
             durationGenreWatchlist.appendChild(addMovieToWatchlist)
@@ -105,18 +146,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const moviePlotContainer = document.createElement('div')
             const moviePlot = document.createElement('p')
             moviePlot.className = 'movie-plot'
+            if (movie.Plot === 'N/A'){
+                movie.Plot = 'Not available'
+            }
             moviePlot.textContent = movie.Plot
             moviePlotContainer.appendChild(moviePlot)
             movieDetails.appendChild(moviePlotContainer)
 
             movieContainer.appendChild(movieDetails)
+
             mainEl.appendChild(movieContainer)
+            moviePoster.addEventListener('error', () => {
+                mainEl.removeChild(movieContainer)
+            })
+           
         })
     })
 })
 
 //  <section class="card-component">
-//         <img src="/movie-watchlist/images/oppie-poster.jpg" class="movie-poster">
+//         <div class='poster-container'>
+//            <img src="/movie-watchlist/images/oppie-poster.jpg" class="movie-poster">
+//         </div>
 //         <div class="movie-details">
 //           <div class="title-rating">
 //             <h3 class="movie-title">Oppenheimer</h3>
