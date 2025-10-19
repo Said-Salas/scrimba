@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('search-btn').addEventListener('click', async () => {
         const searchValue = document.getElementById('search-query').value
-        const response  = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=5c00afea&s=${searchValue}&plot=full`)
+        const response  = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=[yourAPIKEY]=${searchValue}&plot=full`)
         const data = await response.json()
         console.log(data)
         data.Search.map(movie => {
