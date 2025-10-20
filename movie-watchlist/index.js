@@ -1,51 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const threshold = 280;
-    document.querySelectorAll('.movie-plot').forEach(plot => {
-        const full = plot.textContent.trim()
-       if(full.length <= threshold) return;
-       const truncated = full.slice(0, threshold).trim() + '...';
-       plot.dataset.full = full;
-       plot.dataset.truncated = truncated
-       plot.textContent = truncated
-        const btnReadMore = document.createElement('button');
-        btnReadMore.className = 'read-more-btn';
-        btnReadMore.type = 'button';
-        btnReadMore.setAttribute('aria-expanded', 'false');
-        btnReadMore.textContent = 'Read more';
-        plot.appendChild(btnReadMore);
-
-        const modal = document.getElementById('plot-modal');
-        const modalPlotContent = document.getElementById('modal-plot-content');
-
-        function openModal(text) {
-            modalPlotContent.textContent = text;
-            modal.hidden = false;
-            // save active element to return focus
-            modal.dataset.previousFocus = document.activeElement ? document.activeElement.id || '' : '';
-            // focus close button
-            const closeBtn = modal.querySelector('[data-modal-close]');
-            closeBtn && closeBtn.focus();
-            document.addEventListener('keydown', onKeyDown);
-        }
-
-        function closeModal() {
-            modal.hidden = true;
-            document.removeEventListener('keydown', onKeyDown);
-            // return focus
-            const prevId = modal.dataset.previousFocus;
-            if (prevId) document.getElementById(prevId)?.focus();
-        }
-
-        function onKeyDown(e) {
-            if (e.key === 'Escape') closeModal();
-        }
-
-        // wire modal close buttons/overlay
-        modal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeModal));
-
-        btnReadMore.addEventListener('click', () => openModal(plot.dataset.full));
-    })
-
     const mainEl = document.getElementById('main-container')
     document.getElementById('search-btn').addEventListener('click', async () => {
         mainEl.innerHTML = ''
@@ -60,32 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         idMovies.forEach(async id => {
             const response = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&i=${id}&plot=full`)
             const movie = await response.json()
-            
-            // switch (movie){
-            //     case movie.Runtime === 'N/A':
-            //         movie.Runtime = 'Not available'
-            //         break
-            //     case movie.Plot === 'N/A':
-            //         movie.Plot = 'Not available'
-            //         break
-            //     case movie.Genre === 'N/A':
-            //         movie.Genre = 'Not available'
-            //         break
-            //     case movie.Title === 'N/A':
-            //         movie.Genre = 'Not available'
-            //         break
-            //     case !Array.isArray(movie.Ratings):
-            //         movie.Ratings = 'Not available'
-            //         break
-            //     case movie.Ratings.length === 0:
-            //         movie.Ratings = 'Not available'
-            //         break
-            //     case movie.Ratings[0].Value === 'N/A':
-            //         movie.Ratings[0].Value === 'Not available'
-            //         break
-            //     default :
-            //         break
-            // }
 
             const movieContainer = document.createElement('section')
             movieContainer.className = 'card-component'
@@ -150,6 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 movie.Plot = 'Not available'
             }
             moviePlot.textContent = movie.Plot
+            if (movie.Plot.length >= 225){
+                const fullPlot = movie.Plot
+                const shortPlot = movie.Plot.slice(0, 225).trim() + '...'
+                moviePlot.textContent = shortPlot
+                const btnReadMore = document.createElement('button')
+                btnReadMore.className = 'read-more-btn'
+                btnReadMore.textContent = 'Read More'
+                moviePlot.textContent += btnReadMore
+            }
             moviePlotContainer.appendChild(moviePlot)
             movieDetails.appendChild(moviePlotContainer)
 
@@ -161,8 +97,68 @@ document.addEventListener('DOMContentLoaded', () => {
             })
            
         })
-    })
+        // const threshold = 280;
+        // document.querySelectorAll('.movie-plot').forEach(plot => {
+        // const full = plot.textContent.trim()
+        // if(full.length <= threshold) return;
+        // const truncated = full.slice(0, threshold).trim() + '...';
+        // plot.dataset.full = full;
+        // plot.dataset.truncated = truncated
+        // plot.textContent = truncated
+        //     const btnReadMore = document.createElement('button');
+        //     btnReadMore.className = 'read-more-btn';
+        //     btnReadMore.type = 'button';
+        //     btnReadMore.setAttribute('aria-expanded', 'false');
+        //     btnReadMore.textContent = 'Read more';
+        //     plot.appendChild(btnReadMore);
+
+        //     const modal = document.getElementById('plot-modal');
+        //     const modalPlotContent = document.getElementById('modal-plot-content');
+
+        //     function openModal(text) {
+        //         modalPlotContent.textContent = text;
+        //         modal.hidden = false;
+        //         // save active element to return focus
+        //         modal.dataset.previousFocus = document.activeElement ? document.activeElement.id || '' : '';
+        //         // focus close button
+        //         const closeBtn = modal.querySelector('[data-modal-close]');
+        //         closeBtn && closeBtn.focus();
+        //         document.addEventListener('keydown', onKeyDown);
+        //     }
+
+        //     function closeModal() {
+        //         modal.hidden = true;
+        //         document.removeEventListener('keydown', onKeyDown);
+        //         // return focus
+        //         const prevId = modal.dataset.previousFocus;
+        //         if (prevId) document.getElementById(prevId)?.focus();
+        //     }
+
+        //     function onKeyDown(e) {
+        //         if (e.key === 'Escape') closeModal();
+        //     }
+
+        //     // wire modal close buttons/overlay
+        //     modal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeModal));
+
+        //     btnReadMore.addEventListener('click', () => openModal(plot.dataset.full));
+        // })
+    })  
 })
+// <!-- Modal for full plot -->
+// <div id="plot-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+//   <div class="modal__overlay" data-modal-close></div>
+//   <div class="modal__panel" role="document">
+//     <header class="modal__header">
+//       <h2 id="modalTitle">Plot</h2>
+//       <button class="modal__close" aria-label="Close modal" data-modal-close>&times;</button>
+//     </header>
+//     <div class="modal__body">
+//       <p id="modal-plot-content"></p>
+//     </div>
+//   </div>
+// </div>
+
 
 //  <section class="card-component">
 //         <div class='poster-container'>
