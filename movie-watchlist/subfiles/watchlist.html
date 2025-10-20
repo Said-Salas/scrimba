@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Movie Watchlist</title>
+    <title>Watchlist</title>
     <link rel="stylesheet" href="../index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,11 +14,11 @@
       <div class="header-wrap">
           <img src="/movie-watchlist/images/oppie.jpg">
           <h1 class="page-title">My Watchlist</h1>
-          <h2>Search for movies</h2>
+          <h2 id="watchlist-to-search">Search for movies</h2>
       </div>
     </header>
    
-    <main id="watchlist-container"">
+    <main id="watchlist-container">
       <div>
         <p class="message-one">Your watchlist is looking a little empty...</p>
         <div class="add-movies-prompt">
@@ -27,7 +27,7 @@
         </div>
       </div>
     </main>
-    <script src="../index.js"></script>
+    <script src="watchlist.js" type="module"></script>
   </body>
 </html>
 

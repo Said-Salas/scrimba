@@ -1,9 +1,12 @@
-const savedMovies = []
-const mainEl = document.getElementById('main-container')
+const watchlistEl = document.getElementById('watchlist-container')
+const rawData = localStorage.getItem('savedMovies')
+const savedMovies = rawData.trim().startsWith('[') ? JSON.parse(rawData) : rawData.split(',').map(string => string.trim())
+// localStorage.clear()
 
-const renderMovies = (arrayMovies) => {
-    arrayMovies.forEach(async id => {
-            const response = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&i=${id}&plot=full`)
+const renderWatchlist = savedMovies => {
+    watchlistEl.innerHTML = ''
+    savedMovies.forEach(async id => {
+        const response = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&i=${id}&plot=full`)
             const movie = await response.json()
 
             const movieContainer = document.createElement('section')
@@ -51,18 +54,18 @@ const renderMovies = (arrayMovies) => {
             movieGenres.className = 'movie-parameters'
             movieGenres.textContent = movie.Genre
 
-            const addMovieToWatchlist = document.createElement('img')
-            addMovieToWatchlist.className = 'add-icon-one'
-            addMovieToWatchlist.src = '/movie-watchlist/images/add-icon.svg'
+            const removeMovieFromWatchlist = document.createElement('img')
+            removeMovieFromWatchlist.className = 'remove-icon'
+            removeMovieFromWatchlist.src = '/movie-watchlist/images/remove-icon.svg'
 
             const watchlistText = document.createElement('p')
             watchlistText.className = 'movie-parameters'
-            watchlistText.textContent = 'Add to watchlist'
+            watchlistText.textContent = 'Remove from watchlist'
 
             durationGenreWatchlist.appendChild(movieDuration)
             durationGenreWatchlist.appendChild(movieGenres)
           
-            durationGenreWatchlist.appendChild(addMovieToWatchlist)
+            durationGenreWatchlist.appendChild(removeMovieFromWatchlist)
             durationGenreWatchlist.appendChild(watchlistText)
             
             movieDetails.appendChild(durationGenreWatchlist)
@@ -142,51 +145,34 @@ const renderMovies = (arrayMovies) => {
 
             movieContainer.appendChild(movieDetails)
 
-            mainEl.appendChild(movieContainer)
+            watchlistEl.appendChild(movieContainer)
             moviePoster.addEventListener('error', () => {
-                mainEl.removeChild(movieContainer)
+                watchlistEl.removeChild(movieContainer)
             })
 
-            const addToWatchlist = () => {
-                if(!savedMovies.includes(movie.imdbID)) {
-                    savedMovies.push(movie.imdbID)
-                    console.log(savedMovies)
-                    localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+            const removeFromWatchlist = () => {
+                if(savedMovies.includes(movie.imdbID)) {
+                    savedMovies.pop(movie.imdbID)
                 }
-                addMovieToWatchlist.classList.remove('pulse')
-                void addMovieToWatchlist.offsetWidth
-                addMovieToWatchlist.classList.add('pulse')
             }
-            addMovieToWatchlist.addEventListener('click', addToWatchlist)
-        }) 
-    }
+            removeMovieFromWatchlist.addEventListener('click', removeFromWatchlist)            
+    })
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('search-btn').addEventListener('click', async () => {
-        mainEl.innerHTML = ''
-        const searchValue = document.getElementById('search-query').value
-        const response  = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&s=${searchValue}&plot=full`)
-        const data = await response.json()
-        console.log(data)
-        if (data.Response === 'False') {
-            const noResultsMessageContainer = document.createElement('div')
-            const noResultsMessage = document.createElement('p')
-            noResultsMessage.className = 'message-one'
-            noResultsMessage.textContent = 'Unable to find what you\'re looking for. Please try another search.'
-            noResultsMessageContainer.appendChild(noResultsMessage)
-            mainEl.appendChild(noResultsMessageContainer)
-        }
-        let idMovies = []
-        data.Search.map(movie => {
-            return idMovies.push(movie.imdbID)
-        })
-        renderMovies(idMovies)
+    const addToWatchlistBtn = document.getElementsByClassName('add-icon-two')[0]
+    const addToWatchlistMessage = document.getElementsByClassName('message-two')[0]
+    addToWatchlistBtn.addEventListener('click', () => {
+        window.location.href = '/movie-watchlist/index.html'
     })
-
-    const goToWatchlist = document.getElementById('search-to-watchlist')
-    if (goToWatchlist) {
-        goToWatchlist.addEventListener('click', () => {
-            window.location.href = '/movie-watchlist/subfiles/watchlist.html'
-        })
+    addToWatchlistMessage.addEventListener('click', () => {
+        window.location.href = '/movie-watchlist/index.html'
+    })
+    if(savedMovies){
+        renderWatchlist(savedMovies)
     }
+    const goToSearchPage = document.getElementById('watchlist-to-search')
+        goToSearchPage.addEventListener('click', () => {
+            window.location.href = '/movie-watchlist/index.html'
+        })
 })
