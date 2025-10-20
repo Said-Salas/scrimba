@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const watchlistContainer = document.getElementById('watchlist')
+    const savedMovies = []
     const mainEl = document.getElementById('main-container')
     document.getElementById('search-btn').addEventListener('click', async () => {
         mainEl.innerHTML = ''
@@ -10,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return idMovies.push(movie.imdbID)
         })
 
-        idMovies.forEach(async id => {
+        const renderMovies = arrayMovies => {arrayMovies.forEach(async id => {
             const response = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&i=${id}&plot=full`)
             const movie = await response.json()
 
@@ -58,9 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const movieGenres = document.createElement('p')
             movieGenres.className = 'movie-parameters'
             movieGenres.textContent = movie.Genre
+
             const addMovieToWatchlist = document.createElement('img')
             addMovieToWatchlist.className = 'add-icon-one'
             addMovieToWatchlist.src = '/movie-watchlist/images/add-icon.svg'
+            
             const watchlistText = document.createElement('p')
             watchlistText.className = 'movie-parameters'
             watchlistText.textContent = 'Add to watchlist'
@@ -71,21 +75,75 @@ document.addEventListener('DOMContentLoaded', () => {
             movieDetails.appendChild(durationGenreWatchlist)
 
             const moviePlotContainer = document.createElement('div')
+
             const moviePlot = document.createElement('p')
             moviePlot.className = 'movie-plot'
             if (movie.Plot === 'N/A'){
                 movie.Plot = 'Not available'
             }
             moviePlot.textContent = movie.Plot
-            if (movie.Plot.length >= 225){
+
+            if (movie.Plot.length >= 200){
                 const fullPlot = movie.Plot
                 const shortPlot = movie.Plot.slice(0, 225).trim() + '...'
                 moviePlot.textContent = shortPlot
                 const btnReadMore = document.createElement('button')
                 btnReadMore.className = 'read-more-btn'
                 btnReadMore.textContent = 'Read More'
-                moviePlot.textContent += btnReadMore
+                moviePlot.appendChild(btnReadMore)
+
+                const modalContainer = document.createElement('div')
+                modalContainer.className = 'modal'
+                modalContainer.hidden = true
+
+                const modalOverlay = document.createElement('div')
+                modalOverlay.className = 'modal-overlay'
+                modalContainer.appendChild(modalOverlay)
+
+                const modalPanel = document.createElement('div')
+                modalPanel.className = 'modal-panel'
+
+                const modalHeader = document.createElement('header')
+                modalHeader.className = 'modal-header'
+
+                const modalTitle = document.createElement('h2')
+                modalTitle.textContent = 'Plot'
+
+                const btnCloseModal = document.createElement('button')
+                btnCloseModal.className = 'modal-close'
+                btnCloseModal.textContent = 'X'
+
+                modalHeader.appendChild(modalTitle)
+                modalHeader.appendChild(btnCloseModal)
+
+                modalPanel.appendChild(modalHeader)
+
+                const modalBody = document.createElement('div')
+                modalBody.className = 'modal-body'
+
+                const modalPlotContent = document.createElement('p')
+                modalPlotContent.className = 'modal-plot-content'
+                modalBody.appendChild(modalPlotContent)
+
+                modalPanel.appendChild(modalBody)
+
+                modalContainer.appendChild(modalPanel)
+
+                document.body.appendChild(modalContainer)
+
+                const openModal = () => {
+                    modalPlotContent.textContent = fullPlot
+                    modalContainer.hidden = false
+                }
+                btnReadMore.addEventListener('click', openModal)
+
+                const closeModal = () => {
+                    modalContainer.hidden = true
+                }
+                btnCloseModal.addEventListener('click', closeModal)
+                modalOverlay.addEventListener('click', closeModal)
             }
+
             moviePlotContainer.appendChild(moviePlot)
             movieDetails.appendChild(moviePlotContainer)
 
@@ -95,8 +153,20 @@ document.addEventListener('DOMContentLoaded', () => {
             moviePoster.addEventListener('error', () => {
                 mainEl.removeChild(movieContainer)
             })
-           
-        })
+
+            const addToWatchlist = () => {
+                if(!savedMovies.includes(movie.imdbID)) {
+                    savedMovies.push(movie.imdbID)
+                    // console.log(savedMovies)
+                }
+                localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+                const read = JSON.parse(localStorage.getItem('savedMovies'))
+                console.log(read)
+            }
+            addMovieToWatchlist.addEventListener('click', addToWatchlist)
+        }) }
+
+        renderMovies(idMovies)
         // const threshold = 280;
         // document.querySelectorAll('.movie-plot').forEach(plot => {
         // const full = plot.textContent.trim()

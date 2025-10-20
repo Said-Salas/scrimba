@@ -24,11 +24,12 @@ html,body {padding: 0; margin:0; font-family:Inter, ui-sans-serif, system-ui, -a
 /* Modal styles */
 .modal {position: fixed; inset: 0; display: grid; place-items: center; z-index: 60;}
 .modal[hidden] {display: none}
-.modal__overlay {position: absolute; inset: 0; background: rgba(0,0,0,0.6);}
-.modal__panel {position: relative; background: #0f0f0f; color: white; width: min(90%, 700px); max-height: 80vh; overflow: auto; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); padding: 1rem; z-index: 61;}
-.modal__header {display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;}
-.modal__close {background: transparent; color: #fff; border: none; font-size: 1.5rem;}
-.modal__body {line-height: 1.5;}
+.modal-overlay {position: absolute; inset: 0; background: rgba(0,0,0,0.6);}
+.modal-panel {position: relative; background: #0f0f0f; color: white; width: min(90%, 700px); max-height: 80vh; overflow: auto; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); padding: 1rem; z-index: 61;}
+.modal-header {display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; background: #0f0f0f;}
+.modal-close {background: transparent; color: #fff; border: none; font-size: 1.5rem;}
+.modal-body {line-height: 1.5;}
+.modal-plot-content {background: #0f0f0f;}
 header > div > h1, header > div > h2 {color: white; z-index: 1;  padding: 0; margin: 0 2.5rem; background-color: transparent;}
 header > div > h1 {font-size: 3rem; font-weight: 900;}
 header > div > h2 {font-size: 1.4rem; font-weight: 600; text-decoration: underline;}
