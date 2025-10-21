@@ -1,4 +1,5 @@
-const savedMovies = []
+const selectedMovies = []
+const existingMovies = []
 const mainEl = document.getElementById('main-container')
 
 const renderMovies = (arrayMovies) => {
@@ -148,10 +149,11 @@ const renderMovies = (arrayMovies) => {
             })
 
             const addToWatchlist = () => {
-                if(!savedMovies.includes(movie.imdbID)) {
-                    savedMovies.push(movie.imdbID)
-                    console.log(savedMovies)
-                    localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+                if(!selectedMovies.includes(movie.imdbID)) {
+                    selectedMovies.push(movie.imdbID)
+                    
+                    // console.log(savedMovies)
+                    // localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
                 }
                 addMovieToWatchlist.classList.remove('pulse')
                 void addMovieToWatchlist.offsetWidth
@@ -161,13 +163,17 @@ const renderMovies = (arrayMovies) => {
         }) 
     }
 
+const addToLocalStorage = newMovies => {
+    const watchlistMovies = [...existingMovies, ...newMovies.filter(movie => !existingMovies.includes(movie))]
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('search-btn').addEventListener('click', async () => {
         mainEl.innerHTML = ''
         const searchValue = document.getElementById('search-query').value
         const response  = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&s=${searchValue}&plot=full`)
         const data = await response.json()
-        console.log(data)
+
         if (data.Response === 'False') {
             const noResultsMessageContainer = document.createElement('div')
             const noResultsMessage = document.createElement('p')

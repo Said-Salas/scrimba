@@ -1,6 +1,10 @@
 const watchlistEl = document.getElementById('watchlist-container')
-const rawData = localStorage.getItem('savedMovies')
-const savedMovies = rawData.trim().startsWith('[') ? JSON.parse(rawData) : rawData.split(',').map(string => string.trim())
+let rawData
+let savedMovies
+if (localStorage.getItem('savedMovies')){
+    rawData = localStorage.getItem('savedMovies')
+    savedMovies = rawData.trim().startsWith('[') ? JSON.parse(rawData) : rawData.split(',').map(string => string.trim())
+}
 // localStorage.clear()
 
 const renderWatchlist = savedMovies => {
