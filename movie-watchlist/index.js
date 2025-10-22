@@ -163,13 +163,14 @@ const renderMovies = (arrayMovies) => {
     }
 
 const addToLocalStorage = newMovies => {
-    if (localStorage.getItem('savedMovies')){
-        watchlistMovies.push(...localStorage.getItem('savedMovies'))
+    if(localStorage.getItem('savedMovies')){   
+        watchlistMovies = JSON.parse(localStorage.getItem('savedMovies'))
+        const filteredMovies = [...watchlistMovies, ...newMovies.filter(movies => !watchlistMovies.includes(movies))]
+        localStorage.setItem('savedMovies', JSON.stringify(filteredMovies))
     }
-    watchlistMovies.push(...newMovies.filter(movie => !watchlistMovies.includes(movie)))
-    localStorage.setItem('savedMovies', JSON.stringify(watchlistMovies))
-    // existingMovies.push(...newMovies.filter(movie => !existingMovies.includes(movie)))
-    // localStorage.setItem('savedMovies', JSON.stringify(existingMovies))
+    else {
+        localStorage.setItem('savedMovies', JSON.stringify(newMovies))
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

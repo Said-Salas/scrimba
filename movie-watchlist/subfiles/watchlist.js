@@ -11,7 +11,7 @@ if (localStorage.getItem('savedMovies')){
 const renderWatchlist = savedMovies => {
     watchlistEl.removeChild(messageTwoContainer)
     savedMovies.forEach(async id => {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&i=${id}&plot=full`)
+            const response = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&i=${id}&plot=full`)
             const movie = await response.json()
 
             const movieContainer = document.createElement('section')
