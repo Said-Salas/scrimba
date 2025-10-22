@@ -1,6 +1,7 @@
 const selectedMovies = []
-const existingMovies = []
+let watchlistMovies = []
 const mainEl = document.getElementById('main-container')
+// localStorage.clear()
 
 const renderMovies = (arrayMovies) => {
     arrayMovies.forEach(async id => {
@@ -151,9 +152,7 @@ const renderMovies = (arrayMovies) => {
             const addToWatchlist = () => {
                 if(!selectedMovies.includes(movie.imdbID)) {
                     selectedMovies.push(movie.imdbID)
-                    
-                    // console.log(savedMovies)
-                    // localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+                    addToLocalStorage(selectedMovies)
                 }
                 addMovieToWatchlist.classList.remove('pulse')
                 void addMovieToWatchlist.offsetWidth
@@ -164,7 +163,13 @@ const renderMovies = (arrayMovies) => {
     }
 
 const addToLocalStorage = newMovies => {
-    const watchlistMovies = [...existingMovies, ...newMovies.filter(movie => !existingMovies.includes(movie))]
+    if (localStorage.getItem('savedMovies')){
+        watchlistMovies.push(...localStorage.getItem('savedMovies'))
+    }
+    watchlistMovies.push(...newMovies.filter(movie => !watchlistMovies.includes(movie)))
+    localStorage.setItem('savedMovies', JSON.stringify(watchlistMovies))
+    // existingMovies.push(...newMovies.filter(movie => !existingMovies.includes(movie)))
+    // localStorage.setItem('savedMovies', JSON.stringify(existingMovies))
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,4 +1,5 @@
 const watchlistEl = document.getElementById('watchlist-container')
+const messageTwoContainer = document.getElementById('message-two-container')
 let rawData
 let savedMovies
 if (localStorage.getItem('savedMovies')){
@@ -8,7 +9,7 @@ if (localStorage.getItem('savedMovies')){
 // localStorage.clear()
 
 const renderWatchlist = savedMovies => {
-    watchlistEl.innerHTML = ''
+    watchlistEl.removeChild(messageTwoContainer)
     savedMovies.forEach(async id => {
         const response = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&i=${id}&plot=full`)
             const movie = await response.json()
