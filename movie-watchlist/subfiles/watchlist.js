@@ -156,28 +156,67 @@ const renderWatchlist = savedMovies => {
             })
 
             const removeFromWatchlist = () => {
-                if(savedMovies.includes(movie.imdbID)) {
-                    savedMovies.pop(movie.imdbID)
-                }
+                    watchlistEl.removeChild(movieContainer)
+                    const index = savedMovies.indexOf(movie.imdbID)
+                    savedMovies.splice(index, 1)
+                    localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+                    emptyWatchlist()
             }
             removeMovieFromWatchlist.addEventListener('click', removeFromWatchlist)            
     })
+    const emptyWatchlist = () => {
+        if (savedMovies.length === 0){
+            const emptyWatchlistContainer = document.createElement('div')
+            emptyWatchlistContainer.className = 'message-two-container'
+            
+            const emptyWatchlistMessage = document.createElement('p')
+            emptyWatchlistMessage.className = 'message-one'
+            emptyWatchlistMessage.textContent = 'Your watchlist is looking a little empty...'
+            emptyWatchlistContainer.appendChild(emptyWatchlistMessage)
+    
+            const emptyWatchlistSuggestionContainer = document.createElement('div')
+            emptyWatchlistSuggestionContainer.className = 'add-movies-prompt'
+    
+            const backToSearchPageBtn = document.createElement('img')
+            backToSearchPageBtn.className = 'add-icon-two'
+            backToSearchPageBtn.src = '/movie-watchlist/images/add-icon.svg'
+            backToSearchPageBtn.addEventListener('click', () => {
+                window.location.href = '/movie-watchlist/index.html'
+            })
+            emptyWatchlistSuggestionContainer.appendChild(backToSearchPageBtn)
+    
+            const backToSearchPageMessage = document.createElement('p')
+            backToSearchPageMessage.className = 'message-two'
+            backToSearchPageMessage.textContent = 'Let\'s add some movies'
+            backToSearchPageMessage.addEventListener('click', () => {
+                window.location.href = '/movie-watchlist/index.html'
+            })
+            emptyWatchlistSuggestionContainer.appendChild(backToSearchPageMessage)
+    
+            emptyWatchlistContainer.appendChild(emptyWatchlistSuggestionContainer)
+            watchlistEl.appendChild(emptyWatchlistContainer)
+        }
+    }
+    emptyWatchlist()
 }
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const addToWatchlistBtn = document.getElementsByClassName('add-icon-two')[0]
     const addToWatchlistMessage = document.getElementsByClassName('message-two')[0]
+    const goToSearchPage = document.getElementById('watchlist-to-search')
     addToWatchlistBtn.addEventListener('click', () => {
         window.location.href = '/movie-watchlist/index.html'
     })
     addToWatchlistMessage.addEventListener('click', () => {
         window.location.href = '/movie-watchlist/index.html'
     })
+    goToSearchPage.addEventListener('click', () => {
+        window.location.href = '/movie-watchlist/index.html'
+    })
     if(savedMovies){
         renderWatchlist(savedMovies)
     }
-    const goToSearchPage = document.getElementById('watchlist-to-search')
-        goToSearchPage.addEventListener('click', () => {
-            window.location.href = '/movie-watchlist/index.html'
-        })
+    
 })
