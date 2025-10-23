@@ -7,13 +7,13 @@ html,body {padding: 0; margin:0; font-family:Inter, ui-sans-serif, system-ui, -a
     .card-component {width: 90%; height: 32vh; margin: 0.2rem 0; border-bottom: 1.5px solid #2C2C2C; display: flex; align-items: center;}
     .poster-container {object-fit: cover; width: 7rem; aspect-ratio: 2 / 3; flex-shrink: 0;} 
     .movie-poster {width: 100%; height: 100%; display: block;   object-fit: cover; object-position: center;}
-    .movie-details {display: flex; flex-direction: column; justify-content: center; margin-left: 0;}
-    .title-rating {display: flex; align-items: center; margin-left: 2.5rem;}
-    .movie-title { color: white; font-weight: 400; font-size: 1.85rem; margin: 0 1rem 0 0;}
+    .movie-details {display: flex; flex-direction: column; justify-content: center;}
+    .title-rating {display: flex; align-items: center; margin-left: 0.5rem;}
+    .movie-title { color: white; font-weight: 400; font-size: 1.2rem; margin: 0 1rem 0 0;}
     .rating-icon { width: 5%; margin-right: 0.3rem;}
     .movie-rating, .movie-parameters { color: white; font-size: 1rem; margin: 0;}
     .movie-parameters {margin-right: 2rem;}
-    .duration-genre-watchlist {display: flex; margin: 0.5rem 0rem 0.5rem 2.5rem; align-items: center;}
+    .duration-genre-watchlist {display: flex; margin: 0.5rem 0rem 0.5rem 1rem; align-items: center;}
     .add-icon-one, .remove-icon {width: 8%; margin-right: 0.3rem;}
     .add-icon-two {width: 6%; margin-right: 0.3rem;}
     .pulse { animation: pulse 360ms ease-in-out both; }
@@ -22,7 +22,7 @@ html,body {padding: 0; margin:0; font-family:Inter, ui-sans-serif, system-ui, -a
         50% { transform: scale(1.18); filter: drop-shadow(0 6px 12px rgba(255,255,255,0.06)); }
         100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
     }
-    .movie-plot{color: #A5A5A5; margin: 0 0 0 2.5rem; line-height: 1.5rem; font-size: 1.1rem; }
+    .movie-plot{color: #A5A5A5; margin: 0 0 0 1rem; line-height: 1rem; font-size: 1rem; }
     .message-user {color: #787878; font-size: 1.75rem; font-weight: 600;} 
     .add-movies-prompt {display: flex; align-items: center; justify-content: center; margin-top: 2rem;}
     .message-one {color: #2E2E2F; font-weight: bold; font-size: 2rem; margin: 0; width: 80%; text-align: center;}
@@ -47,7 +47,7 @@ html,body {padding: 0; margin:0; font-family:Inter, ui-sans-serif, system-ui, -a
     nav > button {background-color: #4B4B4B; height: 100%; width: 26%; border-radius: 0 0.5rem 0.5rem 0;} 
     nav > img{width: 4%; position: relative; left: 2.5rem; background-color: transparent;}
     main {display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 2rem 0 0;}
-    main > div {display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;}
+    main > div {display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60vh;}
     main > div > img {width: 20%;}
 }
 

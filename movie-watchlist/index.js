@@ -78,7 +78,7 @@ const renderMovies = (arrayMovies) => {
             }
             moviePlot.textContent = movie.Plot
 
-            if (movie.Plot.length >= 200){
+            if (movie.Plot.length >= 40){
                 const fullPlot = movie.Plot
                 const shortPlot = movie.Plot.slice(0, 225).trim() + '...'
                 moviePlot.textContent = shortPlot
