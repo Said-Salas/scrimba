@@ -78,9 +78,16 @@ const renderMovies = (arrayMovies) => {
             }
             moviePlot.textContent = movie.Plot
 
-            if (movie.Plot.length >= 40){
+            if (movie.Plot.length >= 100){
+                let shortPlot
+                if(window.innerWidth <= 860){
+                     shortPlot = movie.Plot.slice(0, 100).trim() + '...'
+                }
+                else {
+                    shortPlot = movie.Plot.slice(0,450).trim() + '...'
+                }
+
                 const fullPlot = movie.Plot
-                const shortPlot = movie.Plot.slice(0, 225).trim() + '...'
                 moviePlot.textContent = shortPlot
                 const btnReadMore = document.createElement('button')
                 btnReadMore.className = 'read-more-btn'
@@ -188,11 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
             noResultsMessageContainer.appendChild(noResultsMessage)
             mainEl.appendChild(noResultsMessageContainer)
         }
-        let idMovies = []
-        data.Search.map(movie => {
-            return idMovies.push(movie.imdbID)
-        })
-        renderMovies(idMovies)
+        else {
+            let idMovies = []
+            data.Search.map(movie => {
+                return idMovies.push(movie.imdbID)
+            })
+            renderMovies(idMovies)
+        }
     })
 
     const goToWatchlist = document.getElementById('search-to-watchlist')

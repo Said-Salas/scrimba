@@ -65,7 +65,7 @@ const renderWatchlist = savedMovies => {
 
             const watchlistText = document.createElement('p')
             watchlistText.className = 'movie-parameters'
-            watchlistText.textContent = 'Remove from watchlist'
+            watchlistText.textContent = 'Remove'
 
             durationGenreWatchlist.appendChild(movieDuration)
             durationGenreWatchlist.appendChild(movieGenres)
@@ -84,9 +84,9 @@ const renderWatchlist = savedMovies => {
             }
             moviePlot.textContent = movie.Plot
 
-            if (movie.Plot.length >= 40){
+            if (movie.Plot.length >= 100){
                 const fullPlot = movie.Plot
-                const shortPlot = movie.Plot.slice(0, 225).trim() + '...'
+                const shortPlot = movie.Plot.slice(0, 100).trim() + '...'
                 moviePlot.textContent = shortPlot
                 const btnReadMore = document.createElement('button')
                 btnReadMore.className = 'read-more-btn'
