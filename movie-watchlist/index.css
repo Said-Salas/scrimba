@@ -11,7 +11,7 @@ html,body {padding: 0; margin:0; height: 100vh;}
 .title-rating {display: flex; align-items: center; margin-left: 0.5rem;}
 .movie-title { color: white; font-weight: 400; font-size: 1.1rem; margin: 0 1rem 0 0.4rem;}
 .rating-icon { width: 5%; margin-right: 0.3rem;}
-.movie-rating, .movie-parameters { color: white; font-size: 1rem; margin: 0;}
+.movie-rating, .movie-parameters { color: white; margin: 0;}
 .movie-parameters {font-size: 0.8rem; margin-right: 0.5rem;}
 .movie-duration {margin-right: 1rem;}
 .movie-genre{margin-right: 0;}
@@ -56,35 +56,83 @@ main {display: flex; flex-direction: column; align-items: center; justify-conten
 main > div {display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60vh;}
 main > div > img {width: 20%;}
 
-@media (max-width: 474px){
+@media (max-width: 345px){
+    .card-component {height: 20vh;}
     #watchlist-container {margin-top: 0;}
+    #main-container {margin-top: 1.3rem;}
     .header-wrap {flex-direction: column;}
-    header > div > h1 {margin: 0 0 1rem;}
+    header > div > h1 {margin: 0 0 1rem; font-size: 2rem;}
+    header > div > h2 {font-size: 1.2rem;}
+    nav {top: 9rem; height: 2.4rem;}
+    .message-one {font-size: 1.5rem;}
+    .movie-title {font-size: 0.9rem;}
+    nav > input, nav > button {font-size: 0.9rem;}
+    nav > img{width: 7%; left: 2.2rem;}
+    .poster-container {width: 6rem;}
+    .movie-parameters {font-size: 0.6rem;}
+    .movie-plot {font-size: 0.75rem;}
+    .read-more-btn {font-size: 0.70rem;}
+    .modal-body {font-size: 0.8rem;}
+    .movie-rating {font-size: 0.75rem;}
 }
 
-@media (min-width: 475px){
-    #main-container {margin-top: 0;}
+@media (min-width: 346px){
+    .card-component {height: 22.5vh;}
+    .movie-rating {font-size: 0.75rem;}
     #watchlist-container {margin-top: 0;}
-    .movie-poster {border: 0.5px solid white;}
-    header > div > h1 {margin: 0 4rem 0 0;}
+    #main-container {margin-top: 2rem;}
+    .header-wrap {flex-direction: column;}
+    header > div > h1 {margin: 0 0 1rem;}
+    nav {top: 10rem; height: 2.5rem;}
+    .message-one {font-size: 1.5rem;}
+    .movie-title {font-size: 0.9rem;}
+    nav > input, nav > button {font-size: 0.9rem;}
+    nav > img{width: 7%; left: 2.2rem;}
+    .poster-container {width: 5rem;}
+    .movie-parameters {font-size: 0.7rem;}
+    .movie-plot {font-size: 0.75rem;}
+    .read-more-btn {font-size: 0.75rem;}
+}
+
+@media (min-width: 380px){
+    .card-component {height: 17.5vh;}
+    #watchlist-container {margin-top: 0;}
+    #main-container {margin-top: 0.75rem;}
+    .header-wrap {flex-direction: column;}
+    header > div > h1 {margin: 0 0 1rem;}
+    nav {top: 11rem; height: 2.5rem;}
+    .message-one {font-size: 1.5rem;}
+    .movie-title {font-size: 1rem;}
+    nav > input, nav > button {font-size: 0.9rem;}
+    nav > img{width: 7%; left: 2.2rem;}
+    .poster-container {width: 5rem;}
+    .movie-parameters {font-size: 0.75rem;}
+    .movie-plot {font-size: 0.85rem;}
+    .read-more-btn {font-size: 0.85rem;}
 }
 
 @media (min-width: 565px){
-    .header-wrap {justify-content: space-between;}
-    .card-component {height: 32vh;}
+    .header-wrap {justify-content: space-between; flex-direction: row;}
+    .card-component {height: 22vh;}
     .poster-container {width: 10rem;}
     .title-rating {margin-left: 2.5rem;}
-    .movie-title {font-size: 1.85rem; margin: 0 1rem 0 0;}
-    .movie-parameters {margin-right: 2rem;}
+    .movie-rating {font-size: 1.2rem;}
+    .movie-title {font-size: 2rem; margin: 0 1rem 0 0;}
+    .movie-parameters {margin-right: 2rem; font-size: 1.3rem;}
     .duration-genre-watchlist {justify-content: start; margin: 1rem 0 1rem 2.5rem;}
     .add-icon-one, .remove-icon {width: 8%; margin-right: 0.3rem;}
     .add-icon-two {width: 6%; margin-right: 0.3rem;}
-    .movie-plot{margin: 0 0 0 2.5rem; line-height: 1.5rem; font-size: 1.1rem;}
-    header > div > h1 {font-size: 3rem; margin: 0 0 0 2.5rem;}
-    header > div > h2 {font-size: 1.2rem; margin: 0 2.5rem 0 0;}
-    nav {position: relative; top: 0rem; left:43.1%; transform:translate(-50%);} 
+    .movie-plot{margin: 0 0 0 2.5rem; line-height: 1.5rem; font-size: 1.3rem;}
+    .message-one {font-size: 2.25rem;}
+    .message-two {font-size: 2rem;}
+    .read-more-btn {font-size: 1.3rem;}
+    .modal-body {font-size: 1.3rem;}
+    header > div > h1 {font-size: 3.5rem; margin: 0 0 0 2.5rem;}
+    header > div > h2 {font-size: 1.8rem; margin: 0 2.5rem 0 0;}
+    nav {height: 5rem;}
+    nav > input, nav > button {font-size: 1.4rem;}
+    nav {position: relative; top: -1rem; left:43.1%; transform:translate(-50%);} 
     nav > img {width: 5%; left: 2.8rem;}
-    .read-more-btn {font-size: 1.1rem;}
 }
 
 @media (min-width: 860px){
@@ -101,10 +149,21 @@ main > div > img {width: 20%;}
 }
 
 @media (min-width: 950px){
-    header > div > h1 {font-size: 4rem; margin: 0 0 0 4.8rem}
-    header > div > h2 {font-size: 1.8rem; margin: 0 6rem 0 0;}
+    .movie-rating {font-size: 1.6rem;}
+    .card-component {height: 20vh;}
+    .movie-title {font-size: 2.3rem;}
+    .movie-parameters {font-size: 1.4rem;}
+    .movie-plot{font-size: 1.6rem; line-height: 2rem;}
+    .message-one {font-size: 3rem;}
+    .message-two {font-size: 2.5rem;}
+    .read-more-btn {font-size: 1.6rem;}
+    .duration-genre-watchlist {margin: 0.5rem 0 0.75rem 2.5rem;}
+    .modal-body {font-size: 1.6rem;}
+    header > div > h1 {font-size: 4.2rem; margin: 0 0 0 4.8rem}
+    header > div > h2 {font-size: 2.3rem; margin: 0 6rem 0 0;}
     nav {height: 5.5rem; top: -1.5rem;}
     nav > img{width: 4%; left: 2.75rem;}
+    nav > input, nav > button {font-size: 1.8rem;}
 }
 
 @media (min-width: 1050px){

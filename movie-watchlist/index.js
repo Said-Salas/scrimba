@@ -86,12 +86,12 @@ const renderMovies = (arrayMovies) => {
 
                 const updatePlot = () => {
                     if (window.innerWidth <= 1040){
-                        moviePlot.textContent = movie.Plot.slice(0, 100).trim() + '...'
+                        moviePlot.textContent = movie.Plot.slice(0, 100).trim() + '... '
                         moviePlot.appendChild(btnReadMore)
 
                     }
                     else {
-                        moviePlot.textContent = movie.Plot.slice(0, 450).trim() + '...'
+                        moviePlot.textContent = movie.Plot.slice(0, 300).trim() + '... '
                         moviePlot.appendChild(btnReadMore)
                     }
                 }
