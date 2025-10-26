@@ -78,15 +78,23 @@ const renderMovies = (arrayMovies) => {
             }
             moviePlot.textContent = movie.Plot
 
+            
             if (movie.Plot.length >= 100){
                 let shortPlot
-                if(window.innerWidth <= 860){
-                     shortPlot = movie.Plot.slice(0, 100).trim() + '...'
+                
+                const updatePlot = () => {
+                    if (window.innerWidth <= 860){
+                        shortPlot = movie.Plot.slice(0, 100).trim() + '...'
+                    }
+                    else {
+                        shortPlot = movie.Plot.slice(0, 450).trim() + '...'
+                    }
+                    return shortPlot
                 }
-                else {
-                    shortPlot = movie.Plot.slice(0,450).trim() + '...'
-                }
-
+    
+                window.addEventListener('resize', () => {
+                    updatePlot()
+                })
                 const fullPlot = movie.Plot
                 moviePlot.textContent = shortPlot
                 const btnReadMore = document.createElement('button')
