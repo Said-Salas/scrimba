@@ -85,9 +85,20 @@ const renderWatchlist = savedMovies => {
             moviePlot.textContent = movie.Plot
 
             if (movie.Plot.length >= 100){
+                const updatePlot = () => {
+                    if (window.innerWidth <= 1040){
+                        moviePlot.textContent = movie.Plot.slice(0, 100).trim() + '...'
+                    }
+                    else {
+                        moviePlot.textContent = movie.Plot.slice(0, 450).trim() + '...'
+                    }
+                }
+                window.addEventListener('resize', () => {
+                    updatePlot()
+                })
+                updatePlot()
+
                 const fullPlot = movie.Plot
-                const shortPlot = movie.Plot.slice(0, 100).trim() + '...'
-                moviePlot.textContent = shortPlot
                 const btnReadMore = document.createElement('button')
                 btnReadMore.className = 'read-more-btn'
                 btnReadMore.textContent = 'Read More'

@@ -78,25 +78,20 @@ const renderMovies = (arrayMovies) => {
             }
             moviePlot.textContent = movie.Plot
 
-            
             if (movie.Plot.length >= 100){
-                let shortPlot
-                
                 const updatePlot = () => {
-                    if (window.innerWidth <= 860){
-                        shortPlot = movie.Plot.slice(0, 100).trim() + '...'
+                    if (window.innerWidth <= 1040){
+                        moviePlot.textContent = movie.Plot.slice(0, 100).trim() + '...'
                     }
                     else {
-                        shortPlot = movie.Plot.slice(0, 450).trim() + '...'
+                        moviePlot.textContent = movie.Plot.slice(0, 450).trim() + '...'
                     }
-                    return shortPlot
                 }
-    
                 window.addEventListener('resize', () => {
                     updatePlot()
                 })
+                updatePlot()
                 const fullPlot = movie.Plot
-                moviePlot.textContent = shortPlot
                 const btnReadMore = document.createElement('button')
                 btnReadMore.className = 'read-more-btn'
                 btnReadMore.textContent = 'Read More'
