@@ -79,23 +79,26 @@ const renderMovies = (arrayMovies) => {
             moviePlot.textContent = movie.Plot
 
             if (movie.Plot.length >= 100){
+                const fullPlot = movie.Plot
+                const btnReadMore = document.createElement('button')
+                btnReadMore.className = 'read-more-btn'
+                btnReadMore.textContent = 'Read More'
+
                 const updatePlot = () => {
                     if (window.innerWidth <= 1040){
                         moviePlot.textContent = movie.Plot.slice(0, 100).trim() + '...'
+                        moviePlot.appendChild(btnReadMore)
+
                     }
                     else {
                         moviePlot.textContent = movie.Plot.slice(0, 450).trim() + '...'
+                        moviePlot.appendChild(btnReadMore)
                     }
                 }
                 window.addEventListener('resize', () => {
                     updatePlot()
                 })
                 updatePlot()
-                const fullPlot = movie.Plot
-                const btnReadMore = document.createElement('button')
-                btnReadMore.className = 'read-more-btn'
-                btnReadMore.textContent = 'Read More'
-                moviePlot.appendChild(btnReadMore)
 
                 const modalContainer = document.createElement('div')
                 modalContainer.className = 'modal'
