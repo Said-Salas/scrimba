@@ -15,7 +15,7 @@ html,body {padding: 0; margin:0; height: 100vh;}
 .movie-parameters {font-size: 0.8rem; margin-right: 0.5rem;}
 .movie-duration {margin-right: 1rem;}
 .movie-genre{margin-right: 0;}
-.duration-genre-watchlist {display: flex; margin: 0.5rem 0rem 0.5rem 1rem; align-items: center; justify-content: center;}
+.duration-genre-watchlist {display: flex; margin: 0.5rem 0rem 0.5rem 1rem; align-items: center; justify-content: start;}
 .add-icon-one, .remove-icon {width: 13%; margin: 0 0.4rem 0 0rem;}
 .add-icon-two {width: 10%; margin-right: 0.3rem;}
 
@@ -97,10 +97,10 @@ main > div > img {width: 20%;}
 @media (min-width: 380px){
     .card-component {height: 17.5vh;}
     #watchlist-container {margin-top: 0;}
-    #main-container {margin-top: 0.75rem;}
+    #main-container {margin-top: 1.2rem;}
     .header-wrap {flex-direction: column;}
     header > div > h1 {margin: 0 0 1rem;}
-    nav {top: 11rem; height: 2.5rem;}
+    nav {top: 10.5rem; height: 2.5rem;}
     .message-one {font-size: 1.5rem;}
     .movie-title {font-size: 1rem;}
     nav > input, nav > button {font-size: 0.9rem;}
@@ -114,56 +114,68 @@ main > div > img {width: 20%;}
 @media (min-width: 565px){
     .header-wrap {justify-content: space-between; flex-direction: row;}
     .card-component {height: 22vh;}
-    .poster-container {width: 10rem;}
+    .poster-container {width: 7rem;}
     .title-rating {margin-left: 2.5rem;}
     .movie-rating {font-size: 1.2rem;}
-    .movie-title {font-size: 2rem; margin: 0 1rem 0 0;}
-    .movie-parameters {margin-right: 2rem; font-size: 1.3rem;}
+    .movie-title {font-size: 1.3rem; margin: 0 1rem 0 0;}
+    .movie-parameters {margin-right: 2rem; font-size: 1em;}
     .duration-genre-watchlist {justify-content: start; margin: 1rem 0 1rem 2.5rem;}
     .add-icon-one, .remove-icon {width: 8%; margin-right: 0.3rem;}
     .add-icon-two {width: 6%; margin-right: 0.3rem;}
-    .movie-plot{margin: 0 0 0 2.5rem; line-height: 1.5rem; font-size: 1.3rem;}
+    .movie-plot{margin: 0 0 0 2.5rem; line-height: 1.5rem; font-size: 1rem;}
     .message-one {font-size: 2.25rem;}
     .message-two {font-size: 2rem;}
-    .read-more-btn {font-size: 1.3rem;}
-    .modal-body {font-size: 1.3rem;}
-    header > div > h1 {font-size: 3.5rem; margin: 0 0 0 2.5rem;}
-    header > div > h2 {font-size: 1.8rem; margin: 0 2.5rem 0 0;}
+    .read-more-btn {font-size: 1rem;}
+    .modal-body {font-size: 1rem;}
+    header > div > h1 {font-size: 2.6rem; margin: 0 0 0 2rem;}
+    header > div > h2 {font-size: 1.4rem; margin: 0 2rem 0 0;}
     nav {height: 5rem;}
     nav > input, nav > button {font-size: 1.4rem;}
     nav {position: relative; top: -1rem; left:43.1%; transform:translate(-50%);} 
     nav > img {width: 5%; left: 2.8rem;}
 }
 
+@media (min-width: 700px){
+    .card-component {height: 25vh;}
+    .poster-container {width: 8rem;}
+    .movie-title {font-size: 1.5rem;}
+    .movie-parameters {font-size: 1.1rem;}
+    .movie-plot{font-size: 1.1rem;}
+    .read-more-btn {font-size: 1.1rem;}
+}
+
 @media (min-width: 860px){
     .header-wrap {justify-content: space-between;}
-    .card-component {height: 32vh;}
-    .poster-container {width: 10rem;}
+    .card-component {height: 27vh;}
+    .poster-container {width: 8.5rem;}
     .title-rating {margin-left: 2.5rem;}
     .movie-title {font-size: 1.85rem;}
-    .movie-parameters {margin-right: 2rem;}
+    .movie-parameters {margin-right: 2rem; font-size: 1.2rem;}
     .duration-genre-watchlist {margin: 1rem 0 1rem 2.5rem;}
-    .movie-plot{margin: 0 0 0 2.5rem; line-height: 1.5rem; font-size: 1.1rem;}
+    .movie-plot{font-size: 1.2rem;}
+    .read-more-btn {font-size: 1.2rem;}
     main > div {height: 80vh;}
     nav {position: relative; left:43.1%;}
 }
 
 @media (min-width: 950px){
+    .card-component {height: 27vh;}
+    .poster-container {width: 9rem;}
     .movie-rating {font-size: 1.6rem;}
-    .card-component {height: 20vh;}
-    .movie-title {font-size: 2.3rem;}
-    .movie-parameters {font-size: 1.4rem;}
-    .movie-plot{font-size: 1.6rem; line-height: 2rem;}
+    .movie-title {font-size: 1.6rem;}
+    .movie-parameters {font-size: 1.15rem;}
+    .movie-plot{font-size: 1.15rem; line-height: 2rem;}
     .message-one {font-size: 3rem;}
     .message-two {font-size: 2.5rem;}
-    .read-more-btn {font-size: 1.6rem;}
-    .duration-genre-watchlist {margin: 0.5rem 0 0.75rem 2.5rem;}
+    .read-more-btn {font-size: 1.15rem;}
+    .duration-genre-watchlist {margin: 0.5rem 0 0rem 2.5rem;}
     .modal-body {font-size: 1.6rem;}
     header > div > h1 {font-size: 4.2rem; margin: 0 0 0 4.8rem}
     header > div > h2 {font-size: 2.3rem; margin: 0 6rem 0 0;}
-    nav {height: 5.5rem; top: -1.5rem;}
-    nav > img{width: 4%; left: 2.75rem;}
+    nav {height: 7rem; top: -1.5rem;}
+    nav > img{width: 5%; left: 4rem;}
     nav > input, nav > button {font-size: 1.8rem;}
+    input[type="text"]{padding-left: 5rem;}
 }
 
 @media (min-width: 1050px){
@@ -178,5 +190,18 @@ main > div > img {width: 20%;}
 }
 
 @media (min-width: 1400px){
-    nav > img {width: 2.7%; left: 2.6rem;}
+    nav > img {width: 3%; left: 4rem;}
+    .movie-title {font-size: 3rem;}
+    .card-component {height: 30vh;}
+    .movie-parameters, .movie-plot, .read-more-btn {font-size: 1.5rem;}
+}
+
+@media (min-width: 1400px){
+    #main-container {margin-top: 0rem;}
+    nav > img {width: 3%; left: 4rem;}
+    .movie-title {font-size: 2.2rem;}
+    .poster-container {width: 10rem;}
+    .card-component {height: 25vh;}
+    .movie-parameters, .movie-plot, .read-more-btn {font-size: 1.5rem;}
+    .duration-genre-watchlist {margin: 1rem 0 1.4rem 2.5rem;}
 }
