@@ -187,9 +187,12 @@ const addToLocalStorage = newMovies => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('search-btn').addEventListener('click', async () => {
+    const searchField = document.getElementById('search-query')
+    const searchBtn = document.getElementById('search-btn')
+
+    const executeSearch = async () => {
         mainEl.innerHTML = ''
-        const searchValue = document.getElementById('search-query').value
+        const searchValue = searchField.value
         const response  = await fetch(`http://www.omdbapi.com/?apikey=5c00afea&s=${searchValue}&plot=full`)
         const data = await response.json()
 
@@ -207,6 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return idMovies.push(movie.imdbID)
             })
             renderMovies(idMovies)
+        }
+    }
+    searchBtn.addEventListener('click', executeSearch)
+    searchField.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter'){
+            executeSearch()
         }
     })
 
