@@ -12,7 +12,6 @@
 //with recursion
 let factorial = 0
 const recursiveFactorial = number => {
-    console.log(factorial)
     if (number === 0){
         return factorial
     }
@@ -27,6 +26,7 @@ const recursiveFactorial = number => {
     }
     number = number - 1 
     recursiveFactorial(number)
+    return factorial
 }
 
-console.log(recursiveFactorial(4))
+console.log(recursiveFactorial(10))
