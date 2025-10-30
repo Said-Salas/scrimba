@@ -7,6 +7,6 @@
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Tom Chant",
+  "author": "Said Salas",
   "license": "ISC"
 }

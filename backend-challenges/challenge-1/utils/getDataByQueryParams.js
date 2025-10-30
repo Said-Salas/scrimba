@@ -40,7 +40,7 @@ export const getDataByQueryParams = (destinations, parameters) => {
     }
 }
 
-// export const getDataByQueryParams = (arrayDestinations, queryParams) => {
+// export const getDataByQueryParam = (arrayDestinations, queryParams) => {
 //     if (Object.keys(queryParams).length > 0){
 
 //       const arrayParameters = Object.entries(queryParams)
@@ -53,14 +53,19 @@ export const getDataByQueryParams = (destinations, parameters) => {
 
 //       else if (arrayParameters.length === 2){
 //         const results = arrayDestinations.filter(object => {
-//           return (object[arrayParameters[0][0]].toLowerCase() === arrayParameters[0][1]) && (object[arrayParameters[1][0]].toLowerCase() === arrayParameters[1][1])
+//           return (object[arrayParameters[0][0]].toLowerCase() === arrayParameters[0][1]) 
+//           && (object[arrayParameters[1][0]]
+//             .toLowerCase() === arrayParameters[1][1])
 //         })
 //         return results
 //       }
 
 //       else if (arrayParameters.length === 3){
 //         const results = arrayDestinations.filter(object => {
-//           return (object[arrayParameters[0][0]].toLowerCase() === arrayParameters[0][1]) && (object[arrayParameters[1][0]].toLowerCase() === arrayParameters[1][1]) && (object[arrayParameters[2][0]] === arrayParameters[2][1])
+//           return (object[arrayParameters[0][0]].toLowerCase() === arrayParameters[0][1]) 
+//           && (object[arrayParameters[1][0]]
+//             .toLowerCase() === arrayParameters[1][1]) && (object[arrayParameters[2][0]] 
+//                 === arrayParameters[2][1])
 //         })
 //         return results
 //       }
