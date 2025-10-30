@@ -31,7 +31,7 @@ let sum = 0
 
 // console.log(recursiveFactorial(10))
 const improvedRecursiveFactorial = number => {
-    if (number === 1) {
+    if (number === 0) {
         return number * (number + 1)
     }
     improvedRecursiveFactorial(number - 1)
