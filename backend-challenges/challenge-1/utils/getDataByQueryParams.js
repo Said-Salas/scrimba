@@ -13,6 +13,7 @@ export const getDataByQueryParams = (destinations, parameters) => {
                 return resultingArray
             }
 
+            arrayParameters[i][1] = arrayParameters[i][1].toLowerCase()
             if (arrayParameters[i][1] === 'true' || arrayParameters[i][1] === 'false') {
                 arrayParameters[i][1] = arrayParameters[i][1] === 'true'
             }
@@ -24,7 +25,7 @@ export const getDataByQueryParams = (destinations, parameters) => {
                 }
                 else {
                     // console.log(object[arrayParameters[i][0]])
-                    return object[arrayParameters[i][0]].toLowerCase() === arrayParameters[i][1].toLowerCase()
+                    return object[arrayParameters[i][0]].toLowerCase() === arrayParameters[i][1]
                 }
             })
             i++
