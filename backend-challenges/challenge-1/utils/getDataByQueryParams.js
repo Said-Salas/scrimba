@@ -1,45 +1,70 @@
 export const getDataByQueryParams = (destinations, parameters) => {
-    if (Object.keys(parameters).length > 0) {
-
-        const searchParameters = Object.entries(parameters)
-        // console.log(searchParameters[0][0])
-        let i = 0
+    const filterData = (destinations, parameters) => {
         let resultingArray = ''
-        
-        const filterData = (data, arrayParameters) => {
-            // console.log(arrayParameters[i][1])
-            if (i === arrayParameters.length){
-                console.log(resultingArray, i)
-                return resultingArray
-            }
+        const { continent, country, is_open_to_public } = parameters
 
-            arrayParameters[i][1] = arrayParameters[i][1].toLowerCase()
-            if (arrayParameters[i][1] === 'true' || arrayParameters[i][1] === 'false') {
-                arrayParameters[i][1] = arrayParameters[i][1] === 'true'
-            }
-
-            resultingArray = data.filter( object => {
-
-                if (typeof object[arrayParameters[i][0]] === 'boolean') {
-                    return object[arrayParameters[i][0]] === arrayParameters[i][1]
-                }
-                else {
-                    // console.log(object[arrayParameters[i][0]])
-                    return object[arrayParameters[i][0]].toLowerCase() === arrayParameters[i][1]
-                }
+        if (continent) {
+            resultingArray = destinations.filter( object => {
+               return object[continent].toLowerCase() === continent.toLowerCase()
             })
-            i++
-            filterData(resultingArray, arrayParameters)
-            return resultingArray
         }
 
-        filterData(destinations, searchParameters)
-        return resultingArray
-    }
-    else {
-        return destinations
+        if (country) {
+            resultingArray = destinations.filter ( object => {
+                return object[country].toLowerCase() === country.toLowerCase()
+            })
+        }
+
+        if (is_open_to_public) {
+            is_open_to_public = is
+        }
     }
 }
+
+// export const getDataByQueryParams = (destinations, parameters) => {
+//     if (Object.keys(parameters).length > 0) {
+
+//         const searchParameters = Object.entries(parameters)
+//         // console.log(searchParameters[0][0])
+//         let i = 0
+//         let resultingArray = ''
+        
+//         const filterData = (data, arrayParameters) => {
+//             // console.log(arrayParameters[i][1])
+//             if (i === arrayParameters.length){
+//                 console.log(resultingArray, i)
+//                 return resultingArray
+//             }
+
+//             arrayParameters[i][1] = arrayParameters[i][1].toLowerCase()
+//             if (arrayParameters[i][1] === 'true' || arrayParameters[i][1] === 'false') {
+//                 arrayParameters[i][1] = arrayParameters[i][1] === 'true'
+//             }
+
+//             resultingArray = data.filter( object => {
+
+//                 if (typeof object[arrayParameters[i][0]] === 'boolean') {
+//                     return object[arrayParameters[i][0]] === arrayParameters[i][1]
+//                 }
+//                 else {
+//                     // console.log(object[arrayParameters[i][0]])
+//                     return object[arrayParameters[i][0]].toLowerCase() === arrayParameters[i][1]
+//                 }
+//             })
+//             i++
+//             filterData(resultingArray, arrayParameters)
+//             return resultingArray
+//         }
+
+//         filterData(destinations, searchParameters)
+//         return resultingArray
+//     }
+//     else {
+//         return destinations
+//     }
+// }
+
+
 
 // export const getDataByQueryParam = (arrayDestinations, queryParams) => {
 //     if (Object.keys(queryParams).length > 0){
