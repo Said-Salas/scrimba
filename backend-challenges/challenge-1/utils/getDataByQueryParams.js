@@ -1,25 +1,32 @@
 export const getDataByQueryParams = (destinations, parameters) => {
     const filterData = (destinations, parameters) => {
-        let resultingArray = ''
-        const { continent, country, is_open_to_public } = parameters
+       
+        let { continent, country, is_open_to_public } = parameters
 
         if (continent) {
-            resultingArray = destinations.filter( object => {
-               return object[continent].toLowerCase() === continent.toLowerCase()
+            destinations = destinations.filter( object => {
+               return object.continent.toLowerCase() === continent.toLowerCase()
             })
         }
 
         if (country) {
-            resultingArray = destinations.filter ( object => {
-                return object[country].toLowerCase() === country.toLowerCase()
+             destinations = destinations.filter ( object => {
+                return object.country.toLowerCase() === country.toLowerCase()
             })
         }
 
         if (is_open_to_public) {
-            is_open_to_public = is
+            is_open_to_public = is_open_to_public === 'true'
+            destinations = destinations.filter( object => {
+                return object.is_open_to_public === is_open_to_public
+            })
         }
+      return destinations 
     }
+
+    return filterData(destinations, parameters)
 }
+
 
 // export const getDataByQueryParams = (destinations, parameters) => {
 //     if (Object.keys(parameters).length > 0) {
