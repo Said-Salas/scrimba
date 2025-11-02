@@ -19,9 +19,22 @@ const splitArray = array => {
     return [leftHalf, rightHalf]
 }
 
-console.log(splitArray([1, 2, 3, 4, 5]))
+// console.log(splitArray([1, 2, 3, 4, 5]))
 
+const sortArray = array => {
+    for (let c = 0; c < array.length; c++) {
+        for (let i = 0; i < array.length; i++){
+            if (array[i] > array[i + 1]) {
+                const temp = array[i]
+                array[i] = array[i + 1]
+                array[i + 1] = temp
+            }
+        }
+    }
+    return array
+}
 
+console.log(sortArray([5, 1, 0, 4, 2, 3]))
 
 /*
 Algorithm: Merge Sort
