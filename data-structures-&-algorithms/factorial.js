@@ -30,12 +30,12 @@ let sum = 0
     }
 
 // console.log(recursiveFactorial(10))
-const improvedRecursiveFactorial = number => {
-    if (number === 0) {
-        return number * (number + 1)
+const realRecursion = number => {
+    if (number === 0 ) {
+        return 1
     }
-    improvedRecursiveFactorial(number - 1)
-    return number * (number + 1 )
+
+    return number * realRecursion(number - 1)
 }
 
-console.log(improvedRecursiveFactorial(10))
+console.log(realRecursion(10))
