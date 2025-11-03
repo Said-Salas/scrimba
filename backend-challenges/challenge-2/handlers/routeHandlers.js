@@ -19,13 +19,6 @@ export async function handlePost(req, res) {
     await addNewSighting(sanitizedBody)
     console.log(sanitizedBody)
     sightingEvents.emit('sighting-added', sanitizedBody)
-/*
-Challenge 2
-1. At the top of this file, import the event emitter you have created.
-2. Use it to emit a ‘sighting-added’ event. 
-   What information does the listener function need?
-3. Add a sighting to test!
-*/
 
     sendResponse(res, 201, 'application/json', JSON.stringify(sanitizedBody))
   } catch (err) {
