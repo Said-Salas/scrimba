@@ -3,15 +3,28 @@ import fs from 'node:fs/promises'
 import { getData } from './getData.js'
 
 export async function addNewSighting(newSighting) {
-  try {
+
+  try { 
+
+    const sightings = await getData()
+    sightings.push(newSighting)
+    
     const pathJSON = path.join('data', 'data.json')
-    const data = await getData()
-    data.push(newSighting)
+    
+    await fs.writeFile(
+      pathJSON,
+      JSON.stringify(sightings, null, 2),
+      'utf8'
+    )
+/*
 
-    await fs.writeFile(pathJSON, JSON.stringify(data, null, '\t'), 'utf8')
-
+    4. Add the new sighting and check out the 'read' page.
+    
+    Bonus: figure out how to prettify the JSON!
+    Remember to uncomment the import statement in routeHandler.js!!
+*/
   } catch (err) {
-      throw new Error(`Error: ${err}`)
+    throw new Error(err)
   }
 
 }
