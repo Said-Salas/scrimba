@@ -3,6 +3,7 @@ export async function parseJSONBody(req) {
   let body = ''
 
   for await (const chunk of req) {
+    console.log(chunk)
     body += chunk
   }
 
