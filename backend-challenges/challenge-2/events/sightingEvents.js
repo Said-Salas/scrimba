@@ -3,6 +3,5 @@ import { createAlert } from '../utils/createAlert.js'
 
 export const sightingEvents = new EventEmitter()
 
-sightingEvents.on('sighting-added', event => {
-  createAlert(event)
-})
+sightingEvents.on('sighting-added', createAlert)
+ 
