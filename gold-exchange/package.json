@@ -1,0 +1,25 @@
+{
+  "name": "gold-exchange",
+  "version": "1.0.0",
+  "description": "gold exchange project",
+  "keywords": [
+    "gold",
+    "exchange",
+    "backend"
+  ],
+  "homepage": "https://github.com/Said-Salas/scrimba#readme",
+  "bugs": {
+    "url": "https://github.com/Said-Salas/scrimba/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Said-Salas/scrimba.git"
+  },
+  "license": "MIT",
+  "author": "Said Salas",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
