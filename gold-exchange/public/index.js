@@ -3,15 +3,27 @@ inputEl.addEventListener('input', function() {
     if (this.value < 0) this.value = 0
 })
 
-const priceValue =  document.getElementById('price-display')
-
-setInterval(async () => {
+const fetchGoldPrice = async () => {
     try {
-        const rawData = await fetch('/api/gold-price')
-    const goldPrice = await rawData.json()
-    console.log(goldPrice)
+        const goldPriceData = await fetch('/api/gold-price')
+        return await goldPriceData.json()
     } catch (err) {
         console.error('Error fetching gold price: ', err)
+        return null
     }
-}, 10000)
+}
+
+const investBtn = document.getElementById('invest-btn')
+
+investBtn.addEventListener('click', async (e) => {
+    e.preventDefault()
+    const data = await fetchGoldPrice()
+    console.log(data)
+})
+
+const priceValue =  document.getElementById('price-display')
+
+setInterval(() => {
+   fetchGoldPrice()
+}, 200000)
 

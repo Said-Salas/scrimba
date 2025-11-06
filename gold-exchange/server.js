@@ -7,6 +7,7 @@ const PORT = 8000
 const __dirname = import.meta.dirname
 
 const server = http.createServer(async (req, res) => {
+    console.log(req.url)
     if (req.url === '/api/gold-price' && req.method === 'GET') {
         try {
             const apiResponse = await fetch(`https://api.metalpriceapi.com/v1/latest?api_key=${process.env.GOLD_API_KEY}&base=EUR&currencies=EUR,XAU,XAG`)
