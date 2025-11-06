@@ -1,5 +1,6 @@
 import http from 'node:http'
 import { serveStatic } from './utils/serveStatic.js'
+import 'dotenv/config'
 
 const PORT = 8000
 const __dirname = import.meta.dirname
