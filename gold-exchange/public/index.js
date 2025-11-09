@@ -4,8 +4,10 @@ inputEl.addEventListener('input', function() {
 })
 
 const priceValue =  document.getElementById('price-display')
-let lastPrice = JSON.parse(localStorage.getItem('lastPrice'))
-priceValue.textContent = lastPrice
+let lastPrice = null
+const storedPrice = localStorage.getItem('lastPrice')
+if (storedPrice) lastPrice = Number(JSON.parse(storedPrice))
+priceValue.textContent = lastPrice ? lastPrice.toFixed(2) : '----.--'
 
 const fetchGoldPrice = async () => {
     try {
@@ -15,12 +17,13 @@ const fetchGoldPrice = async () => {
             throw new Error(`Server ${res.status}: ${text}`)
         }
         const data = await res.json()
+        if (!data?.rates?.XAU) throw new Error('Invalid API payload')
         const pricePerOunce = (1 / data.rates.XAU).toFixed(2)
         localStorage.setItem('lastPrice', JSON.stringify(pricePerOunce))
-        lastPrice = JSON.parse(localStorage.getItem('lastPrice'))
+        lastPrice = pricePerOunce
         priceValue.textContent = lastPrice
         console.log(data)
-        return priceValue
+        return pricePerOunce
     } catch (err) {
         console.error('Error fetching gold price:', err)
         return null
