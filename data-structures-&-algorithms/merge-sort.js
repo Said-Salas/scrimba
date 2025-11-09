@@ -34,7 +34,22 @@ const sortArray = array => {
     return array
 }
 
-console.log(sortArray([4, 1, -2, 0]))
+// console.log(sortArray([4, 1, -2, 0]))
+
+const halveSortMerge = array => {
+    const midPoint = Math.floor(array.length / 2)
+    const leftHalf = array.slice(0, midPoint)
+    const rightHalf = array.slice(midPoint, array.length)
+
+    
+}
+
+// This acts like a "pointer" to the object
+// let obj1 = { value: 42 };
+// let obj2 = obj1;  // obj2 now references the same object
+
+// obj2.value = 100;
+// console.log(obj1.value); // 100 (both point to same object)
 
 /*
 Algorithm: Merge Sort
