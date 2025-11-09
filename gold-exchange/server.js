@@ -12,7 +12,6 @@ const server = http.createServer(async (req, res) => {
         try {
             const apiResponse = await fetch(`https://api.metalpriceapi.com/v1/latest?api_key=${process.env.GOLD_API_KEY}&base=EUR&currencies=EUR,XAU,XAG`)
             const data = await apiResponse.json()
-                console.log(data)
                 res.setHeader('Content-Type', 'application/json')
                 res.end(JSON.stringify(data))
         } catch (err) {

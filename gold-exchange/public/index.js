@@ -3,6 +3,9 @@ inputEl.addEventListener('input', function() {
     if (this.value < 0) this.value = 0
 })
 
+const priceValue =  document.getElementById('price-display')
+priceValue.textContent = JSON.parse(localStorage.getItem('lastPrice'))
+
 const fetchGoldPrice = async () => {
     try {
         const res = await fetch('/api/gold-price', {method: 'GET'})
@@ -10,7 +13,12 @@ const fetchGoldPrice = async () => {
             const text = await res.text()
             throw new Error(`Server ${res.status}: ${text}`)
         }
-        return await res.json()
+        const data = await res.json()
+        const pricePerOunce = (1 / data.rates.XAU).toFixed(2)
+        localStorage.setItem('lastPrice', JSON.stringify(pricePerOunce))
+        priceValue.textContent = pricePerOunce
+        console.log(data)
+        return priceValue
     } catch (err) {
         console.error('Error fetching gold price:', err)
         return null
@@ -21,14 +29,9 @@ const investBtn = document.getElementById('invest-btn')
 
 investBtn.addEventListener('click', async (e) => {
     e.preventDefault()
-    const data = await fetchGoldPrice()
-    console.log(data)
 })
 
-const priceValue =  document.getElementById('price-display')
-priceValue.textContent = await fetchGoldPrice()
-
 setInterval(() => {
-   fetchGoldPrice()
-}, 200000)
+   return fetchGoldPrice()
+}, 500000)
 
