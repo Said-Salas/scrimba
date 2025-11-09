@@ -3,8 +3,6 @@ inputEl.addEventListener('input', function() {
     if (this.value < 0) this.value = 0
 })
 
-// localStorage.clear()
-
 const priceValue =  document.getElementById('price-display')
 let pricePerOunce = 0
 
