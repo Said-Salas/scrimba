@@ -22,19 +22,19 @@ const splitArray = array => {
 // console.log(splitArray([1, 2, 3, 4, 5]))
 
 const sortArray = array => {
-    for (let c = 0; c < array.length; c++) {
-        for (let i = 0; i < array.length; i++){
-            if (array[i] > array[i + 1]) {
-                const temp = array[i]
-                array[i] = array[i + 1]
-                array[i + 1] = temp
+    for (let i = 0; i < array.length; i++) {
+        for (let m = 0; m < array.length - 1; m++) {
+            if (array[m] > array[m + 1]) {
+                const temp = array[m]
+                array[m] = array[m + 1]
+                array[m + 1] = temp
             }
         }
     }
     return array
 }
 
-console.log(sortArray([5, 1, 0, 4, 2, 3]))
+console.log(sortArray([4, 1, -2, 0]))
 
 /*
 Algorithm: Merge Sort
