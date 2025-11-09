@@ -26,9 +26,13 @@ const fetchGoldPrice = async () => {
 }
 
 const investBtn = document.getElementById('invest-btn')
+const modalEl = document.querySelector('dialog.outputs')
 
 investBtn.addEventListener('click', async (e) => {
     e.preventDefault()
+    modalEl.showModal()
+    modalEl.querySelector('button').addEventListener('click', () => modalEl.close())
+
 })
 
 setInterval(() => {
