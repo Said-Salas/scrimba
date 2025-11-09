@@ -3,11 +3,10 @@ inputEl.addEventListener('input', function() {
     if (this.value < 0) this.value = 0
 })
 
+// localStorage.clear()
+
 const priceValue =  document.getElementById('price-display')
-let lastPrice = null
-const storedPrice = localStorage.getItem('lastPrice')
-if (storedPrice) lastPrice = Number(JSON.parse(storedPrice))
-priceValue.textContent = lastPrice ? lastPrice.toFixed(2) : '----.--'
+let pricePerOunce = 0
 
 const fetchGoldPrice = async () => {
     try {
@@ -18,10 +17,8 @@ const fetchGoldPrice = async () => {
         }
         const data = await res.json()
         if (!data?.rates?.XAU) throw new Error('Invalid API payload')
-        const pricePerOunce = (1 / data.rates.XAU).toFixed(2)
-        localStorage.setItem('lastPrice', JSON.stringify(pricePerOunce))
-        lastPrice = pricePerOunce
-        priceValue.textContent = lastPrice
+        pricePerOunce = (1 / data.rates.XAU).toFixed(2)
+        priceValue.textContent = pricePerOunce
         console.log(data)
         return pricePerOunce
     } catch (err) {
@@ -34,18 +31,18 @@ const investBtn = document.getElementById('invest-btn')
 const modalEl = document.querySelector('dialog.outputs')
 const investmentSummary =  document.getElementById('investment-summary')
 
+ modalEl.querySelector('button').addEventListener('click', () => modalEl.close())
+
 investBtn.addEventListener('click', async (e) => {
     e.preventDefault()
+    
+    const investmentAmount = Number(document.getElementById('investment-amount').value)
+    investmentSummary.textContent = `You just bought ${(investmentAmount / pricePerOunce).toFixed(2)} (ozt) for £${investmentAmount}. You will receive documentation shortly`
     modalEl.showModal()
-    
-    const investmentAmount = document.getElementById('investment-amount').value
-    investmentSummary.textContent = `You just bought ${(investmentAmount / lastPrice).toFixed(2)} (ozt) for £${investmentAmount}. You will receive documentation shortly`
-    
-    modalEl.querySelector('button').addEventListener('click', () => modalEl.close())
+
     return investmentSummary
 })
 
-setInterval(() => {
-   return fetchGoldPrice()
-}, 500000)
+fetchGoldPrice()
+setInterval(fetchGoldPrice, 500000)
 
