@@ -4,7 +4,8 @@ inputEl.addEventListener('input', function() {
 })
 
 const priceValue =  document.getElementById('price-display')
-priceValue.textContent = JSON.parse(localStorage.getItem('lastPrice'))
+let lastPrice = JSON.parse(localStorage.getItem('lastPrice'))
+priceValue.textContent = lastPrice
 
 const fetchGoldPrice = async () => {
     try {
@@ -16,7 +17,8 @@ const fetchGoldPrice = async () => {
         const data = await res.json()
         const pricePerOunce = (1 / data.rates.XAU).toFixed(2)
         localStorage.setItem('lastPrice', JSON.stringify(pricePerOunce))
-        priceValue.textContent = pricePerOunce
+        lastPrice = JSON.parse(localStorage.getItem('lastPrice'))
+        priceValue.textContent = lastPrice
         console.log(data)
         return priceValue
     } catch (err) {
@@ -27,12 +29,17 @@ const fetchGoldPrice = async () => {
 
 const investBtn = document.getElementById('invest-btn')
 const modalEl = document.querySelector('dialog.outputs')
+const investmentSummary =  document.getElementById('investment-summary')
 
 investBtn.addEventListener('click', async (e) => {
     e.preventDefault()
     modalEl.showModal()
+    
+    const investmentAmount = document.getElementById('investment-amount').value
+    investmentSummary.textContent = `You just bought ${(investmentAmount / lastPrice).toFixed(2)} (ozt) for £${investmentAmount}. You will receive documentation shortly`
+    
     modalEl.querySelector('button').addEventListener('click', () => modalEl.close())
-
+    return investmentSummary
 })
 
 setInterval(() => {
