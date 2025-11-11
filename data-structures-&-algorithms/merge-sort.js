@@ -1,55 +1,12 @@
 const mergeSort = array => {
-    if(array.length <= 1) {
-        return array
-    }
-}
+    if (array.length <= 1) return array
 
-const findMidPoint = array => {
-    const midPointIndex = Math.floor(array.length / 2)
-    return midPointIndex
-}
-
-// console.log(findMidPoint([1,2,3]))
-
-const splitArray = array => {
     const midPoint = Math.floor(array.length / 2)
-    const leftHalf = array.slice(0, midPoint)
+    const leftHalf = array.slice((0, midPoint))
     const rightHalf = array.slice(midPoint, array.length)
 
-    return [leftHalf, rightHalf]
 }
 
-// console.log(splitArray([1, 2, 3, 4, 5]))
-
-const sortArray = array => {
-    for (let i = 0; i < array.length; i++) {
-        for (let m = 0; m < array.length - 1; m++) {
-            if (array[m] > array[m + 1]) {
-                const temp = array[m]
-                array[m] = array[m + 1]
-                array[m + 1] = temp
-            }
-        }
-    }
-    return array
-}
-
-// console.log(sortArray([4, 1, -2, 0]))
-
-const halveSortMerge = array => {
-    const midPoint = Math.floor(array.length / 2)
-    const leftHalf = array.slice(0, midPoint)
-    const rightHalf = array.slice(midPoint, array.length)
-
-    
-}
-
-// This acts like a "pointer" to the object
-// let obj1 = { value: 42 };
-// let obj2 = obj1;  // obj2 now references the same object
-
-// obj2.value = 100;
-// console.log(obj1.value); // 100 (both point to same object)
 
 /*
 Algorithm: Merge Sort
@@ -101,3 +58,4 @@ Steps:
 11. After the loop is over, add whatever is left in either halves to the result.
 12. Return the result array.
 */
+
