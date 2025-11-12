@@ -1,4 +1,5 @@
 const array = [5, 4, 2, 8, 1, 9, 7, 6]
+const arrayLength = array.length
 
 const sortArray = array => {
     for (let i = 0; i < array.length; i++) {
@@ -14,13 +15,12 @@ const sortArray = array => {
 }
 
 const mergeTwoSortedArrays = (leftArray, rightArray) => {
+    // console.log(leftArray, rightArray)
     const resultArray = []
     let leftPointer = 0
     let rightPointer = 0
 
-    const shorterArray = leftArray.length < rightArray.length ? leftArray.leftArray : rightArray.length
-
-    for (let i = 0; i < shorterArray; i++) {
+    for (let i = 0; i < arrayLength; i++) {
         if (leftArray[leftPointer] < rightArray[rightPointer]){
             resultArray.push(leftArray[leftPointer])
             leftPointer++
