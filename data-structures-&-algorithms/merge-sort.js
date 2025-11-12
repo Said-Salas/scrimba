@@ -15,7 +15,7 @@ const sortArray = array => {
 }
 
 const mergeTwoSortedArrays = (leftArray, rightArray) => {
-    // console.log(leftArray, rightArray)
+    
     const resultArray = []
     let leftPointer = 0
     let rightPointer = 0
