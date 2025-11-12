@@ -21,12 +21,12 @@ const mergeTwoSortedArrays = (leftArray, rightArray) => {
     const shorterArray = leftArray.length < rightArray.length ? leftArray.leftArray : rightArray.length
 
     for (let i = 0; i < shorterArray; i++) {
-        if (leftArray[i] < rightArray[i]){
-            resultArray.push(leftArray[i])
+        if (leftArray[leftPointer] < rightArray[rightPointer]){
+            resultArray.push(leftArray[leftPointer])
             leftPointer++
         }
         else {
-            resultArray.push(rightArray[i])
+            resultArray.push(rightArray[rightPointer])
             rightPointer++
         }
     }   
@@ -37,7 +37,7 @@ const mergeTwoSortedArrays = (leftArray, rightArray) => {
 const mergeSort = array => {
     if (array.length <= 1) return array
     const midPoint = Math.floor(array.length / 2)
-    
+
     return mergeTwoSortedArrays(sortArray(array.slice(0, midPoint)), sortArray(array.slice(midPoint, array.length)))
 }
 
