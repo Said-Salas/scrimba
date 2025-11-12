@@ -1,3 +1,5 @@
+const array = [5, 4, 2, 8, 1, 9, 7, 6]
+
 const sortArray = array => {
     for (let i = 0; i < array.length; i++) {
         for (let m = 0; m < array.length - 1; m++) {
@@ -11,36 +13,39 @@ const sortArray = array => {
     return array
 }
 
-const mergeSort = array => {
-    if (array.length <= 1) return array
-
-    const midPoint = Math.floor(array.length / 2)
-    const leftHalf = array.slice(0, midPoint)
-    const rightHalf = array.slice(midPoint, array.length)
-
-    const sortedLeftHalf = sortArray(leftHalf)
-    const sortedRightHalf = sortArray(rightHalf)
-
-    const mergedArray = [...sortedLeftHalf, ...sortedRightHalf]
-
-    return mergedArray
-}
-
-// console.log(mergeSort([4, 5, 9, 10, 5, 2, 5, 50]))
-
 const mergeTwoSortedArrays = (leftArray, rightArray) => {
     const resultArray = []
-    const leftPointer = 0
-    const rightPointer = 0
+    let leftPointer = 0
+    let rightPointer = 0
 
     const shorterArray = leftArray.length < rightArray.length ? leftArray.leftArray : rightArray.length
 
     for (let i = 0; i < shorterArray; i++) {
-        if (leftArray[i])
+        if (leftArray[i] < rightArray[i]){
+            resultArray.push(leftArray[i])
+            leftPointer++
+        }
+        else {
+            resultArray.push(rightArray[i])
+            rightPointer++
+        }
     }   
-    
+
     return resultArray
 }
+
+const mergeSort = array => {
+    if (array.length <= 1) return array
+    const midPoint = Math.floor(array.length / 2)
+    
+    return mergeTwoSortedArrays(sortArray(array.slice(0, midPoint)), sortArray(array.slice(midPoint, array.length)))
+}
+
+console.log(mergeSort(array))
+
+// console.log(mergeSort([4, 5, 9, 10, 5, 2, 5, 50]))
+
+
 
 /*
 Algorithm: Merge Sort
