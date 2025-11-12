@@ -26,7 +26,11 @@ const mergeSort = array => {
     return mergedArray
 }
 
-console.log(mergeSort([5, 4, 3, 2, 9, 8, 7, 6]))
+// console.log(mergeSort([4, 5, 9, 10, 5, 2, 5, 50]))
+
+const mergeTwoSortedArrays = (leftArray, rightArray) => {
+    
+}
 
 /*
 Algorithm: Merge Sort
