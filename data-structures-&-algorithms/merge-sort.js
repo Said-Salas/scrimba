@@ -1,4 +1,4 @@
-const array = [5, 4, 2, 8, 1, 9, 7, 6, 11, 19, 17, 14, 30, 25, 20, 25, 22]
+const array = [5, 4, 2, 8, 1, 9, 7, 6, 0]
 const arrayLength = array.length
 
 const sortArray = array => {
