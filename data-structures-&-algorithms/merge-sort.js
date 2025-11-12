@@ -43,10 +43,6 @@ const mergeSort = array => {
 
 console.log(mergeSort(array))
 
-// console.log(mergeSort([4, 5, 9, 10, 5, 2, 5, 50]))
-
-
-
 /*
 Algorithm: Merge Sort
 Input: array of numbers
