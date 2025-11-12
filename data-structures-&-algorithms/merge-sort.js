@@ -32,8 +32,13 @@ const mergeTwoSortedArrays = (leftArray, rightArray) => {
     const resultArray = []
     const leftPointer = 0
     const rightPointer = 0
-    
 
+    const shorterArray = leftArray.length < rightArray.length ? leftArray.leftArray : rightArray.length
+
+    for (let i = 0; i < shorterArray; i++) {
+        if (leftArray[i])
+    }   
+    
     return resultArray
 }
 
