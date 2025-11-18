@@ -1,7 +1,7 @@
 {
   "name": "startup_planet",
   "version": "1.0.0",
-  "description": "a dataset of the world’s most promising startups",
+  "description": "a dataset of the world's most promising startups",
   "main": "server.js",
   "type": "module",
   "scripts": {
