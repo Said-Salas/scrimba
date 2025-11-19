@@ -10,10 +10,12 @@ const viewAllProducts = (async ()=> {
 
     try {
         const products = await db.all('SELECT * FROM products')
+        console.table(products)
     } catch (err) {
-
+        console.error('Error fetching products:', err.message)
     } finally {
-
+        await db.close()
     }
 })
 
+viewAllProducts()
