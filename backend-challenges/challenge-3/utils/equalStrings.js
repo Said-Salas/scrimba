@@ -1,0 +1,1 @@
+export const equalStrings = (a, b) => a?.toLowerCase() === b?.toLowerCase()

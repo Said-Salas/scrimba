@@ -1,0 +1,1 @@
+export const isTrue = param => param?.toLowerCase() === 'true'
