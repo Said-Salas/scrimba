@@ -1,11 +1,15 @@
+const array = [5, 2, 4, 6, 1, 0, 9, 7, 8]
+
 const mergeSort = (array) => {
     if (array.length <= 1) return array;
 
     const leftHalf = array.slice(0, Math.floor(array.length / 2))
     const rightHalf = array.slice(Math.floor(array.length / 2), array.length)
     
+    return [leftHalf, rightHalf]
 }
 
+console.log(mergeSort(array))
 /*
 Algorithm: Merge Sort
 Input: array of numbers
@@ -56,4 +60,3 @@ Steps:
 11. After the loop is over, add whatever is left in either halves to the result.
 12. Return the result array.
 */
-
