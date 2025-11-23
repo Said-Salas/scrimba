@@ -10,29 +10,32 @@ async function seedTable() {
     driver: sqlite3.Database
   })
 
-  db.serialize(() => {
-    const insert = db.prepare('INSERT INTO products (title, artist, price, image, year, genre, stock) VALUES (?, ?, ?, ?, ?, ?, ?)'
-    )
-
-    try {
-        db.run('BEGIN TRANSACTION')
-        for (const record of vinyl) {
-          insert.run([record.title, record.artist, record.price, record.image, record.year, record.genre])
-        }
-    } catch (err) {
-
-    }
-  })
-
   try {
-    //
-    console.log('All records inserted successfully.')
+    await db.exec('BEGIN TRANSACTION')
+
+    const insert = await db.prepare('INSERT INTO products (title, artist, price, image, year, genre, stock) VALUES (?, ?, ?, ?, ?, ?, ?)'
+    )
+  
+    for (const record of vinyl) {
+      await insert.run(
+        record.title,
+        record.artist,
+        record.price, 
+        record.image,
+        record.year,
+        record.genre,
+        record.stock
+      )
+    }
+
+    await db.exec('COMMIT');
+    console.log('Data inserted successfully!')
+    await insert.finalize() // Closing prepared statement to free internal resources.
   } catch (err) {
-    //
-    console.error('Error inserting data:', err.message)
+      await db.exec('ROLLBACK')
+      console.error('Error inserting data: ', err.message)
   } finally {
-    await db.close()
-    console.log('Database connection closed.')
+      await db.close()
   }
 }
 
