@@ -5,10 +5,28 @@ const mergeSort = (array) => {
 
     const leftHalf = array.slice(0, Math.floor(array.length / 2))
     const rightHalf = array.slice(Math.floor(array.length / 2), array.length)
+
+    mergeSort(leftHalf)
+    mergeSort(rightHalf)
     
-    return [leftHalf, rightHalf]
 }
 
+const mergingArrays = (leftArray, rightArray) => {
+    const result = []
+    let leftPointer = 0
+    let rightPointer = 0
+
+    for (let i = 0; i < leftArray.length; i++) {
+        if (leftArray[i] < rightArray[i]) {
+            result.push(leftArray[i])
+            leftPointer++
+        } else {
+            result.push(rightArray[i])
+            rightPointer++
+        }
+    }
+    
+}
 console.log(mergeSort(array))
 /*
 Algorithm: Merge Sort
