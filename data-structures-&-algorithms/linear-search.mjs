@@ -5,12 +5,42 @@ import { read } from 'node:fs'
 console.log("Type \"exit\" to end program")
 const rdln = readline.createInterface({ input, output })
 while (1) {
-    const answer = await rdln.question('Enter an array of numbers: ');
+    const inputOne = await rdln.question('Enter an array of numbers: ');
 
-    s
-    console.log(answer)
-}
+    if(inputOne.trim().toLowerCase() === 'exit') {
+        rdln.close()
+        break
+    }
+    
+    const inputTwo = await rdln.question('Enter target number to find')
 
-const findNumber = (array, target) => {
     
 }
+
+export const linearSearch = (array, target) => {
+    for (let i = 0; i < array.length; i++) {
+        if(array[i] === target) {
+            return i
+        }
+    }
+    return -1
+}
+
+/*
+Algorithm: Linear Search
+Input: array of numbers, and target
+Output: index of target in array, or -1 if not found
+
+Steps:
+1. Loop over the array:
+2.   If the element is the target:
+3.     Return the index.
+4. Return -1.
+*/
+
+/*
+Challenge:
+***********
+
+Implement the linear search algorithm. Call the function linearSearch() and make sure to export it. When done, run the tests in the terminal with ’npm test’ to make sure it works. At the end, provide its time and space complexity.
+*/ 
