@@ -1,0 +1,3 @@
+The error zsh: command not found: python means python is not linked to an executable on your system path. On modern macOS, the command is python3.
+However, since you have a virtual environment set up, you should activate it first. Activating it will alias python to the correct version inside the environment.
+Run these commands in order:
