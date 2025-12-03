@@ -3,7 +3,7 @@ import { stdin as input, stdout as output } from 'node:process'
 
 export const linearSearch = (array, target) => {
     for (let i = 0; i < array.length; i++) {
-        if(array[i] === target) {
+        if(Number(array[i]) === Number(target)) {
             return i
         }
     }
