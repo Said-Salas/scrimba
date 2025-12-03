@@ -13,7 +13,7 @@ export const linearSearch = (array, target) => {
 console.log("Type \"exit\" to end program")
 
 let inputOne = []
-let inputTwo = 0
+let inputTwo = ""
 const rdln = readline.createInterface({ input, output })
 while (1) {
     inputOne = await rdln.question('Enter an array of numbers: ');
@@ -23,8 +23,10 @@ while (1) {
         break
     }
 
+    const parsedArray = inputOne.replace(/[\[\]]/g, '').split(',').map(item => item.trim())
+
     inputTwo = await rdln.question('Enter target number to find: ')
-    console.log(linearSearch(inputOne, inputTwo))
+    console.log(`The index of number ${inputTwo} in array ${inputOne} is ${linearSearch(parsedArray, inputTwo)}`)
 }
 
 
