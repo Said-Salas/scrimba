@@ -1,6 +1,5 @@
-from pydoc import plain
 import secrets
-from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM #ignore 'problems'. It works and seems to be a glitch.
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import hashes
 

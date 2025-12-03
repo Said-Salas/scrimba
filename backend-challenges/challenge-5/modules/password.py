@@ -1,4 +1,4 @@
-from zxcvbn import zxcvbn
+from zxcvbn import zxcvbn #ignore 'problems'. It works and seems to be a glitch.
 from getpass import getpass
 import bcrypt
 
