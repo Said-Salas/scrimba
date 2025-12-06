@@ -9,24 +9,32 @@ const Header = () => (
 	</header>
 )
 
+const Main = () => (
+	<main>
+		<h1>
+			Fun facts about React
+		</h1>
+		<ol>
+			<li>React is a popular library, so I will be able to
+			fit in with all the coolest devs out there! 😎</li>
+			<li>I am more likely to get a job as a front end developer
+			if I know React</li>
+		</ol>
+	</main>
+)
+
+const Footer = () => (
+	<footer>
+		© 2025 Said Salas Development. All rights reserved.
+	</footer>
+)
+
 function Page() {
     return (
 		<>
 			<Header />
-			<main>
-				<h1>
-					Fun facts about React
-				</h1>
-				<ol>
-					<li>React is a popular library, so I will be able to
-					fit in with all the coolest devs out there! 😎</li>
-					<li>I am more likely to get a job as a front end developer
-					if I know React</li>
-				</ol>
-			</main>
-			<footer>
-				© 2025 Said Salas Development. All rights reserved.
-			</footer>
+			<Main />
+			<Footer />
 		</>
     )
 }
@@ -35,11 +43,11 @@ root.render(
     <Page />
 )
 
-/** Mini Challenge:
+/** Challenge: 
+ * Move the `main` element into its own component called "MainContent" 
+ * and render that component inside the Page component.
  * 
- * Move the `header` element from the Page component into 
- * its own component called "Header"
- * 
- * Then render an instance of the Header component inside
- * the Page component where the `header` used to be.
- */
+ * Do the same with the `footer` element, moving it into a new
+ * component called "Footer"
+*/
+
