@@ -4,10 +4,10 @@ import reactLogo from './assets/react.png'
 const root = createRoot(document.getElementById("root"))
 
 const Header = () => (
-	<header>
-		<img src={reactLogo} alt="React logo"/>
+	<header className="header-el">
+		<img src={reactLogo} alt="React logo" className="react-logo"/>
 		<nav>
-			<ul>
+			<ul className="nav-list">
 				<li>Pricing</li>
 				<li>About</li>
 				<li>Contact</li>
