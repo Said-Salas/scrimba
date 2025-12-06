@@ -1,4 +1,4 @@
-export const Main = () => (
+export const MainContent = () => (
 	<main>
 		<h1>
 			Fun facts about React
