@@ -6,6 +6,13 @@ const root = createRoot(document.getElementById("root"))
 const Header = () => (
 	<header>
 		<img src={reactLogo} alt="React logo"/>
+		<nav>
+			<ul>
+				<li>Pricing</li>
+				<li>About</li>
+				<li>Contact</li>
+			</ul>
+		</nav>
 	</header>
 )
 
@@ -43,11 +50,11 @@ root.render(
     <Page />
 )
 
-/** Challenge: 
- * Move the `main` element into its own component called "MainContent" 
- * and render that component inside the Page component.
+/**
+ * Challenge:
  * 
- * Do the same with the `footer` element, moving it into a new
- * component called "Footer"
-*/
+ * - Add a `nav` > `ul` > `li` (x3). The 3 items should say:
+ *   "Pricing", "About", and "Contact"
+ */
+
 
