@@ -1,41 +1,48 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot } from "react-dom/client"
 import reactLogo from './assets/react.png'
 
-const root = createRoot(document.getElementById('root'))
+const root = createRoot(document.getElementById("root"))
+
+function Page() {
+    return (
+		<div>
+			<header>
+				<img src={reactLogo} alt="React official logo"/>
+			</header>
+			<main>
+				<h1>
+					Fun facts about React
+				</h1>
+				<ol>
+					<li>React is a popular library, so I will be able to
+					fit in with all the coolest devs out there! 😎</li>
+					<li>I am more likely to get a job as a front end developer
+					if I know React</li>
+				</ol>
+			</main>
+			<footer>
+				© 2025 Said Salas Development. All rights reserved.
+			</footer>
+		</div>
+    )
+}
+
 root.render(
-	<main>
-		<img src={reactLogo} style={{ width: '2.5rem', padding: '0 0 0 1rem'}}/>
-		<h1>Fun facts about React</h1>
-		<ul>
-			<li>
-				Was first released in 2013
-			</li>
-			<li>
-				Was originally created by Jordan Walke
-			</li>
-			<li>
-				Has well over 100K stars on GitHub
-			</li>
-			<li>
-				Is maintained by Meta
-			</li>
-			<li>
-				Powers thousands of enterprise apps, including mobile apps
-			</li>
-		</ul>
-	</main>
+    <Page />
 )
-/*
-Challenge: Starting from scratch, build and render the 
-HTML for our section project. Check the Google slide for 
-what you're trying to build.
 
-We'll be adding more styling to it later.
+/**
+Challenge: 
 
-Hints:
-* The React logo is a file in the project tree, so you can
-  access it by using `src="react-logo.png"` in your image
-  element
-* You can also set the `width` attribute of the image element
-  just like in HTML. In the slide, I have it set to 40px
+Part 2: 
+- Add a `<header>` element with an `<img />` element with the image of the 
+  React logo inside (src="react-logo.png") and make sure to set the 
+  width to something more manageable so it doesn't take up the whole screen.
+  Also, as always, you should include some alt text on the image.
+- Add an `<h1>` with some text describing the page. (E.g. "Reasons
+  I'm excited to learn React"). Place it above the ordered list, then wrap
+  the `<h1>` and `<ol>` inside a `<main>` element to keep our semantic
+  structure flowing well.
+- Add a `<footer>` after the list that says: 
+    "© 20xx <last name here> development. All rights reserved."
  */
