@@ -9,9 +9,9 @@ h1 {
   margin: 40px 0 0 20px;
 }
 
-.react-logo { width: 3.2rem;}
+.react-logo { width: 40px;}
 
-.header-el { display: flex; justify-content: space-between;}
+.header-el { display: flex; justify-content: space-between; align-items: center;}
 
 .nav-list { display: flex; list-style: none; gap: 1rem; width: fit-content; 
    padding: 0; margin-right: 1rem;}
