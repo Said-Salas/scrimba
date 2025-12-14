@@ -2,7 +2,7 @@ body { font-family: Inter, Helvetica, sans-serif; background: #27292c; color: wh
   text-align: left; margin: 0;
 }
 
-.header-el { height: 5.6875rem; display: flex; background-color: #21222A;}
+.header-el { height: 5.6875rem; background-color: #21222A;}
 .react-logo { width: 1.808rem;}
-.nav-el { display: flex; justify-content: start; align-items: center; gap: 0.4375rem; margin: 0 0 0 1.625rem; width: fit-content; }
-nav > h1 {font-weight: 700; font-size: 1.39rem; color: #61DAFB;}
+.nav-el { display: flex; justify-content: start; align-items: center; gap: 0.4375rem; margin: 0 0 0 1.625rem; width: fit-content; height: 100%;}
+nav > span {font-weight: 700; font-size: 1.39rem; color: #61DAFB;}

@@ -5,7 +5,7 @@ export const NavBar = () => {
 		<header className='header-el'>
 			<nav className='nav-el'>
 				<img src={reactLogo} alt='React logo' className='react-logo'/>
-				<h1>ReactFacts</h1>
+				<span>ReactFacts</span>
 			</nav>
 		</header>
 	)	
