@@ -1,17 +1,8 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #27292c;
-  color: white;
-  text-align: left;
+body { font-family: Inter, Helvetica, sans-serif; background: #27292c; color: white;
+  text-align: left; margin: 0;
 }
 
-h1 {
-  margin: 40px 0 0 20px;
-}
-
-.react-logo { width: 40px;}
-
-.header-el { display: flex; justify-content: space-between; align-items: center;}
-
-.nav-list { display: flex; list-style: none; gap: 1rem; width: fit-content; 
-   padding: 0; margin-right: 1rem;}
+.header-el { height: 5.6875rem; display: flex; background-color: #21222A;}
+.react-logo { width: 1.808rem;}
+.nav-el { display: flex; justify-content: start; align-items: center; gap: 0.4375rem; margin: 0 0 0 1.625rem; width: fit-content; }
+nav > h1 {font-weight: 700; font-size: 1.39rem; color: #61DAFB;}
