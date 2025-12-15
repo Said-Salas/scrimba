@@ -4,7 +4,10 @@ body { font-family: Inter, Helvetica, sans-serif; background: #27292c; color: wh
 
 .header-el { height: 5.6875rem; background-color: #21222A;}
 .react-logo { width: 1.808rem;}
-.nav-el { display: flex; justify-content: start; align-items: center; gap: 0.4375rem; margin: 0 0 0 1.625rem; width: fit-content; height: 100%;}
-nav > span {font-weight: 700; font-size: 1.39rem; color: #61DAFB;}
-.title-el {font-size: 2.44rem; margin-left: 1.6875rem;}
-.bullet-el {margin-left: 1rem ; line-height: 2rem;}
+.nav-el { display: flex; justify-content: start; align-items: center; gap: 0.4375rem;
+   margin: 0 0 0 1.625rem; width: fit-content; height: 100%;}
+nav > span { font-weight: 700; font-size: 1.39rem; color: #61DAFB; }
+main { margin: 3.56rem 0 0 2rem }
+.title-el {font-size: 2.44rem;}
+.bullet-el { line-height: 2rem; }
+.bullet-el > li::marker { color: #61DAFB; font-size: 1.75rem; }
