@@ -3,6 +3,7 @@ body { font-family: Inter, Helvetica, sans-serif; background: #27292c; color: wh
 }
 
 .header-el { height: 5.6875rem; background-color: #21222A;}
+main { background: url("./assets/react-half.png") no-repeat right;}
 .react-logo { width: 1.808rem;}
 .nav-el { display: flex; justify-content: start; align-items: center; gap: 0.4375rem;
    margin: 0 0 0 1.625rem; width: fit-content; height: 100%;}
@@ -11,3 +12,18 @@ main { margin: 3.56rem 0 0 2rem }
 .title-el {font-size: 2.44rem;}
 .bullet-el { line-height: 2rem; }
 .bullet-el > li::marker { color: #61DAFB; font-size: 1.75rem; }
+
+/* 
+Challenge: Place the gray react logo in the background
+
+Don't use an `img` element, but rather set it as the
+`background-image` of the `main` element.
+
+Hint: you'll need to use the following properties:
+- background-image: url(...)
+- background-repeat
+- background-position
+
+(Or the shorthand `background` property with values for all
+those other properties)
+*/
