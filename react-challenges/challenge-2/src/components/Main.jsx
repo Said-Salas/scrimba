@@ -1,16 +1,16 @@
-import mailIcon from '../src/assets/mail.png'
-import linkedinIcon from "../src/assets/linkedin.png"
+import mailIcon from '../assets/mail.png'
+import linkedinIcon from "../assets/linkedin.png"
 
 export const Main = () => {
     return (
         <main>
-            <div className="key-info-el">  
+            <div className="key-info">  
                 <h1>Said Salas</h1>
                 <h2>Engineer</h2>
                 <p>@saidtobuild on X</p>
             </div>
-            <div className="info-el">
-                <div className='btns-el'>
+            <div className="info-section">
+                <div className='action-buttons'>
                     <a href='mailto:saidsalastech@gmail.com' className="email-btn">
                         <img src={mailIcon} alt='Mail icon'/>
                         Email
@@ -20,7 +20,7 @@ export const Main = () => {
                         LinkedIn
                     </a>
                 </div>
-                <div className='about-interests-el'>
+                <div className='details-section'>
                     <h3>About</h3>
                     <p>I am an engineer focused on solving all problems. I think
                         the book of nature was written in the language of mathematics, and if
