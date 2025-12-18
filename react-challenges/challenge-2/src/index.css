@@ -2,13 +2,20 @@ body { margin: 0; background-color: #23252C; font-family: Inter, sans-serif;}
 #root { display: flex; justify-content: center; margin-top: 2.75rem;}
 .container-el { display: flex; flex-direction: column; width: fit-content; }
 .me-el { width: 19.81rem; height: 19.81rem; object-fit: cover; border-radius: 0.625rem 0.625rem 0 0;}
-main { display: flex; flex-direction: column; align-items: center; }
-.key-info-el {text-align: center;}
+main { display: flex; flex-direction: column; align-items: center; background-color: #1A1B21;}
+.key-info-el {text-align: center; }
 .key-info-el > h1 {margin-bottom: 0.2rem;}
 .key-info-el > h2 { font-weight: 400; font-size: 1rem; margin: 0; color: #F3BF99;}
 .key-info-el > p { font-size: 0.8rem; margin-top: 0.8rem;}
-.info-el { margin-top: 0.75rem; display: flex; gap: 1.063rem;}
-.email-btn, .linkedin-btn { width: 7.1875rem; height: 2.125rem; border-radius: 0.375rem; border: none; 
+.info-el { margin-top: 0.75rem; display: flex; width: 15.7rem; flex-direction: column; }
+.btns-el {display: flex; gap: 1.063rem;}
+.email-btn, .linkedin-btn { width: 100%;height: 2.125rem; border-radius: 0.375rem; border: none; 
   font-size: 0.875rem; display: flex; justify-content: center; align-items: center; gap: 0.4rem;}
 .email-btn { background-color: white; color: black; }
-.linkedin-btn { background-color: #5093E2;}
+.linkedin-btn { background-color: #5093E2; color: white;}
+.about-interests-el { margin-top: 2.0625rem;}
+.about-interests-el > h3 { margin: 0;}
+.about-interests-el > p {margin-top: 0.3rem; font-size: 0.8rem;}
+a {text-decoration: none;} 
+.footer-el {width: 100%; display: flex; justify-content: center; gap: 1.5rem; background-color: #161619;
+  height: 4rem; align-items: center;}

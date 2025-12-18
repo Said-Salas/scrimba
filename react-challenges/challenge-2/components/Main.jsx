@@ -1,4 +1,5 @@
 import mailIcon from '../src/assets/mail.png'
+import linkedinIcon from "../src/assets/linkedin.png"
 
 export const Main = () => {
     return (
@@ -9,8 +10,26 @@ export const Main = () => {
                 <p>@saidtobuild on X</p>
             </div>
             <div className="info-el">
-                <button className="email-btn"><img src={mailIcon}/>Email</button>
-                <button className="linkedin-btn"><img />LinkedIn</button>
+                <div className='btns-el'>
+                    <a href='mailto:saidsalastech@gmail.com' className="email-btn">
+                        <img src={mailIcon} alt='Mail icon'/>
+                        Email
+                    </a>
+                    <a href='https://www.linkedin.com' className='linkedin-btn'>
+                        <img src={linkedinIcon} alt='LinkedIn icon'/>
+                        LinkedIn
+                    </a>
+                </div>
+                <div className='about-interests-el'>
+                    <h3>About</h3>
+                    <p>I am an engineer focused on solving all problems. I think
+                        the book of nature was written in the language of mathematics, and if
+                        the key to solve all problems exists (a super intelligence), it has always been there.
+                    </p>
+                    <h3>Interests</h3>
+                    <p>Learning, nature (specially birds), brains, chess, calisthenics.
+                    </p>
+                </div> 
             </div>
         </main>
     )
