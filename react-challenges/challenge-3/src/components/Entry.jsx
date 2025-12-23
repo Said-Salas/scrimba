@@ -1,22 +1,21 @@
 import markerIcon from '../assets/marker.svg'
 
-export const Entry = () => {
+export const Entry = props => {
+    const {img, title, country, maps, dates, text} =  props
     return (
         <article>
             <div className='loc-image-container'>
-                <img src='https://scrimba.com/links/travel-journal-japan-image-url' alt='Japan image'/>
+                <img src={img.src} alt={img.alt}/>
             </div>
             <div>
                 <div className='loc-title'>
                     <img src={markerIcon} alt='Marker icon' className='marker-icon'/>
-                    <span>JAPAN</span>
-                    <a href='https://maps.app.goo.gl/6RLYZDuuuqJ7kNGZ9'>View on Google Maps</a>
+                    <span>{country}</span>
+                    <a href={maps}>View on Google Maps</a>
                 </div>
-                <h2>Mount Fuji</h2>
-                <p className='trip-dates'>12 Jan, 2023 - 24 Jan, 2023</p>
-                <p>Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is 
-                    the single most popular tourist site in Japan, for both Japanese and foreign tourists.
-                </p>
+                <h2>{title}</h2>
+                <p className='trip-dates'>{dates}</p>
+                <p>{text}</p>
             </div>
         </article>
     )
