@@ -1,6 +1,7 @@
 import markerIcon from '../assets/marker.svg'
 
 export const Entry = props => {
+    console.log(props)
     const {img, title, country, maps, dates, text} =  props
     return (
         <>

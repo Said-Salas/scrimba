@@ -15,12 +15,8 @@ export const App = () => {
 
     const places = data.map(place => 
         <Entry 
-            img={place.img}
-            title={place.title}
-            country={place.country}
-            maps={place.googleMapsLink}
-            dates={place.dates}
-            text={place.text}
+            key={place.id}
+            {...place}
         />)
 
     return(
@@ -28,6 +24,5 @@ export const App = () => {
         <Header />
         {places}
     </>
-
     )
     }
