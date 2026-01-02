@@ -1,16 +1,19 @@
+import { useState } from "react"
+
 export const Main = () => {
-    const ingredients = ["Chicken", "Oregano", "Tomatoes"]
+    const [ingredients, setIngredients] = useState([])
     
-    const ingredientsListItems = ingredients.map(ingredient => (
-        <li key={ingredient}>{ingredient}</li>
-    ))
+    const ingredientsListItems =  ingredients.map(ingredient => (<li key={ingredient}>{ingredient}</li>))
+    
 
     const handleSubmit = (event) => {
         event.preventDefault()
         const formData = new FormData(event.currentTarget)
         const newIngredient = formData.get("ingredient")
-        ingredients.push(newIngredient)
-        console.log(ingredients)
+        if (newIngredient) {
+            setIngredients(prevIngredients => [...prevIngredients, newIngredient])
+            event.currentTarget.reset()
+        }
     }
 
     return (
