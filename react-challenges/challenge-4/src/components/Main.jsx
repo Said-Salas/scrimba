@@ -6,19 +6,16 @@ export const Main = () => {
     const ingredientsListItems =  ingredients.map(ingredient => (<li key={ingredient}>{ingredient}</li>))
     
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        const formData = new FormData(event.currentTarget)
+    const signUp = (formData) => {
         const newIngredient = formData.get("ingredient")
         if (newIngredient) {
             setIngredients(prevIngredients => [...prevIngredients, newIngredient])
-            event.currentTarget.reset()
         }
     }
 
     return (
         <main>
-            <form className="setup" onSubmit={handleSubmit}>
+            <form action={signUp} className="setup">
                 <input 
                     type="text" 
                     placeholder="e.g. oregano" 
