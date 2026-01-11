@@ -24,9 +24,19 @@ export const Main = () => {
                 />
                 <button type="submit">Add ingredient</button>
             </form>
-            <ul>
-                {ingredientsListItems}
-            </ul>
+            <section>
+                <h2 style={{ fontWeight: '600', fontStyle: 'bold'}}>Ingredients on hand:</h2>
+                <ul>
+                    {ingredientsListItems}
+                </ul>
+                <article className="get-recipe">
+                    <div>
+                        <h3 style={{fontWeight: '500', marginBottom: '0'}}>Ready for a recipe?</h3>
+                        <p style={{color: '#6B7280', fontWeight: '300'}}>Generate a recipe from your list of ingredients.</p>
+                    </div>
+                    <button type="submit">Get recipe</button>
+                </article>
+            </section>
         </main>
     )
 }
