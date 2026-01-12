@@ -31,6 +31,8 @@ export const Main = () => {
                 <ul>
                     {ingredientsListItems}
                 </ul>
+                {
+                ingredients.length > 3 &&
                 <article className="get-recipe">
                     <div>
                         <h3 style={{fontWeight: '500', marginBottom: '0'}}>Ready for a recipe?</h3>
@@ -38,6 +40,7 @@ export const Main = () => {
                     </div>
                     <button type="submit">Get recipe</button>
                 </article>
+                }
             </section>
             }
         </main>
