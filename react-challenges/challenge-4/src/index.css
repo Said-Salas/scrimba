@@ -11,8 +11,9 @@ input { all: unset; border-radius: 0.375rem; border: 1px solid #D1D5DB; backgrou
    flex-grow: 1; min-width: 11.5rem; display: flex; align-items: center; justify-content: center;} 
 .setup > button::before { content: '+'; margin-right: 0.25rem; font-size: 1rem;}
 .get-recipe { display: flex; margin-top: 4rem; background-color: #F0EFEB; border-radius: 0.5rem; 
-  padding: 1.5rem 3.5rem; align-items: center; gap: 6rem;
+  padding: 1.5rem 3.5rem; align-items: center; justify-content: space-between;
   }
-.get-recipe > button { all: unset; height: fit-content; background-color: #D17557; border-radius: 0.375rem; }
+.get-recipe > button { all: unset; height: fit-content; background-color: #D17557; border-radius: 0.375rem; 
+  padding: 1rem 2rem; color: white; cursor: pointer;}
 
 

@@ -24,7 +24,7 @@ export const Main = () => {
                 />
                 <button type="submit">Add ingredient</button>
             </form>
-            <section>
+            {ingredients.length > 0 && <section>
                 <h2 style={{ fontWeight: '600', fontStyle: 'bold'}}>Ingredients on hand:</h2>
                 <ul>
                     {ingredientsListItems}
@@ -36,7 +36,7 @@ export const Main = () => {
                     </div>
                     <button type="submit">Get recipe</button>
                 </article>
-            </section>
+            </section>}
         </main>
     )
 }
