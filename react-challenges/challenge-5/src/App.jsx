@@ -11,7 +11,14 @@ export default function App() {
         email: "itsmyrealname@example.com",
         isFavorite: false
     })
-    
+
+    const toggleFavorite = () => {
+      setContact(prevContact => ({
+          ...prevContact,
+          isFavorite: !prevContact.isFavorite
+      }))
+  }
+
     /**
      * Challenge: Move the star image into its own component (Star)
      * - It should receive a prop called `isFilled` that it
@@ -35,6 +42,7 @@ export default function App() {
                 <div className="info">
                     <StarToggle
                       isFilled={contact.isFavorite}
+                      handleClick={toggleFavorite}
                     />
                     <h2 className="name">
                         {contact.firstName} {contact.lastName}
