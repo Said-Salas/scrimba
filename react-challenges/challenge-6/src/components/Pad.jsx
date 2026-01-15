@@ -1,25 +1,16 @@
 import { useState } from "react"
 
 export default function Pad(props) {
-    const [state, setState] = useState(false)
-    const toggle = () => setState(state => !state)
+    const [isOn, setIsOn] = useState(false)
+    const toggle = () => setIsOn(isOn => !isOn)
     
-    const styleOne = {
-        backgroundColor: props.color,
-        opacity: 0.1
-    }
-    
-    const styleTwo = {
-         backgroundColor: props.color,
-        opacity: 1
-    }
-    
-    const setStyle = state ? styleTwo : styleOne
+    const classOn = isOn ? 'on' : ''
     
     return (
         <button 
             onClick={toggle}
-            style={setStyle}
+            className={classOn}
+            style={{backgroundColor: props.color}}
         ></button>
     )
 }
