@@ -1,5 +1,5 @@
 export default function Pad(props) {
-    const classOn = props.on ? 'on' : ''
+    const classOn = props.on ? 'on' : undefined
     
     return (
         <button 
