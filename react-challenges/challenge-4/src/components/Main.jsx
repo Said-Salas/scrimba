@@ -14,7 +14,7 @@ export const Main = () => {
         }
     }
 
-    const apiCall = () => recipe = getRecipe(ingredients)
+    const apiCall = async () => recipe = await getRecipe(ingredients)
     console.log(recipe)
 
     return (
