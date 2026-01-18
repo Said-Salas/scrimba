@@ -20,5 +20,5 @@ export const getRecipe = async (ingredientsArr) => {
     },
   });
 
-  return response.text;
+  return response.text.candidates;
 }
