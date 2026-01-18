@@ -1,9 +1,11 @@
 export const IngredientsList = (props) => {
+    const ingredientsList=  props.ingredientsArray.map(ingredient => (<li key={ingredient}>{ingredient}</li>))
+    
     return (
         <section>
             <h2 className="ing-title">Ingredients on hand:</h2>
             <ul className="list-items">
-                {props.ingredientsList}
+                {ingredientsList}
             </ul>
             {
             props.ingredientsArray.length > 3 &&
