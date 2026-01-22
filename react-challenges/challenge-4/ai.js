@@ -20,5 +20,5 @@ export const getRecipe = async (ingredientsArr) => {
     },
   });
 
-  return response.text.candidates;
+  return response.candidates?.[0]?.content?.parts?.[0].text || "No recipe found.";
 }

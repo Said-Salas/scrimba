@@ -5,7 +5,7 @@ import { getRecipe } from "../../ai"
 
 export const Main = () => {
     const [ingredients, setIngredients] = useState([])
-    let recipe = ''
+    const [recipe, setRecipe] = useState("")
 
     const addIngredient = (formData) => {
         const newIngredient = formData.get("ingredient")
@@ -14,8 +14,10 @@ export const Main = () => {
         }
     }
 
-    const apiCall = async () => recipe = await getRecipe(ingredients)
-    console.log(recipe)
+    const apiCall = async () => {
+        const newRecipe = await getRecipe(ingredients)
+        setRecipe(newRecipe)
+    } 
 
     return (
         <main>
