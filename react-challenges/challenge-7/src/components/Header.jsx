@@ -1,6 +1,6 @@
 import trollFace from "../assets/troll.png"
 
-export default function Header() {
+export const  Header = () => {
     return (
         <header className="header">
             <img 
