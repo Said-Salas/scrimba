@@ -1,6 +1,11 @@
+import ReactMarkdown from 'react-markdown'
 export const Recipe = (props) => {
 
     return (
-        <div>{props.recipeMarkdown}</div>
+        <section className='suggested-recipe-container'>
+            <ReactMarkdown>
+                {props.recipeMarkdown}
+            </ReactMarkdown>
+        </section>
     )
 }

@@ -1,3 +1,4 @@
+#root {padding-bottom: 3rem;}
 body { margin: 0; font-family: Inter, sans-serif;  background-color: #FAFAF8; color: black; min-height: 100vh;}
 header { box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06); 
   display: flex; justify-content: center; align-items: center; gap: 1rem; height: 7rem; background-color: white;}
@@ -18,4 +19,6 @@ strong { font-weight: 600;}
   }
 .get-recipe > button { all: unset; height: fit-content; background-color: #D17557; border-radius: 0.375rem; 
   padding: 1rem 2rem; color: white; cursor: pointer;}
+.suggested-recipe-container { color: #475467; line-height: 28px;font-size: 1.125rem; font-weight: 400;}
+.suggested-recipe-container ul li, .suggested-recipe-container ol li { margin-bottom: 8px; }
 
