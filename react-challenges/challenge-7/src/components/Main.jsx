@@ -1,5 +1,5 @@
 import { use } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export const Main = () => {
     const [meme, setMeme] = useState({
@@ -7,6 +7,14 @@ export const Main = () => {
         bottomText: 'Walk into Mordor',
         imageUrl: 'http://i.imgflip.com/1bij.jpg'
     })
+
+    const [memes, setMemes] = useState([])
+
+    useEffect(() => {
+        fetch('https://api.imgflip.com/get_memes')
+            .then(res => res.json())
+            .then(object => setMemes(object.data.memes))
+    }, [])
 
     const handleChange = (event) => {
         const { value, name } = event.currentTarget
