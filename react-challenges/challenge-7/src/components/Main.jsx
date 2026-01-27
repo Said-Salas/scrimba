@@ -27,9 +27,9 @@ export const Main = () => {
     const displayImage = () => {
         setMeme(prevMeme => ({
             ...prevMeme, 
-            imageUrl: memes[Math.floor(Math.random() * 100)].url
-        })
-    )}
+            imageUrl: memes[Math.floor(Math.random() * memes.length)].url
+        }))
+    }
 
     return (
         <main>
