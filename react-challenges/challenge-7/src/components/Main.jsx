@@ -1,4 +1,3 @@
-import { use } from 'react'
 import { useState, useEffect } from 'react'
 
 export const Main = () => {
@@ -15,6 +14,7 @@ export const Main = () => {
             .then(res => res.json())
             .then(object => setMemes(object.data.memes))
     }, [])
+    console.log(memes)
 
     const handleChange = (event) => {
         const { value, name } = event.currentTarget
@@ -23,6 +23,13 @@ export const Main = () => {
             [name]: value
         }))
     }
+
+    const displayImage = () => {
+        setMeme(prevMeme => ({
+            ...prevMeme, 
+            imageUrl: memes[Math.floor(Math.random() * 100)].url
+        })
+    )}
 
     return (
         <main>
@@ -44,7 +51,7 @@ export const Main = () => {
                         onChange={handleChange}
                     />
                 </label>
-                <button>Get a new meme image 🖼</button>
+                <button onClick={displayImage}>Get a new meme image 🖼</button>
             </div>
             <div className="meme">
                 <img src={meme.imageUrl} />
