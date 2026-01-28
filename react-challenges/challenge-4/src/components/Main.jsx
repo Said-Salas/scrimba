@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Recipe } from "./Recipe"
 import { IngredientsList } from "./IngredientsList"
 import { getRecipe } from "../../ai"
@@ -6,6 +6,8 @@ import { getRecipe } from "../../ai"
 export const Main = () => {
     const [ingredients, setIngredients] = useState([])
     const [recipe, setRecipe] = useState("")
+    const recipeNode = useRef(null)
+    console.log(recipeNode)
 
     const addIngredient = (formData) => {
         const newIngredient = formData.get("ingredient")
@@ -31,7 +33,7 @@ export const Main = () => {
                 <button type="submit">Add ingredient</button>
             </form>
             {ingredients.length > 0 && <IngredientsList handleClick={apiCall} ingredientsArray={ingredients} />}
-           {recipe && <Recipe recipeMarkdown={recipe}/>}
+           {recipe && <Recipe recipeMarkdown={recipe} recipeSection={recipeNode}/>}
         </main>
     )
 }
