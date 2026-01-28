@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Recipe } from "./Recipe"
 import { IngredientsList } from "./IngredientsList"
 import { getRecipe } from "../../ai"
@@ -7,7 +7,6 @@ export const Main = () => {
     const [ingredients, setIngredients] = useState([])
     const [recipe, setRecipe] = useState("")
     const recipeNode = useRef(null)
-    console.log(recipeNode)
 
     const addIngredient = (formData) => {
         const newIngredient = formData.get("ingredient")
@@ -20,6 +19,10 @@ export const Main = () => {
         const newRecipe = await getRecipe(ingredients)
         setRecipe(newRecipe)
     } 
+
+    useEffect(() => {
+        if (recipe && recipeNode) recipeNode.current.scrollIntoView()
+    }, [recipe])
 
     return (
         <main>
