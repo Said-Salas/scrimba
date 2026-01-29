@@ -21,7 +21,7 @@ export const Main = () => {
     } 
 
     useEffect(() => {
-        if (recipe && recipeNode.current) recipeNode.current.scrollIntoView()
+        if (recipe && recipeNode.current) recipeNode.current.scrollIntoView({behavior: "smooth"})
     }, [recipe])
 
     return (
