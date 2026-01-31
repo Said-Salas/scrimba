@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Karla } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const karla = Karla({
+  variable: "--font-karla",
+  subsets: ['latin']
+})
 
 export const metadata: Metadata = {
   title: "Challenge 8",
@@ -25,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex justify-center items-center`}
+        className={`${karla.variable} antialiased flex justify-center items-center`}
       >
         {children}
       </body>

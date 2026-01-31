@@ -10,10 +10,13 @@ export default function Home() {
   const diceEl  = dice.map((num, index) => <Die key={index} value={num}/>)
 
   return (
-    <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex justify-center items-center">
-      <div className="grid grid-cols-5 gap-10 w-[80%]">
+    <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex flex-col justify-center items-center">
+      <div className="grid grid-cols-5 gap-10 w-[80%] mt-[4rem] place-items-center">
         {diceEl}
       </div>
+      <button className='bg-[#5035FF]'>
+        Roll
+      </button>
     </main>
   );
 }
