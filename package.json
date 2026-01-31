@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@google/genai": "^1.37.0",
-    "react-markdown": "^8.0.6"
-  }
-}

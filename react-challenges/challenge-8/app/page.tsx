@@ -9,12 +9,17 @@ export default function Home() {
   useEffect(() => setDice(getDiceValues()), [])
   const diceEl  = dice.map((num, index) => <Die key={index} value={num}/>)
 
+  const handleClick = () => setDice(getDiceValues())
+
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex flex-col justify-center items-center">
-      <div className="grid grid-cols-5 gap-10 w-[80%] mt-[4rem] place-items-center">
+      <div className="grid grid-cols-5 gap-10 w-[80%] mt-[8rem] place-items-center">
         {diceEl}
       </div>
-      <button className='bg-[#5035FF]'>
+      <button 
+        className='bg-[#5035FF] w-[10rem] h-[4rem] rounded-[0.25rem] text-[2rem] font-bold cursor-pointer mt-[3rem] shadow-md'
+        onClick={handleClick}
+      >
         Roll
       </button>
     </main>
