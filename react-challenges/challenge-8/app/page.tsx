@@ -1,6 +1,16 @@
 import { Die } from "./components/Die";
 
 export default function Home() {
+
+  const getDiceValues = () => {
+    const values = []
+    for (let i = 0; i < 10; i++) {
+      values.push(Math.floor((Math.random() * 100) % 6) + 1)
+    }
+    return values
+  }
+  console.log(getDiceValues())
+
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex justify-center items-center">
       <div className="grid grid-cols-5 gap-10 w-[80%]">
