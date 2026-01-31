@@ -4,9 +4,7 @@ export default function Home() {
 
   const getDiceValues = () => {
     const values = []
-    for (let i = 0; i < 10; i++) {
-      values.push(Math.floor((Math.random() * 100) % 6) + 1)
-    }
+    for (let i = 0; i < 10; i++) values.push(Math.floor((Math.random() * 100) % 6) + 1)
     return values
   }
   console.log(getDiceValues())
