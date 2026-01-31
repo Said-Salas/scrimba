@@ -1,25 +1,18 @@
+"use client"
+
+import { useState, useEffect } from "react";
 import { Die } from "./components/Die";
 
 export default function Home() {
-
-  const getDiceValues = () => {
-    return new Array(10).fill(0).map(() => Math.ceil(Math.random() * 6))
-  }
-  console.log(getDiceValues())
+  const getDiceValues = () => new Array(10).fill(0).map(() => Math.ceil(Math.random() * 6))
+  const [dice, setDice] = useState<number[]>([])
+  useEffect(() => setDice(getDiceValues()), [])
+  const diceEl  = dice.map((die, index) => <Die key={index} value={die}/>)
 
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex justify-center items-center">
       <div className="grid grid-cols-5 gap-10 w-[80%]">
-        <Die value={1}/>
-        <Die value={1}/>
-        <Die value={2}/>
-        <Die value={6}/>
-        <Die value={4}/>
-        <Die value={1}/>
-        <Die value={3}/>
-        <Die value={3}/>
-        <Die value={5}/>
-        <Die value={2}/>
+        {diceEl}
       </div>
     </main>
   );
