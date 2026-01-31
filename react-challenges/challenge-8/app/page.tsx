@@ -2,16 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { Die } from "./components/Die";
+import { nanoid } from 'nanoid'
 
 type Die = {
   value: number
-  isHeld: boolean
+  isHeld: boolean,
+  id: string
 }
 
 export default function Home() {
   const getDiceValues = () => new Array(10).fill(0).map(() => ({
     value: Math.ceil(Math.random() * 6),
-    isHeld: false
+    isHeld: false,
+    id: nanoid()
   }))
   const [dice, setDice] = useState<Die[]>([])
   useEffect(() => setDice(getDiceValues()), [])
