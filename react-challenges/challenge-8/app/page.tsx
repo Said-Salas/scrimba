@@ -3,13 +3,21 @@
 import { useState, useEffect } from "react";
 import { Die } from "./components/Die";
 
-export default function Home() {
-  const getDiceValues = () => new Array(10).fill(0).map(() => Math.ceil(Math.random() * 6))
-  const [dice, setDice] = useState<number[]>([])
-  useEffect(() => setDice(getDiceValues()), [])
-  const diceEl  = dice.map((num, index) => <Die key={index} value={num}/>)
+type Die = {
+  value: number
+  isHeld: boolean
+}
 
-  const handleClick = () => setDice(getDiceValues())
+export default function Home() {
+  const getDiceValues = () => new Array(10).fill(0).map(() => ({
+    value: Math.ceil(Math.random() * 6),
+    isHeld: false
+  }))
+  const [dice, setDice] = useState<Die[]>([])
+  useEffect(() => setDice(getDiceValues()), [])
+  const diceEl  = dice.map((die, index) => <Die key={index} value={die.value}/>)
+
+  const handleRoll = () => setDice(getDiceValues())
 
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex flex-col justify-center items-center">
@@ -18,7 +26,7 @@ export default function Home() {
       </div>
       <button 
         className='bg-[#5035FF] w-[10rem] h-[4rem] rounded-[0.25rem] text-[2rem] font-bold cursor-pointer mt-[3rem] shadow-md'
-        onClick={handleClick}
+        onClick={handleRoll}
       >
         Roll
       </button>
