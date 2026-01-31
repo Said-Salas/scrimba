@@ -3,9 +3,7 @@ import { Die } from "./components/Die";
 export default function Home() {
 
   const getDiceValues = () => {
-    const values = []
-    for (let i = 0; i < 10; i++) values.push(Math.ceil(Math.random() * 6))
-    return values
+    return new Array(10).fill(0).map(() => Math.ceil(Math.random() * 6))
   }
   console.log(getDiceValues())
 
