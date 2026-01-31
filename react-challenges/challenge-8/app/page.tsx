@@ -7,7 +7,7 @@ export default function Home() {
   const getDiceValues = () => new Array(10).fill(0).map(() => Math.ceil(Math.random() * 6))
   const [dice, setDice] = useState<number[]>([])
   useEffect(() => setDice(getDiceValues()), [])
-  const diceEl  = dice.map((die, index) => <Die key={index} value={die}/>)
+  const diceEl  = dice.map((num, index) => <Die key={index} value={num}/>)
 
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex justify-center items-center">
