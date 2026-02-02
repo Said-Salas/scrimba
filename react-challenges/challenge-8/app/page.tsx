@@ -13,12 +13,12 @@ type Die = {
 export default function Home() {
   const getDiceValues = () => new Array(10).fill(0).map(() => ({
     value: Math.ceil(Math.random() * 6),
-    isHeld: false,
+    isHeld: true,
     id: nanoid()
   }))
   const [dice, setDice] = useState<Die[]>([])
   useEffect(() => setDice(getDiceValues()), [])
-  const diceEl  = dice.map((die, index) => <Die key={index} value={die.value}/>)
+  const diceEl  = dice.map((die) => <Die key={die.id} value={die.value} held={die.isHeld}/>)
 
   const handleRoll = () => setDice(getDiceValues())
 
