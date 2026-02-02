@@ -6,20 +6,22 @@ import { nanoid } from 'nanoid'
 
 type Die = {
   value: number
-  isHeld: boolean,
+  isHeld: boolean
   id: string
+  hold: (id: string) => void
 }
 
 export default function Home() {
+  const holdDie = (id: string) => console.log(id)
   const getDiceValues = () => new Array(10).fill(0).map(() => ({
     value: Math.ceil(Math.random() * 6),
     isHeld: true,
-    id: nanoid()
+    id: nanoid(),
+    hold: holdDie
   }))
   const [dice, setDice] = useState<Die[]>([])
   useEffect(() => setDice(getDiceValues()), [])
-  const diceEl  = dice.map((die) => <Die key={die.id} value={die.value} held={die.isHeld}/>)
-
+  const diceEl  = dice.map((die) => <Die key={die.id} id={die.id} value={die.value} held={die.isHeld} hold={die.hold}/>)
   const handleRoll = () => setDice(getDiceValues())
 
   return (
