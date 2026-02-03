@@ -26,7 +26,10 @@ export default function Home() {
     value={die.value} 
     held={die.isHeld} 
     hold={() => die.hold(die.id)}/>)
-  const handleRoll = () => setDice(getDiceValues())
+  const handleRoll = () => setDice(prevDice => {
+    let tempDice = getDiceValues()
+    return prevDice.map((die, index) => die.isHeld == false ? die = tempDice[index] : die)
+  })
 
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex flex-col justify-center items-center">
