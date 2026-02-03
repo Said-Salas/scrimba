@@ -23,10 +23,9 @@ export default function Home() {
   useEffect(() => setDice(getDiceValues()), [])
   const diceEl  = dice.map((die) => <Die 
     key={die.id} 
-    id={die.id} 
     value={die.value} 
     held={die.isHeld} 
-    hold={die.hold}/>)
+    hold={() => die.hold(die.id)}/>)
   const handleRoll = () => setDice(getDiceValues())
 
   return (
