@@ -12,10 +12,10 @@ type Die = {
 }
 
 export default function Home() {
-  const holdDie = (id: string) => console.log(id)
+  const holdDie = (id: string) => setDice(prevDice => prevDice.map(die => die.id == id ? ({...die, isHeld: !die.isHeld}) : ({...die})))
   const getDiceValues = () => new Array(10).fill(0).map(() => ({
     value: Math.ceil(Math.random() * 6),
-    isHeld: true,
+    isHeld: false,
     id: nanoid(),
     hold: holdDie
   }))
