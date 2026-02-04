@@ -42,7 +42,9 @@ export default function Home() {
   
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex flex-col justify-center items-center">
-      <div className="grid grid-cols-5 gap-10 w-[80%] mt-[8rem] place-items-center">
+      <h1 className="text-[3.5rem] text-[#2B283A] font-semibold">Tenzies</h1>
+      <p className="text-[1.5rem] w-[60%] text-center text-[#4A4E74] font-inter">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+      <div className="grid grid-cols-5 gap-10 w-[80%] mt-[4rem] place-items-center">
         {diceEl}
       </div>
       <button 
