@@ -11,8 +11,15 @@ type Die = {
 }
 
 export default function Home() {
+  const [dice, setDice] = useState<Die[]>([])
   const [firstValue, setFirstValue] = useState(0)
-  const assingFirst = (value: number) => setFirstValue(value)
+
+  const getDiceValues = () => new Array(10).fill(0).map(() => ({
+    value: Math.ceil(Math.random() * 6),
+    isHeld: false,
+    id: nanoid(),
+  }))
+
   const holdDie = (diePressed: Die) => {
     if (firstValue === 0) {
       assingFirst(diePressed.value)
@@ -20,23 +27,22 @@ export default function Home() {
     }
     else setDice(prevDice => prevDice.map(die => (die.id === diePressed.id) && (diePressed.value === firstValue) && (diePressed.isHeld === false)? {...die, isHeld: !die.isHeld} : die))
   }
-  const getDiceValues = () => new Array(10).fill(0).map(() => ({
-    value: Math.ceil(Math.random() * 6),
-    isHeld: false,
-    id: nanoid(),
-  }))
-  const [dice, setDice] = useState<Die[]>([])
-  useEffect(() => setDice(getDiceValues()), [])
-  const diceEl  = dice.map((die) => <Die 
-    key={die.id} 
-    value={die.value} 
-    held={die.isHeld} 
-    hold={() => holdDie(die)}/>)
+
   const handleRoll = () => setDice(prevDice => {
     let tempDice = getDiceValues()
     return prevDice.map((die, index) => die.isHeld == false ? die = tempDice[index] : die)
   })
 
+  const assingFirst = (value: number) => setFirstValue(value)
+
+  useEffect(() => setDice(getDiceValues()), [])
+  
+  const diceEl  = dice.map((die) => <Die 
+    key={die.id} 
+    value={die.value} 
+    held={die.isHeld} 
+    hold={() => holdDie(die)}/>)
+  
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex flex-col justify-center items-center">
       <div className="grid grid-cols-5 gap-10 w-[80%] mt-[8rem] place-items-center">
