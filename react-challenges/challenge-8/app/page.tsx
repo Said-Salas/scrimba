@@ -12,7 +12,11 @@ type Die = {
 }
 
 export default function Home() {
-  const holdDie = (id: string) => setDice(prevDice => prevDice.map(die => die.id == id ? {...die, isHeld: !die.isHeld} : die))
+  const firstValue = undefined
+  const holdDie = (id: string) => {
+    if (firstValue) setDice(prevDice => prevDice.map(die => die.id == id ? {...die, isHeld: !die.isHeld} : die))
+    else setDice(prevDice => prevDice.map(die => (die.id == id) && (die.value == firstValue) && (die.isHeld == false)? {...die, isHeld: !die.isHeld} : die))
+  }
   const getDiceValues = () => new Array(10).fill(0).map(() => ({
     value: Math.ceil(Math.random() * 6),
     isHeld: false,
