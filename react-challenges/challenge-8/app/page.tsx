@@ -8,14 +8,19 @@ type Die = {
   value: number
   isHeld: boolean
   id: string
-  hold: (id: string) => void
+  hold: (die: Die) => void
 }
 
+let firstValue: number = 0
 export default function Home() {
-  const firstValue = undefined
-  const holdDie = (id: string) => {
-    if (firstValue) setDice(prevDice => prevDice.map(die => die.id == id ? {...die, isHeld: !die.isHeld} : die))
-    else setDice(prevDice => prevDice.map(die => (die.id == id) && (die.value == firstValue) && (die.isHeld == false)? {...die, isHeld: !die.isHeld} : die))
+  
+  const assingFirst = (value: number) => firstValue = value
+  const holdDie = (diePressed: Die) => {
+    if (firstValue = 0) {
+      assingFirst(diePressed.value)
+      setDice(prevDice => prevDice.map(die => die.id == diePressed.id ? {...die, isHeld: !die.isHeld} : die))
+    }
+    else setDice(prevDice => prevDice.map(die => (die.id == diePressed.id) && (diePressed.value == firstValue) && (diePressed.isHeld == false)? {...die, isHeld: !die.isHeld} : die))
   }
   const getDiceValues = () => new Array(10).fill(0).map(() => ({
     value: Math.ceil(Math.random() * 6),
@@ -29,7 +34,7 @@ export default function Home() {
     key={die.id} 
     value={die.value} 
     held={die.isHeld} 
-    hold={() => die.hold(die.id)}/>)
+    hold={() => die.hold(die)}/>)
   const handleRoll = () => setDice(prevDice => {
     let tempDice = getDiceValues()
     return prevDice.map((die, index) => die.isHeld == false ? die = tempDice[index] : die)
