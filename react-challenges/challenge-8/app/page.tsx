@@ -16,7 +16,7 @@ export default function Home() {
   
   const assingFirst = (value: number) => firstValue = value
   const holdDie = (diePressed: Die) => {
-    if (firstValue = 0) {
+    if (firstValue === 0) {
       assingFirst(diePressed.value)
       setDice(prevDice => prevDice.map(die => die.id == diePressed.id ? {...die, isHeld: !die.isHeld} : die))
     }
