@@ -8,13 +8,11 @@ type Die = {
   value: number
   isHeld: boolean
   id: string
-  hold: (die: Die) => void
 }
 
-let firstValue: number = 0
 export default function Home() {
-  
-  const assingFirst = (value: number) => firstValue = value
+  const [firstValue, setFirstValue] = useState(0)
+  const assingFirst = (value: number) => setFirstValue(value)
   const holdDie = (diePressed: Die) => {
     if (firstValue === 0) {
       assingFirst(diePressed.value)
@@ -26,7 +24,6 @@ export default function Home() {
     value: Math.ceil(Math.random() * 6),
     isHeld: false,
     id: nanoid(),
-    hold: holdDie
   }))
   const [dice, setDice] = useState<Die[]>([])
   useEffect(() => setDice(getDiceValues()), [])
@@ -34,7 +31,7 @@ export default function Home() {
     key={die.id} 
     value={die.value} 
     held={die.isHeld} 
-    hold={() => die.hold(die)}/>)
+    hold={() => holdDie(die)}/>)
   const handleRoll = () => setDice(prevDice => {
     let tempDice = getDiceValues()
     return prevDice.map((die, index) => die.isHeld == false ? die = tempDice[index] : die)
