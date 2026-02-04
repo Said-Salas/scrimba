@@ -28,15 +28,12 @@ export default function Home() {
     else setDice(prevDice => prevDice.map(die => (die.id === diePressed.id) && (diePressed.value === firstValue) && (diePressed.isHeld === false)? {...die, isHeld: !die.isHeld} : die))
   }
 
-  const handleRoll = () => setDice(prevDice => {
-    let tempDice = getDiceValues()
-    return prevDice.map((die, index) => die.isHeld == false ? die = tempDice[index] : die)
-  })
+  const handleRoll = () => setDice(prevDice => prevDice.map(die => die.isHeld == false ? {...die, value: Math.ceil(Math.random() * 6)} : die))
 
   const assingFirst = (value: number) => setFirstValue(value)
 
   useEffect(() => setDice(getDiceValues()), [])
-  
+
   const diceEl  = dice.map((die) => <Die 
     key={die.id} 
     value={die.value} 
