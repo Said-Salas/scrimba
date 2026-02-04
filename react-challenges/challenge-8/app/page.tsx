@@ -18,7 +18,7 @@ export default function Home() {
       assingFirst(diePressed.value)
       setDice(prevDice => prevDice.map(die => die.id == diePressed.id ? {...die, isHeld: !die.isHeld} : die))
     }
-    else setDice(prevDice => prevDice.map(die => (die.id == diePressed.id) && (diePressed.value == firstValue) && (diePressed.isHeld == false)? {...die, isHeld: !die.isHeld} : die))
+    else setDice(prevDice => prevDice.map(die => (die.id === diePressed.id) && (diePressed.value === firstValue) && (diePressed.isHeld === false)? {...die, isHeld: !die.isHeld} : die))
   }
   const getDiceValues = () => new Array(10).fill(0).map(() => ({
     value: Math.ceil(Math.random() * 6),
