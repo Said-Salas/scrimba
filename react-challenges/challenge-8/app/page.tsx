@@ -34,6 +34,8 @@ export default function Home() {
 
   useEffect(() => setDice(getDiceValues()), [])
 
+  if (dice.length > 0 && dice.every(die => die.isHeld)) console.log('Game won!')
+
   const diceEl  = dice.map((die) => <Die 
     key={die.id} 
     value={die.value} 
