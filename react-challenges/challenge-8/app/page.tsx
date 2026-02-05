@@ -38,7 +38,7 @@ export default function Home() {
     if (dice.length > 0 && dice.every(die => die.isHeld)) return true
     else return false
   }
-  let gameWon = gameWin()
+  const gameWon = gameWin()
 
   const diceEl  = dice.map((die) => <Die 
     key={die.id} 
