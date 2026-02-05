@@ -34,7 +34,11 @@ export default function Home() {
 
   useEffect(() => setDice(getDiceValues()), [])
 
-  if (dice.length > 0 && dice.every(die => die.isHeld)) console.log('Game won!')
+  const gameWin = () => {
+    if (dice.length > 0 && dice.every(die => die.isHeld)) return true
+    else return false
+  }
+  let gameWon = gameWin()
 
   const diceEl  = dice.map((die) => <Die 
     key={die.id} 
@@ -45,15 +49,15 @@ export default function Home() {
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex flex-col justify-center items-center">
       <h1 className="text-[3.5rem] text-[#2B283A] font-semibold">Tenzies</h1>
-      <p className="text-[1.5rem] w-[60%] text-center text-[#4A4E74] font-inter">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+      <p className="text-[1.5rem] w-[60%] text-center text-[#4A4E74] font-inter">Roll until all dice are the same. Click a die to freeze it and start the game.</p>
       <div className="grid grid-cols-5 gap-10 w-[80%] mt-[4rem] place-items-center">
         {diceEl}
       </div>
       <button 
-        className='bg-[#5035FF] w-[10rem] h-[4rem] rounded-[0.25rem] text-[2rem] font-bold cursor-pointer mt-[3rem] shadow-md'
+        className={`bg-[#5035FF] ${gameWon ? 'w-[14rem]' : 'w-[10rem]'} h-[4rem] rounded-[0.25rem] text-[2rem] font-bold cursor-pointer mt-[3rem] shadow-md`}
         onClick={handleRoll}
       >
-        Roll
+        {gameWon ? 'New game' : 'Roll'}
       </button>
     </main>
   );
