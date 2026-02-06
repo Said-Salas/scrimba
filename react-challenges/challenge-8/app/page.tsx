@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Die } from "./components/Die";
 import { nanoid } from 'nanoid'
+import Confetti from 'react-confetti'
 
 type Die = {
   value: number
@@ -39,6 +40,10 @@ export default function Home() {
 
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex flex-col justify-center items-center">
+      {gameWon ? 
+        <Confetti /> 
+        : ''
+      }
       <h1 className="text-[3.5rem] text-[#2B283A] font-semibold">Tenzies</h1>
       <p className="text-[1.5rem] w-[60%] text-center text-[#4A4E74] font-inter">Roll until all dice are the same. Click a die to freeze it and start the game.</p>
       <div className="grid grid-cols-5 gap-10 w-[80%] mt-[4rem] place-items-center">
