@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Die } from "./components/Die";
 import { nanoid } from 'nanoid'
 import Confetti from 'react-confetti'
@@ -15,6 +15,7 @@ export default function Home() {
   const [dice, setDice] = useState<Die[]>([])
   const [firstValue, setFirstValue] = useState(0)
   const gameWon = dice.length > 0 && dice.every(die => die.isHeld)
+  const node = useRef<HTMLButtonElement>(null)
   const diceEl  = dice.map((die) => <Die 
     key={die.id} 
     value={die.value} 
@@ -38,6 +39,9 @@ export default function Home() {
   const assingFirst = (value: number) => setFirstValue(value)
 
   useEffect(() => setDice(getDiceValues()), [])
+  useEffect(() => {
+    if (gameWon) node.current?.focus()
+  }, [gameWon])
 
   return (
     <main className="w-[95vw] h-[90vh] bg-white rounded-[0.625rem] flex flex-col justify-center items-center">
@@ -57,7 +61,7 @@ export default function Home() {
       </div>
       <button 
         className={`bg-[#5035FF] ${gameWon ? 'w-[14rem]' : 'w-[10rem]'} h-[4rem] rounded-[0.25rem] text-[2rem] font-bold cursor-pointer mt-[3rem] shadow-md`}
-        onClick={gameWon ? handleNewGame : handleRoll}
+        onClick={gameWon ? handleNewGame : handleRoll} ref={node}
       >
         {gameWon ? 'New Game' : 'Roll'}
       </button>
