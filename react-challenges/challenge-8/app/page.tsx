@@ -15,7 +15,7 @@ export default function Home() {
   const [dice, setDice] = useState<Die[]>([])
   const [firstValue, setFirstValue] = useState(0)
   const gameWon = dice.length > 0 && dice.every(die => die.isHeld)
-  const node = useRef<HTMLButtonElement>(null)
+  const btnRef = useRef<HTMLButtonElement>(null)
   const diceEl  = dice.map((die) => <Die 
     key={die.id} 
     value={die.value} 
@@ -40,7 +40,7 @@ export default function Home() {
 
   useEffect(() => setDice(getDiceValues()), [])
   useEffect(() => {
-    if (gameWon) node.current?.focus()
+    if (gameWon) btnRef.current?.focus()
   }, [gameWon])
 
   return (
@@ -61,7 +61,7 @@ export default function Home() {
       </div>
       <button 
         className={`bg-[#5035FF] ${gameWon ? 'w-[14rem]' : 'w-[10rem]'} h-[4rem] rounded-[0.25rem] text-[2rem] font-bold cursor-pointer mt-[3rem] shadow-md`}
-        onClick={gameWon ? handleNewGame : handleRoll} ref={node}
+        onClick={gameWon ? handleNewGame : handleRoll} ref={btnRef}
       >
         {gameWon ? 'New Game' : 'Roll'}
       </button>
