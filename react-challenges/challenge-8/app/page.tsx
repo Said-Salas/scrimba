@@ -34,6 +34,7 @@ export default function Home() {
     else setDice(prevDice => prevDice.map(die => (die.id === diePressed.id) && (diePressed.value === firstValue) && (diePressed.isHeld === false)? {...die, isHeld: !die.isHeld} : die))
   }
   const handleRoll = () => setDice(prevDice => prevDice.map(die => die.isHeld == false ? {...die, value: Math.ceil(Math.random() * 6)} : die))
+  const handleNewGame = () => setDice(getDiceValues())
   const assingFirst = (value: number) => setFirstValue(value)
 
   useEffect(() => setDice(getDiceValues()), [])
@@ -51,9 +52,9 @@ export default function Home() {
       </div>
       <button 
         className={`bg-[#5035FF] ${gameWon ? 'w-[14rem]' : 'w-[10rem]'} h-[4rem] rounded-[0.25rem] text-[2rem] font-bold cursor-pointer mt-[3rem] shadow-md`}
-        onClick={handleRoll}
+        onClick={gameWon ? handleNewGame : handleRoll}
       >
-        {gameWon ? 'New game' : 'Roll'}
+        {gameWon ? 'New Game' : 'Roll'}
       </button>
     </main>
   );
