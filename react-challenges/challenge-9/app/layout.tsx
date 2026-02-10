@@ -18,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={hankenGrotesk.variable}>
       <body
-        className={`${hankenGrotesk.variable} antialiased flex flex-col`}
+        className='font-sans antialiased flex flex-col items-center'
       >
         {children}
       </body>

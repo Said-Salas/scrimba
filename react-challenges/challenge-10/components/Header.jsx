@@ -1,7 +1,7 @@
 export const Header = () => {
     return (
-        <header className="w-[40%] text-center">
-            <h1 className="font-medium text-[2rem] text-[#F9F4DA]">
+        <header>
+            <h1>
                 Assembly: Endgame
             </h1>
             <p>
