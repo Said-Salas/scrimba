@@ -4,4 +4,4 @@ body { margin: 0; background-color: #282726; min-height: 100vh; display: flex; f
 
 header { text-align: center; width: fit-content;}
 header > h1 { font-weight: 400; color: #F9F4DA; margin-bottom: 0;}
-header > p { color: #8E8E8E; margin-top: 0.75rem;}
+header > p { color: #8E8E8E; margin-top: 0.75rem; max-width: 24rem;}
