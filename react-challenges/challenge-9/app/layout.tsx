@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={hankenGrotesk.variable}>
       <body
-        className='font-sans antialiased flex flex-col items-center'
+        className='font-sans antialiased flex flex-col items-center p-8'
       >
         {children}
       </body>
