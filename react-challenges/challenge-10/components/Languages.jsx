@@ -6,7 +6,8 @@ export const Languages = () => {
             background: lang.backgroundColor,
             color: lang.color,
             borderRadius: '0.25rem',
-            padding: '0.3rem 0.7rem'
+            padding: '0.3rem 0.7rem',
+            fontWeight: 'bold'
             }}
         >
             {lang.name}
