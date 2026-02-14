@@ -13,7 +13,7 @@ export const Word = () => {
     ))
 
     return (
-        <section className='flex gap-0.75 mt-[3.5rem]'>
+        <section className='flex gap-0.75 mt-[2rem]'>
             {letters}
         </section>
     )

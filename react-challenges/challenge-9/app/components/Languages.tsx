@@ -14,7 +14,7 @@ export const Languages = () => {
     ))
 
     return (
-        <section className="flex flex-wrap gap-1 w-[40%] justify-center mt-[3rem] max-w-[18.5rem]">
+        <section className="flex flex-wrap gap-1 w-[40%] justify-center mt-[2rem] max-w-[18.5rem]">
             {langChips}
         </section>
     )
