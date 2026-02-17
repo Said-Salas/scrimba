@@ -9,7 +9,7 @@ import { useState } from "react"
 export const App = () => {
     const [guessedLetters, setGuessedLetters] = useState([])
     const addLetter = (letter) => {
-        setGuessedLetters(prevGL => [...prevGL, letter])
+        setGuessedLetters(prevGL => prevGL.includes(letter) ? prevGL : [...prevGL, letter])
     }
     console.log(guessedLetters)
 
