@@ -9,23 +9,20 @@ import { NewGame } from "./components/NewGame";
 import { useState } from "react";
 
 export default function Home() {
-  const [guessedLetters, setGuessedLetters] = useState<string[]>([])
+  const [guessedLet, setGuessedLet] = useState<string>('')
   const addLetter = (letter: string) => {
-    setGuessedLetters(prevGL => {
-      const lettersSet = new Set(prevGL)
-      lettersSet.add(letter)
-      return Array.from(lettersSet)
-    }) 
+    setGuessedLet(letter) 
   }
-  console.log(guessedLetters)
+
+  const [btnState, setBtnState]
 
   return (
     <>
       <Header />
       <Status />
       <Languages />
-      <Word />
-      <Keyboard addLetter={(letter: string) => addLetter(letter)}/>
+      <Word guess={guessedLet} match={undefined}/>
+      <Keyboard addLetter={(letter: string) => addLetter(letter)} btnState={match}/>
       <NewGame />
     </>
   );
