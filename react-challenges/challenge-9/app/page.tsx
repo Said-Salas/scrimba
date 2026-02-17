@@ -11,7 +11,11 @@ import { useState } from "react";
 export default function Home() {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
   const addLetter = (letter: string) => {
-    setGuessedLetters(prevGL => prevGL.includes(letter) ? prevGL : [...prevGL, letter]) 
+    setGuessedLetters(prevGL => {
+      const lettersSet = new Set(prevGL)
+      lettersSet.add(letter)
+      return Array.from(lettersSet)
+    }) 
   }
   console.log(guessedLetters)
 
