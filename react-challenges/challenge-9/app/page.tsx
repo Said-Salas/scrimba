@@ -3,6 +3,7 @@ import { Status } from "./components/Status";
 import { Languages } from "./components/Languages";
 import { Word } from "./components/Word";
 import { Keyboard } from "./components/Keyboard";
+import { NewGame } from "./components/NewGame";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Languages />
       <Word />
       <Keyboard />
+      <NewGame />
     </>
   );
 }
