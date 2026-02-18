@@ -1,10 +1,7 @@
 'use client'
 import { nanoid } from 'nanoid'
-import { useState } from 'react'
 
-export const Word = ({guess, match}: {guess: string, match: boolean | undefined}) => {
-    const [word, setWord] = useState('react')
-    match = [...word].includes(guess) ? true : false
+export const Word = ({word}: {word: string}) => {
     
     const letters = [...word].map(letter => (
         <span key={nanoid()} className='text-[#F9F4DA] bg-[#323232] w-[3.5rem] h-[3.5rem] border-b-2 border-[#F9F4DA]

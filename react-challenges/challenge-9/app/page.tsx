@@ -6,23 +6,18 @@ import { Languages } from "./components/Languages";
 import { Word } from "./components/Word";
 import { Keyboard } from "./components/Keyboard";
 import { NewGame } from "./components/NewGame";
-import { useState } from "react";
+import { useState} from "react";
 
 export default function Home() {
-  const [guessedLet, setGuessedLet] = useState<string>('')
-  const addLetter = (letter: string) => {
-    setGuessedLet(letter) 
-  }
-
-  const [btnState, setBtnState]
-
+  const [word, setWord] = useState('react')
+  
   return (
     <>
       <Header />
       <Status />
       <Languages />
-      <Word guess={guessedLet} match={undefined}/>
-      <Keyboard addLetter={(letter: string) => addLetter(letter)} btnState={match}/>
+      <Word word={word}/>
+      <Keyboard word={word}/>
       <NewGame />
     </>
   );
