@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { nanoid } from 'nanoid'
 
-export const Word = () => {
-    const [word, setWord] = useState('react')
+export const Word = ({word}) => {
+    
     const letters = [...word].map(letter => (
         <span className="letter" key={nanoid()}>
             {letter.toUpperCase()}

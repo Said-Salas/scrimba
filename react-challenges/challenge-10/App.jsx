@@ -7,19 +7,15 @@ import { NewGame } from "./components/NewGame"
 import { useState } from "react"
 
 export const App = () => {
-    const [guessedLetters, setGuessedLetters] = useState([])
-    const addLetter = (letter) => {
-        setGuessedLetters(prevGL => prevGL.includes(letter) ? prevGL : [...prevGL, letter])
-    }
-    console.log(guessedLetters)
-
+    const [word, setWord] = useState('react')
+    
     return (
         <main>  
             <Header />
             <Status />
             <Languages />
-            <Word />
-            <Keyboard addLetter={(letter) => addLetter(letter)}/>
+            <Word word={word}/>
+            <Keyboard word={word}/>
             <NewGame />
         </main>
     )
