@@ -10,14 +10,15 @@ import { useState} from "react";
 
 export default function Home() {
   const [word, setWord] = useState('react')
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([])
   
   return (
     <>
       <Header />
       <Status />
       <Languages />
-      <Word word={word}/>
-      <Keyboard word={word}/>
+      <Word word={word} guessedLetters={guessedLetters}/>
+      <Keyboard word={word} guessedLetters={guessedLetters} setGuessedLetters={setGuessedLetters}/>
       <NewGame />
     </>
   );

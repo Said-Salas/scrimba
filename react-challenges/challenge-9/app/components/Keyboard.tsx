@@ -1,7 +1,6 @@
-import { useState } from "react"
-
-export const Keyboard = ({word}: {word: string}) => {
-   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
+import { Dispatch, SetStateAction } from "react"
+export const Keyboard = ({word, guessedLetters, setGuessedLetters}: {word: string, guessedLetters: string[], setGuessedLetters: Dispatch<SetStateAction<string[]>>}) => {
+  
     
     const alphabet = 'abcdefghijklmnopqrstuvxwyz'
     const lettersBtn = [...alphabet].map(letter => {
