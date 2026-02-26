@@ -8,14 +8,15 @@ import { useState } from "react"
 
 export const App = () => {
     const [word, setWord] = useState('react')
+    const [guessedLetters, setGuessedLetters] = useState([])
     
     return (
         <main>  
             <Header />
             <Status />
             <Languages />
-            <Word word={word}/>
-            <Keyboard word={word}/>
+            <Word word={word} guessedLetters={guessedLetters}/>
+            <Keyboard word={word} guessedLetters={guessedLetters} setGuessedLetters={setGuessedLetters}/>
             <NewGame />
         </main>
     )

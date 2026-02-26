@@ -1,8 +1,5 @@
-import { use, useState } from 'react'
-
-export const Keyboard = ({word}) => {
+export const Keyboard = ({word, guessedLetters, setGuessedLetters}) => {
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    const [guessedLetters, setGuessedLetters] = useState([])
 
     const alphabetEl = [...alphabet].map(letter => {
         const isGuessed = guessedLetters.includes(letter)
