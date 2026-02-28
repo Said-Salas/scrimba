@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <Header />
       <Status />
-      <Languages />
+      <Languages wrongGuessesCount={wrongGuessesCount}/>
       <Word word={word} guessedLetters={guessedLetters}/>
       <Keyboard word={word} guessedLetters={guessedLetters} setGuessedLetters={setGuessedLetters}/>
       <NewGame />
