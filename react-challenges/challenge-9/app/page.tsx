@@ -11,6 +11,8 @@ import { useState} from "react";
 export default function Home() {
   const [word, setWord] = useState('react')
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
+  const wrongGuessesCount = guessedLetters.filter(letter => ![...word].includes(letter)).length
+  console.log(wrongGuessesCount)
   
   return (
     <>

@@ -1,13 +1,10 @@
-import { useState } from "react"
-import { nanoid } from 'nanoid'
-
 export const Word = ({word, guessedLetters}) => {
     
-    const letters = [...word].map(letter => {
+    const letters = [...word].map((letter, index) => {
         const showLetter = guessedLetters.includes(letter)
 
         return (
-            <span className="letter" key={nanoid()}>
+            <span className="letter" key={index}>
                 {showLetter ? letter.toUpperCase() : ''}
             </span>
         )
