@@ -10,13 +10,12 @@ export const App = () => {
     const [word, setWord] = useState('react')
     const [guessedLetters, setGuessedLetters] = useState([])
     const wrongGuessesCount = guessedLetters.filter(letter => ![...word].includes(letter)).length
-    console.log(wrongGuessesCount)
     
     return (
         <main>  
             <Header />
             <Status />
-            <Languages />
+            <Languages wrongGuessesCount={wrongGuessesCount}/>
             <Word word={word} guessedLetters={guessedLetters}/>
             <Keyboard word={word} guessedLetters={guessedLetters} setGuessedLetters={setGuessedLetters}/>
             <NewGame />
