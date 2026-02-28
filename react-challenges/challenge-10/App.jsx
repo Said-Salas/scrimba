@@ -9,6 +9,8 @@ import { useState } from "react"
 export const App = () => {
     const [word, setWord] = useState('react')
     const [guessedLetters, setGuessedLetters] = useState([])
+    const wrongGuessesCount = guessedLetters.filter(letter => ![...word].includes(letter)).length
+    console.log(wrongGuessesCount)
     
     return (
         <main>  
