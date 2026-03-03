@@ -1,8 +1,7 @@
-import { languages } from '../languages'
-
-export const Languages = ({wrongGuessesCount}) => {
+export const Languages = ({wrongGuessesCount, languages}) => {
     const langChips = languages.map((lang, index) => {
-        const isLost = index < wrongGuessesCount
+        let isLost = false
+        if (!(index == languages.length - 1)) isLost = index < wrongGuessesCount
         
         return (
             <span 
@@ -13,7 +12,7 @@ export const Languages = ({wrongGuessesCount}) => {
                     color: lang.color,
                     borderRadius: '0.25rem',
                     padding: '0.3rem 0.7rem',
-                    fontWeight: 'bold',
+                    fontWeight: '500',
                     position: 'relative',
                     overflow: 'hidden'
                     }}
