@@ -1,9 +1,16 @@
-import { languages } from "@/languages"
+interface Language {
+    name: string
+    backgroundColor: string
+    color: string
+}
 
-export const Languages = ({wrongGuessesCount}: {wrongGuessesCount: number}) => {
+export const Languages = ({wrongGuessesCount, languages}: {wrongGuessesCount: number, languages: Language[]}) => {
     const langChips = languages.map((lang, index) => {
         const isLost = index < wrongGuessesCount
-        const lostStyles = isLost ? "before:content-['💀'] before:absolute before:flex before:items-center before:justify-center before:h-full before:w-full before:text-[0.85rem] before:top-0 before:left-0 before:bg-black/70" : ''
+        let langStyles = ''
+        if (!(index == languages.length -1)) {
+            langStyles = isLost ? "before:content-['💀'] before:absolute before:flex before:items-center before:justify-center before:h-full before:w-full before:text-[0.85rem] before:top-0 before:left-0 before:bg-black/70" : ''
+        }
         
         return (
             <span 
@@ -17,7 +24,7 @@ export const Languages = ({wrongGuessesCount}: {wrongGuessesCount: number}) => {
                     borderRadius: '0.25rem',
                     fontWeight: 'bold'
                 }}
-                className={lostStyles}
+                className={langStyles}
             >
                 {lang.name}
             </span>
