@@ -13,7 +13,7 @@ export default function Home() {
   const [word, setWord] = useState('react')
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
   const wrongGuessesCount = guessedLetters.filter(letter => ![...word].includes(letter)).length
-  const isGameLost = wrongGuessesCount >= languages.length ? true : false
+  const isGameLost = wrongGuessesCount >= languages.length - 1 ? true : false
   const isGameWon = [...word].every(letter => guessedLetters.includes(letter))
   const isGameOver = isGameLost || isGameWon
   
