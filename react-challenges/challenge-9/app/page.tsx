@@ -6,19 +6,16 @@ import { Languages } from "./components/Languages";
 import { Word } from "./components/Word";
 import { Keyboard } from "./components/Keyboard";
 import { NewGame } from "./components/NewGame";
-import { useEffect, useState} from "react";
+import { useState } from "react";
 import { languages } from "@/languages"
 
 export default function Home() {
   const [word, setWord] = useState('react')
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
-  const [isGameOver, setIsGameOver] = useState(false)
   const wrongGuessesCount = guessedLetters.filter(letter => ![...word].includes(letter)).length
-  useEffect(() => {
-    if (wrongGuessesCount >= languages.length - 1) {
-      setIsGameOver(!isGameOver)
-    }
-  }, [wrongGuessesCount])
+  const isGameLost = wrongGuessesCount >= languages.length ? true : false
+  const isGameWon = [...word].every(letter => guessedLetters.includes(letter))
+  const isGameOver = isGameLost || isGameWon
   
   return (
     <>
