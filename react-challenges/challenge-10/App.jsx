@@ -18,7 +18,7 @@ export const App = () => {
     return (
         <main>  
             <Header />
-            <Status isGameLost={isGameLost} isGameWon={isGameWon}/>
+            <Status isGameWon={isGameWon} isGameLost={isGameLost}/>
             <Languages wrongGuessesCount={wrongGuessesCount} languages={languages}/>
             <Word word={word} guessedLetters={guessedLetters}/>
             <Keyboard word={word} guessedLetters={guessedLetters} setGuessedLetters={setGuessedLetters} isGameOver={isGameOver}/>
