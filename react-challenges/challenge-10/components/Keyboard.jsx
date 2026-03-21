@@ -1,4 +1,4 @@
-export const Keyboard = ({word, guessedLetters, setGuessedLetters, isGameOver}) => {
+export const Keyboard = ({word, guessedLetters, setGuessedLetters, isGameOver, setGuessResult}) => {
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
     const alphabetEl = [...alphabet].map(letter => {
@@ -8,8 +8,13 @@ export const Keyboard = ({word, guessedLetters, setGuessedLetters, isGameOver}) 
         const styles = {
             backgroundColor: isRight ? '#10A95B': isWrong ? '#EC5D49' : '#FCBA29'
         }
+        const setFunctions = () => {
+            setGuessedLetters(prevGL => [...prevGL, letter])
+            setGuessResult(prevGuess => prevGuess = isRight ? true : false)
+        }
+
         return (
-            <button key={letter} disabled={isGameOver} className="key-btn" style={styles} onClick={() => setGuessedLetters(prevGL => [...prevGL, letter])}>
+            <button key={letter} disabled={isGameOver} className="key-btn" style={styles} onClick={() => setFunctions()}>
                 {letter.toUpperCase()}
             </button>
         )

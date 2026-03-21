@@ -23,3 +23,4 @@ header > p { color: #8E8E8E; margin-top: 0.75rem; max-width: 24rem;}
     font-family: 'Hanken Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-top: 3rem; cursor: pointer;}
 .lost-lang::before {  content: "💀"; position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center;
     justify-content: center; background-color: rgba(0, 0, 0, 0.7); font-size: 0.85rem; color: white; }
+.eliminated { border: 2px dashed black; }
