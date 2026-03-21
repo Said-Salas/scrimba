@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Status isGameWon={isGameWon} isGameLost={isGameLost}/>
+      <Status isGameWon={isGameWon} isGameLost={isGameLost} wrongGuessesCount={wrongGuessesCount} languages={languages}/>
       <Languages wrongGuessesCount={wrongGuessesCount} languages={languages}/>
       <Word word={word} guessedLetters={guessedLetters}/>
       <Keyboard word={word} guessedLetters={guessedLetters} setGuessedLetters={setGuessedLetters} isGameOver={isGameOver}/>
