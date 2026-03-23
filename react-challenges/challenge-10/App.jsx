@@ -31,6 +31,12 @@ export const App = () => {
     const isGameWon = [...word].every(letter => guessedLetters.includes(letter))
     const isGameOver = isGameLost || isGameWon
 
+    const newGame = () => {
+        setWord(getRandomWord())
+        setGuessedLetters([])
+        setGotNewErrors(null)
+    }
+
     return (
         <main>  
             <Header />
@@ -38,7 +44,7 @@ export const App = () => {
             <Languages wrongGuessesCount={wrongGuessesCount} languages={languages}/>
             <Word word={word} guessedLetters={guessedLetters}/>
             <Keyboard word={word} guessedLetters={guessedLetters} setGuessedLetters={setGuessedLetters} isGameOver={isGameOver}/>
-            <NewGame isGameOver={isGameOver}/>
+            <NewGame isGameOver={isGameOver} newGame={() => newGame()}/>
         </main>
     )
 }
