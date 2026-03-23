@@ -7,6 +7,7 @@ import { NewGame } from "./components/NewGame"
 import { useState, useEffect } from "react"
 import { languages } from './languages'
 import { getRandomWord } from "./utils"
+import Confetti from 'react-confetti'
 
 export const App = () => {
     const [word, setWord] = useState("")
@@ -14,7 +15,10 @@ export const App = () => {
     const wrongGuessesCount = guessedLetters.filter(letter => ![...word].includes(letter)).length
     const rightGuessesCount = guessedLetters.filter(letter => [...word].includes(letter)).length
     const [gotNewErrors, setGotNewErrors] = useState(null)
-    
+    const isGameLost = wrongGuessesCount >= languages.length - 1
+    const isGameWon = [...word].every(letter => guessedLetters.includes(letter))
+    const isGameOver = isGameLost || isGameWon
+
     useEffect(() => {
         setWord(getRandomWord())
     }, [])
@@ -27,10 +31,6 @@ export const App = () => {
         if (rightGuessesCount > 0) setGotNewErrors(false)
     }, [rightGuessesCount])
 
-    const isGameLost = wrongGuessesCount >= languages.length - 1
-    const isGameWon = [...word].every(letter => guessedLetters.includes(letter))
-    const isGameOver = isGameLost || isGameWon
-
     const newGame = () => {
         setWord(getRandomWord())
         setGuessedLetters([])
@@ -38,7 +38,8 @@ export const App = () => {
     }
 
     return (
-        <main>  
+        <main>
+            {isGameWon ? <Confetti /> : ''}  
             <Header />
             <Status isGameWon={isGameWon} isGameLost={isGameLost} wrongGuessCount={wrongGuessesCount} languages={languages} gotNewErrors={gotNewErrors}/>
             <Languages wrongGuessesCount={wrongGuessesCount} languages={languages}/>

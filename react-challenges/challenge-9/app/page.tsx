@@ -34,16 +34,6 @@ export default function Home() {
     if (rightGuessCount > 0) setGotNewErrors(false)
   }, [rightGuessCount])
 
-  useEffect(() => {
-    if (!isGameWon) return
-    document.documentElement.style.overflow = "hidden"
-    document.body.style.overflow = "hidden"
-    return () => {
-      document.documentElement.style.overflow = ""
-      document.body.style.overflow = ""
-    }
-  }, [isGameWon])
-
   const newGame = () => {
     setWord(getRandomWord())
     setGuessedLetters([])
