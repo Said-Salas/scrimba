@@ -11,11 +11,17 @@ export const App = () => {
     const [word, setWord] = useState('react')
     const [guessedLetters, setGuessedLetters] = useState([])
     const wrongGuessesCount = guessedLetters.filter(letter => ![...word].includes(letter)).length
-    console.log(wrongGuessesCount)
-    let gotNewErrors = false
+    const rightGuessesCount = guessedLetters.filter(letter => [...word].includes(letter)).length
+    const [gotNewErrors, setGotNewErrors] = useState(null)
+    
     useEffect(() => {
-        gotNewErrors = true
+         if (wrongGuessesCount > 0) setGotNewErrors(true)
     }, [wrongGuessesCount])
+
+    useEffect(() => {
+        if (rightGuessesCount > 0) setGotNewErrors(false)
+    }, [rightGuessesCount])
+
     const isGameLost = wrongGuessesCount >= languages.length - 1
     const isGameWon = [...word].every(letter => guessedLetters.includes(letter))
     const isGameOver = isGameLost || isGameWon

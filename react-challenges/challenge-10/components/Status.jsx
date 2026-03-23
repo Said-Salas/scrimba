@@ -6,7 +6,7 @@ export const Status = ({isGameWon, isGameLost, wrongGuessCount, languages, gotNe
     }
 
     const gameStatus = () => {
-        if (!isGameWon && !isGameLost && gotNewErrors) {
+        if (!isGameWon && !isGameLost && wrongGuessCount > 0 && gotNewErrors) {
             const language = languages[wrongGuessCount - 1].name
             const message = getFarewellText(language)
 
