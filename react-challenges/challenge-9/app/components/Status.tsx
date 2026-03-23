@@ -6,10 +6,11 @@ interface Language {
     color: string
 }
 
-export const Status = ({isGameWon, isGameLost, wrongGuessesCount, languages}: {isGameWon: boolean, isGameLost: boolean, wrongGuessesCount: number, languages: Language[]}) => {
+export const Status = ({isGameWon, isGameLost, wrongGuessesCount, languages, gotNewErrors}: 
+    {isGameWon: boolean, isGameLost: boolean, wrongGuessesCount: number, languages: Language[], gotNewErrors: boolean | null}) => {
     const gotErrors = wrongGuessesCount > 0 
     const gameStatus = () => {
-        if (!isGameWon && !isGameLost && gotErrors) {
+        if (!isGameWon && !isGameLost && gotNewErrors) {
             const language = languages[wrongGuessesCount - 1].name
             const message = getFarewellText(language)
 
@@ -32,8 +33,8 @@ export const Status = ({isGameWon, isGameLost, wrongGuessesCount, languages}: {i
     }
 
     return (
-        <section className={`flex flex-col items-center justify-center w-[61%] h-[4rem] ${isGameWon ? 'bg-[#10A95B]' : isGameLost ? 'bg-[#BA2A2A]' : gotErrors ? 'bg-[#7A5EA7]' : ''} 
-            rounded-[0.25rem] mt-[1.5rem] text-[#F9F4DA] ${gotErrors && !isGameWon && !isGameLost ? 'border-2 border-dashed border-black/40' : ''}`}
+        <section className={`flex flex-col items-center justify-center w-[61%] h-[4rem] ${isGameWon ? 'bg-[#10A95B]' : isGameLost ? 'bg-[#BA2A2A]' : gotNewErrors ? 'bg-[#7A5EA7]' : ''} 
+            rounded-[0.25rem] mt-[1.5rem] text-[#F9F4DA] ${gotNewErrors && !isGameWon && !isGameLost ? 'border-2 border-dashed border-black/40' : ''}`}
         >
             {gameStatus()}
         </section> 
