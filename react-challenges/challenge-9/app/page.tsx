@@ -9,6 +9,7 @@ import { NewGame } from "./components/NewGame";
 import { useState, useEffect } from "react";
 import { languages } from "@/languages"
 import { getRandomWord } from "@/utils";
+import Confetti from 'react-confetti'
 
 export default function Home() {
   const [word, setWord] = useState("")
@@ -33,6 +34,16 @@ export default function Home() {
     if (rightGuessCount > 0) setGotNewErrors(false)
   }, [rightGuessCount])
 
+  useEffect(() => {
+    if (!isGameWon) return
+    document.documentElement.style.overflow = "hidden"
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.documentElement.style.overflow = ""
+      document.body.style.overflow = ""
+    }
+  }, [isGameWon])
+
   const newGame = () => {
     setWord(getRandomWord())
     setGuessedLetters([])
@@ -41,6 +52,9 @@ export default function Home() {
   
   return (
     <>
+      {isGameWon ? 
+        <Confetti /> : ''
+      }
       <Header />
       <Status isGameWon={isGameWon} isGameLost={isGameLost} wrongGuessesCount={wrongGuessesCount} languages={languages} gotNewErrors={gotNewErrors}/>
       <Languages wrongGuessesCount={wrongGuessesCount} languages={languages}/>
