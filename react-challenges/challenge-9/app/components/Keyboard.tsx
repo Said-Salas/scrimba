@@ -11,7 +11,7 @@ export const Keyboard = ({word, guessedLetters, setGuessedLetters, isGameOver}:
         return (
             <button 
                 key={letter} 
-                disabled={isGameOver}
+                disabled={isGameOver || isGuessed}
                 className={`text-[#1E1E1E] w-[3.5rem] h-[3.5rem] border-1 border-[#D7D7D7] rounded text-[1.5rem] 
                     font-medium ${isGameOver ? '' : 'cursor-pointer'} ${isCorrect ? 'bg-[#10A95B]' : isWrong ? 'bg-[#EC5D49]' : 'bg-[#FCBA29]'}`}
                 onClick={() => setGuessedLetters(prGL => [...prGL, letter])}

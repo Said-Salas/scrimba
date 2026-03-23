@@ -10,7 +10,7 @@ export const Keyboard = ({word, guessedLetters, setGuessedLetters, isGameOver}) 
         }
        
         return (
-            <button key={letter} disabled={isGameOver} className="key-btn" style={styles} onClick={() => setGuessedLetters(prevGL => [...prevGL, letter])}>
+            <button key={letter} disabled={isGameOver || isGuessed} className="key-btn" style={styles} onClick={() => setGuessedLetters(prevGL => [...prevGL, letter])}>
                 {letter.toUpperCase()}
             </button>
         )
