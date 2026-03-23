@@ -44,7 +44,7 @@ export default function Home() {
       <Header />
       <Status isGameWon={isGameWon} isGameLost={isGameLost} wrongGuessesCount={wrongGuessesCount} languages={languages} gotNewErrors={gotNewErrors}/>
       <Languages wrongGuessesCount={wrongGuessesCount} languages={languages}/>
-      <Word word={word} guessedLetters={guessedLetters}/>
+      <Word word={word} guessedLetters={guessedLetters} isGameLost={isGameLost}/>
       <Keyboard word={word} guessedLetters={guessedLetters} setGuessedLetters={setGuessedLetters} isGameOver={isGameOver}/>
       <NewGame isGameOver={isGameOver} newGame={() => newGame()}/>
     </>
