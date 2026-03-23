@@ -32,6 +32,12 @@ export default function Home() {
   useEffect(() => {
     if (rightGuessCount > 0) setGotNewErrors(false)
   }, [rightGuessCount])
+
+  const newGame = () => {
+    setWord(getRandomWord())
+    setGuessedLetters([])
+    setGotNewErrors(null)
+  }
   
   return (
     <>
@@ -40,7 +46,7 @@ export default function Home() {
       <Languages wrongGuessesCount={wrongGuessesCount} languages={languages}/>
       <Word word={word} guessedLetters={guessedLetters}/>
       <Keyboard word={word} guessedLetters={guessedLetters} setGuessedLetters={setGuessedLetters} isGameOver={isGameOver}/>
-      <NewGame isGameOver={isGameOver}/>
+      <NewGame isGameOver={isGameOver} newGame={() => newGame()}/>
     </>
   );
 }

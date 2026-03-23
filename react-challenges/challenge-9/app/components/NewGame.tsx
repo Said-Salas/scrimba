@@ -1,8 +1,8 @@
-export const NewGame = ({isGameOver}: {isGameOver: boolean}) => {
+export const NewGame = ({isGameOver, newGame}: {isGameOver: boolean, newGame: () => void}) => {
     return (
         isGameOver ? 
         <button className="w-[30%] h-[3rem] bg-[#11B5E5] border-1 border-[#D7D7D7] rounded mt-[3rem] text-[#1E1E1E]
-            font-semibold cursor-pointer"
+            font-semibold cursor-pointer" onClick={newGame}
         >
             New Game
         </button> : ''
