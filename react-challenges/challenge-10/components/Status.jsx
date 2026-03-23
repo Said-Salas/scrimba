@@ -1,13 +1,12 @@
 import { getFarewellText } from "../utils"
 
-export const Status = ({isGameWon, isGameLost, wrongGuessCount, languages, guessResult}) => {
-    const gotErrors = wrongGuessCount > 0
+export const Status = ({isGameWon, isGameLost, wrongGuessCount, languages, gotNewErrors}) => {
     const styles = { 
-        backgroundColor: isGameWon ? '#10A95B' : isGameLost ? '#BA2A2A' : gotErrors ? '#7A5EA7' : '', 
+        backgroundColor: isGameWon ? '#10A95B' : isGameLost ? '#BA2A2A' : gotNewErrors ? '#7A5EA7' : '', 
     }
 
     const gameStatus = () => {
-        if (!isGameWon && !isGameLost && gotErrors && !guessResult) {
+        if (!isGameWon && !isGameLost && gotNewErrors) {
             const language = languages[wrongGuessCount - 1].name
             const message = getFarewellText(language)
 
@@ -30,7 +29,7 @@ export const Status = ({isGameWon, isGameLost, wrongGuessCount, languages, guess
     }
 
     return (
-        <section className={`status ${gotErrors && !isGameWon && !isGameLost? 'eliminated' : ''}`} style={styles}>
+        <section className={`status ${gotNewErrors && !isGameWon && !isGameLost? 'eliminated' : ''}`} style={styles}>
             {gameStatus()}
         </section>
     )
