@@ -1,57 +1,41 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-// import ProductsList from "./ProductsList"
-
-const ProductsList = React.lazy(() => {
-  return import('./ProductsList')
-})
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Product from "./Product"
+import productsData from "./data"
 
 function App() {
   const [count, setCount] = React.useState(0)
-  const [showProducts, setShowProducts] = React.useState(false)
+  const [sort, setSort] = React.useState(false)
+  const sortedProducts = React.useMemo(() => [...productsData].sort((a, b) => a.name.localeCompare(b.name)), [productsData])
+  const visibleProducts = sort ? sortedProducts : productsData
 
-  function increment() {
-    setCount(prevCount => prevCount + 1)
-  }
-
-  function decrement() {
-    setCount(prevCount => prevCount - 1)
-  }
+  const increment = () => setCount(prevCount => prevCount + 1)
+  const decrement = () => setCount(prevCount => prevCount - 1)
 
   return (
     <>
       <h1>The current count is {count}</h1>
-      <button className="button" onClick={decrement}>
-        -
-            </button>
-      <button className="button" onClick={increment}>
-        +
-            </button>
+      <button className="button" onClick={decrement}>-</button>
+      <button className="button" onClick={increment}>+</button>
       <br />
       <br />
       <button
         className="button"
-        onClick={() => setShowProducts(prev => !prev)}
+        onClick={() => setSort(prev => !prev)}
       >
-        Show Products
-            </button>
+        {sort ? "Unsort" : "Sort"}
+      </button>
       <br />
       <br />
-      <React.Suspense fallback={<h3>Loading...</h3>}>
-        { showProducts ? (
-          <div className="products-list">
-            <ProductsList />
-          </div>
-          ) : null 
+      <div className="products-list">
+        {
+          visibleProducts.map(product => (
+            <Product key={product.id} product={product} />
+          ))
         }
-      </React.Suspense>
-      
+      </div>
     </>
   )
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
