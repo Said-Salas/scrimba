@@ -16,7 +16,13 @@ export default function Van() {
         fetchVan()
     }, [id])
     
-    if (!van) return <h2 className='loading'>Loading...</h2>
+    if (!van) {
+        return (
+            <main className="loading-container">
+                <h2 className='loading'>Loading...</h2>
+            </main>
+        )
+    }
     
     return (
         <>

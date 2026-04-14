@@ -33,7 +33,13 @@ export default function Vans() {
                     </div>
                 )) : null
                 
-    if (!vans) return <h2 className='loading'>Loading...</h2>
+    if (!vans) {
+        return (
+            <main className="loading-container">
+                <h2 className='loading'>Loading...</h2>
+            </main>
+        )
+    }
                 
     return (
         <main className='vans-section'>
