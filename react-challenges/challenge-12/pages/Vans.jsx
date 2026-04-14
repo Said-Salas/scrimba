@@ -54,7 +54,13 @@ export default function Vans() {
    const displayedVans = filter && vans ? vans.filter(van => van.type === filter) : vans
    const vansCards = vans ? displayedVans.map(van => (
                     <div className='van-card' key={van.id}>
-                        <Link to={`/vans/${van.id}`}><img src={van.imageUrl} alt={van.name}/></Link>
+                        <Link 
+                            to={`/vans/${van.id}`}
+                            aria-label={`View details for ${van.name}, 
+                             priced at $${van.price} per day`}
+                        >
+                            <img src={van.imageUrl} alt={`Image of ${van.name}`}/>
+                        </Link>
                         <div>
                             <div className='name-tag'>
                                 <h2>{van.name}</h2>
