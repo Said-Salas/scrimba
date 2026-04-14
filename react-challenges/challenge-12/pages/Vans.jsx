@@ -4,15 +4,52 @@ import { Link } from 'react-router-dom'
 export default function Vans() {
     const [vans, setVans] = React.useState(null)
     const [filter, setFilter] = React.useState(null)
-    
+    const [status, setStatus] = React.useState('loading')
+
     React.useEffect(() => {
-        async function fetchData() {
-            const response = await fetch('/api/vans')
-            const data = await response.json()
-            setVans(data.vans)
+        async function fetchData () {
+            setStatus('loading')
+
+            try {   
+                const response = await fetch(`/api/vans`)
+                if (!response.ok) {
+                    setStatus('error')
+                    return
+                }
+
+                const data = await response.json()
+                const vansData = data.van ?? data.vans ?? null
+
+                if(!vansData) {
+                    setStatus('error')
+                    return
+                }
+
+                setVans(vansData)
+                setStatus('ready')
+            } catch {
+                setStatus('error')
+            }
         }
+
         fetchData()
     }, [])
+
+    if (status === 'loading') {
+        return (
+            <main className="loading-container">
+                <h2 className='message'>Loading...</h2>
+            </main>
+        )
+    }
+
+    if (status === 'error') {
+        return (
+            <main className="loading-container">
+                <h2 className='message'>Couldn't get the data for this page.</h2>
+            </main>
+        )
+    }
     
    const displayedVans = filter && vans ? vans.filter(van => van.type === filter) : vans
    const vansCards = vans ? displayedVans.map(van => (

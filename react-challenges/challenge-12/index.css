@@ -55,7 +55,7 @@ justify-content: center; align-items: center; font-size: 0.88rem;}
 .loading-container { height: 76vh;}
 .arrow-btn { width: 6%;}
 .arrow-btn > img { width: 100%; cursor: pointer; display: block;}
-.loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.message { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;}
 .van-section { padding: 0 1.5rem; margin-top: 2rem; display: flex; flex-direction: column; align-items: flex-start;}
 .van-section > img { width: 100%; border-radius: 0.4rem; }
 .van-section > button { margin-top: 2.4rem;}
