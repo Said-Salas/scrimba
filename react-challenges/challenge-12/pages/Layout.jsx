@@ -10,8 +10,8 @@ export default function Layout() {
           <img src={logo} alt='van life logo'/>
         </Link>
         <div className='nav-links'>
-          <Link to='/about' className='btn-c-one'>About</Link>
-          <Link to='/vans' className='btn-c-one'>Vans</Link>
+          <Link to='/about' className='btn-c-two'>About</Link>
+          <Link to='/vans' className='btn-c-two'>Vans</Link>
         </div>
       </nav>
       <Outlet />

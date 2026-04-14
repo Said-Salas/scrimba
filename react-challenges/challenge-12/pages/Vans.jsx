@@ -43,26 +43,26 @@ export default function Vans() {
                     <div>
                         <button 
                             
-                            className={`btn-c-three simpleTwo ${filter === 'simple' ? 'active' : ''}`} 
+                            className={`btn-c-four simpleTwo ${filter === 'simple' ? 'active' : ''}`} 
                             onClick={() => setFilter('simple')}
                         >
                             Simple
                         </button>
                         <button 
-                            className={`btn-c-three luxuryTwo ${filter === 'luxury' ? 'active' : ''}`} 
+                            className={`btn-c-four luxuryTwo ${filter === 'luxury' ? 'active' : ''}`} 
                             onClick={() => setFilter('luxury')}
                         >
                             Luxury
                         </button>
                         <button 
-                            className={`btn-c-three ruggedTwo ${filter === 'rugged' ? 'active' : ''}`} 
+                            className={`btn-c-four ruggedTwo ${filter === 'rugged' ? 'active' : ''}`} 
                             onClick={() => setFilter('rugged')}
                         >
                             Rugged
                         </button>
                     </div>
                     <button 
-                        className='btn-c-two'
+                        className='btn-c-three'
                         onClick={() => setFilter(null)}
                     >
                         Clear filters

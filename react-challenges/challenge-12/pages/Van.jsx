@@ -22,7 +22,7 @@ export default function Van() {
         <>
             <div className='van-header'>
                 <Link to='/vans' className='arrow-btn'><img src={arrow}/></Link>
-                <Link className='btn-c-four' to='/vans'>Back to all vans</Link>
+                <Link className='btn-c-five' to='/vans'>Back to all vans</Link>
             </div>
             <main className='van-section'>
                 <img src={van.imageUrl}/>
@@ -33,7 +33,7 @@ export default function Van() {
                 <h2 className='van-price'>${van.price}<p>/day</p></h2>
                 <p>{van.description}</p>
             </main>
-            <button className='btn-c-five'>Rent this van</button>
+            <Link className='btn-c-one'>Rent this van</Link>
         </>
     )
 }
