@@ -1,5 +1,4 @@
 import {Link, Outlet} from 'react-router-dom'
-
 import logo from '../assets/logog.png'
 
 export default function Layout() {
@@ -16,7 +15,7 @@ export default function Layout() {
       </nav>
       <Outlet />
       <footer>
-        <p>Ⓒ 2022 #VANLIFE</p>
+        <p>Ⓒ 2026 #VANLIFE</p>
       </footer>
     </>
   );
