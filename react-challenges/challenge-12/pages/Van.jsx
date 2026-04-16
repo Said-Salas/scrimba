@@ -56,7 +56,7 @@ export default function Van() {
     return (
         <>
             <div className='van-header'>
-                <Link to='/vans' className='arrow-btn'><img src={arrow}/></Link>
+                &larr;
                 <Link className='btn-c-five' to='/vans'>Back to all vans</Link>
             </div>
             <main className='van-section'>
