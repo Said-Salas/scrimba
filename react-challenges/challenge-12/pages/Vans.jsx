@@ -1,10 +1,12 @@
-import React from "react"
-import { Link } from 'react-router-dom'
+import React, { use } from "react"
+import { Link, useSearchParams } from 'react-router-dom'
 
 export default function Vans() {
     const [vans, setVans] = React.useState(null)
-    const [filter, setFilter] = React.useState(null)
+    const [searchParams, setSearchParams] = useSearchParams()
     const [status, setStatus] = React.useState('loading')
+
+    const type = searchParams.get('type')
 
     React.useEffect(() => {
         async function fetchData () {
@@ -51,7 +53,7 @@ export default function Vans() {
         )
     }
     
-   const displayedVans = filter && vans ? vans.filter(van => van.type === filter) : vans
+   const displayedVans = type ? vans.filter(van => van.type === type) : vans
    const vansCards = vans ? displayedVans.map(van => (
                     <div className='van-card' key={van.id}>
                         <Link 
@@ -92,27 +94,27 @@ export default function Vans() {
                     <div>
                         <button 
                             
-                            className={`btn-c-four simpleTwo ${filter === 'simple' ? 'active' : ''}`} 
-                            onClick={() => setFilter('simple')}
+                            className={`btn-c-four simpleTwo ${type === 'simple' ? 'active' : ''}`} 
+                            onClick={() => setSearchParams('?type=simple')}
                         >
                             Simple
                         </button>
                         <button 
-                            className={`btn-c-four luxuryTwo ${filter === 'luxury' ? 'active' : ''}`} 
-                            onClick={() => setFilter('luxury')}
+                            className={`btn-c-four luxuryTwo ${type === 'luxury' ? 'active' : ''}`} 
+                            onClick={() => setSearchParams('?type=luxury')}
                         >
                             Luxury
                         </button>
                         <button 
-                            className={`btn-c-four ruggedTwo ${filter === 'rugged' ? 'active' : ''}`} 
-                            onClick={() => setFilter('rugged')}
+                            className={`btn-c-four ruggedTwo ${type === 'rugged' ? 'active' : ''}`} 
+                            onClick={() => setSearchParams('?type=rugged')}
                         >
                             Rugged
                         </button>
                     </div>
                     <button 
                         className='btn-c-three'
-                        onClick={() => setFilter(null)}
+                        onClick={() => setSearchParams('')}
                     >
                         Clear filters
                     </button>
