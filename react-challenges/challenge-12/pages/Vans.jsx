@@ -1,4 +1,4 @@
-import React, { use } from "react"
+import React from "react"
 import { Link, useSearchParams } from 'react-router-dom'
 
 export default function Vans() {
@@ -7,6 +7,13 @@ export default function Vans() {
     const [status, setStatus] = React.useState('loading')
 
     const type = searchParams.get('type')
+    const modifyURLParams = (key, value) => {
+        setSearchParams(prevParams => {
+            if (!value) prevParams.delete(key)
+            else prevParams.set(key, value) 
+            return prevParams
+        })
+    }
 
     React.useEffect(() => {
         async function fetchData () {
@@ -85,6 +92,7 @@ export default function Vans() {
             </main>
         )
     }
+
                 
     return (
         <main className='vans-section'>
@@ -95,26 +103,26 @@ export default function Vans() {
                         <button 
                             
                             className={`btn-c-four simpleTwo ${type === 'simple' ? 'active' : ''}`} 
-                            onClick={() => setSearchParams('?type=simple')}
+                            onClick={() => modifyURLParams('type', 'simple')}
                         >
                             Simple
                         </button>
                         <button 
                             className={`btn-c-four luxuryTwo ${type === 'luxury' ? 'active' : ''}`} 
-                            onClick={() => setSearchParams('?type=luxury')}
+                            onClick={() => modifyURLParams('type', 'luxury')}
                         >
                             Luxury
                         </button>
                         <button 
                             className={`btn-c-four ruggedTwo ${type === 'rugged' ? 'active' : ''}`} 
-                            onClick={() => setSearchParams('?type=rugged')}
+                            onClick={() => modifyURLParams('type', 'rugged')}
                         >
                             Rugged
                         </button>
                     </div>
                     <button 
                         className='btn-c-three'
-                        onClick={() => setSearchParams('')}
+                        onClick={() => modifyURLParams('type', null)}
                     >
                         Clear filters
                     </button>
