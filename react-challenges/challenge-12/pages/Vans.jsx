@@ -64,7 +64,7 @@ export default function Vans() {
    const vansCards = vans ? displayedVans.map(van => (
                     <div className='van-card' key={van.id}>
                         <Link 
-                            to={`/vans/${van.id}`}
+                            to={van.id}
                             aria-label={`View details for ${van.name}, 
                              priced at $${van.price} per day`}
                         >
@@ -120,12 +120,12 @@ export default function Vans() {
                             Rugged
                         </button>
                     </div>
-                    <button 
+                    {type && <button 
                         className='btn-c-three'
                         onClick={() => modifyURLParams('type', null)}
                     >
                         Clear filters
-                    </button>
+                    </button> }
                 </div>
             </section>
             <section className='vans-container'>

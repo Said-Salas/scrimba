@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import arrow from '../assets/arrow.svg'
 
 export default function Van() {
     const { id } = useParams()
@@ -57,7 +56,7 @@ export default function Van() {
         <>
             <div className='van-header'>
                 &larr;
-                <Link className='btn-c-five' to='/vans'>Back to all vans</Link>
+                <Link className='btn-c-five' to='..' relative='path'>Back to all vans</Link>
             </div>
             <main className='van-section'>
                 <img src={van.imageUrl}/>
